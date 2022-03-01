@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/border_ui.xml" value="0.1085" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/button_style.xml" value="0.1085" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/account_list.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/activity_fund_transfer_menu.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/activity_same_bank_transfer.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_biller.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_otherbank_beneficiary.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_samebank_beneficiary.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/addrech_dthno.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/addrech_mobileno.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/balance_report.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/bill_list.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/bill_select_cat.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/biller_list.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/change_mpin.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/confirm_recharges.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/contact_us.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/custom_alert_dialog.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/custom_dialog.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/custom_dialog_box.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/custom_list_withradio.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/customelist_rech_transaction.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/customerid.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/dash.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/dialog_box.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/header.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/loan_account.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/locate_us.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/login.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/recharge.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/recharge_plan.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/recharge_remove_payee.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/splash_page.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/splash_page_out.xml" value="0.1921875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
