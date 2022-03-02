@@ -54,7 +54,7 @@
         android:layout_height="0dip"
         android:layout_alignParentTop="true"
         android:layout_weight="1"
-        android:background="#d2edfb"
+        android:background="#FFFFFF"
         android:orientation="horizontal"
         android:weightSum="6">
 
@@ -65,7 +65,6 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="5dip"
             android:layout_marginVertical="2dip"
-            android:background="@color/bg_color"
             android:layout_weight="1"/>
         <!-- android:src="@drawable/trans"
              android:paddingLeft="40dip"

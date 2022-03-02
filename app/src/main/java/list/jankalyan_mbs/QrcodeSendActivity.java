@@ -1,28 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.Hashtable;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -59,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.DecodeHintType;
@@ -70,6 +48,27 @@ import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.IntentIntegrator;
 import com.google.zxing.common.HybridBinarizer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.security.PrivateKey;
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class QrcodeSendActivity extends Activity implements OnClickListener
 {

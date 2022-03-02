@@ -1,21 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +20,23 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class FundTransferMenuActivity extends Activity implements AdapterView.OnItemClickListener, View.OnClickListener 
 {
@@ -110,8 +111,8 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_same_bnk_trans),
 						R.mipmap.arrow),
-				new MenuIcon(getString(R.string.lbl_other_bank_fund_trans_rtgs),
-						R.mipmap.arrow),
+//				new MenuIcon(getString(R.string.lbl_other_bank_fund_trans_rtgs),
+//						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_send), 
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_receive),
@@ -248,17 +249,17 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 
-		case 3:
-
-			Log.e("MBS Case -2", "........11 OtherbanktransferRTGS");
-			intet = new Intent(getApplicationContext(),OtherBankTranRTGS.class);
-			intet.putExtra("var1", var1);
-			intet.putExtra("var3", var3);
-			startActivity(intet);
-			finish();
-			break;
+//		case 3:
+//
+//			Log.e("MBS Case -2", "........11 OtherbanktransferRTGS");
+//			intet = new Intent(getApplicationContext(),OtherBankTranRTGS.class);
+//			intet.putExtra("var1", var1);
+//			intet.putExtra("var3", var3);
+//			startActivity(intet);
+//			finish();
+//			break;
 			
-		case 4:
+		case 3:
 
 			Log.e("MBS Case -2", "........11 QrcodeSendActivity");
 			intet = new Intent(getApplicationContext(),
@@ -268,7 +269,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			startActivity(intet);
 			finish();
 			break;
-		case 5:
+		case 4:
 			Log.e("MBS Case -2", "........11 QrcodeRcvActivity");
 			intet = new Intent(getApplicationContext(), ShowAccForQrcode.class);
 			intet.putExtra("var1", var1);
@@ -277,7 +278,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 
-		case 6:
+		case 5:
 			Log.e("MBS Case -2", "........11 TransferHistory");
 			intet = new Intent(getApplicationContext(), TransferHistory.class);
 			intet.putExtra("var1", var1);
