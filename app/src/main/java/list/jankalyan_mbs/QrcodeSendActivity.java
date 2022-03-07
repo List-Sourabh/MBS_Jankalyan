@@ -157,7 +157,7 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 		confirm_layout=(LinearLayout)findViewById(R.id.confirm_layout);
 		same_bnk_layout=(LinearLayout)findViewById(R.id.same_bnk_layout);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.recharge);
+		img_heading.setBackgroundResource(R.mipmap.mobile);
 		//btn_home.setImageResource(R.mipmap.ic_home_d);
 		btn_back.setImageResource(R.mipmap.backover);
 		btn_home.setOnClickListener(this);
@@ -1095,7 +1095,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 					debitAccno=strFromAccNo;
 					amt=strAmount;
 					reMark=strRemark;
-					new IntentIntegrator(act).initiateScan();
+					new IntentIntegrator(QrcodeSendActivity.this).initiateScan();
 					break;
 				case R.id.btnGalary:
 					custId=custId;

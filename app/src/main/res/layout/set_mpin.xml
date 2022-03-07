@@ -322,7 +322,7 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:layout_weight="2.6"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:gravity="center"
                 android:padding="1dip"
                 android:text="@string/lbl_020" >
@@ -353,7 +353,7 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:layout_weight="2.6"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:gravity="center"
                 android:padding="1dip"
                 android:text="@string/lbl_reset">

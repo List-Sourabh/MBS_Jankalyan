@@ -37,7 +37,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center" 
             android:layout_weight="1"
-            android:background="@mipmap/button_style"
+            android:background="@drawable/dash_btn_border"
             android:layout_marginRight="5dip"/>
         
         <mbLib.CustomButton
@@ -48,7 +48,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center" 
             android:layout_weight="1"
-            android:background="@mipmap/button_style"
+            android:background="@drawable/dash_btn_border"
             android:layout_marginLeft="5dip"/>
     </LinearLayout>
 

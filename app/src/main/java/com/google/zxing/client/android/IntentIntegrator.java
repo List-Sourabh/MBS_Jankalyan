@@ -16,6 +16,15 @@
 
 package com.google.zxing.client.android;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+
+import com.journeyapps.barcodescanner.CaptureActivity;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,18 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import list.jankalyan_mbs.QrcodeSendActivity;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-
 import androidx.fragment.app.FragmentActivity;
-
-import com.journeyapps.barcodescanner.CaptureActivity;
+import list.jankalyan_mbs.QrcodeSendActivity;
 
 /**
  *
@@ -228,7 +227,7 @@ public class IntentIntegrator {
         intentScan.setAction(Intents.Scan.ACTION);
 
         // check which types of codes to scan for
-        Log.e("SCAN",""+desiredBarcodeFormats.size());
+        //Log.e("SCAN",""+desiredBarcodeFormats.size());
         if (desiredBarcodeFormats != null) {
             // set the desired barcode types
             StringBuilder joinedByComma = new StringBuilder();

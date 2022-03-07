@@ -1,30 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DatePickerDailog;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -48,6 +23,31 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DatePickerDailog;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class TransferHistory extends Activity implements OnClickListener {
 	TransferHistory act;
@@ -119,7 +119,7 @@ public class TransferHistory extends Activity implements OnClickListener {
 		btn_from_date.setOnClickListener(this);
 		btn_to_date.setOnClickListener(this);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.transfer_history);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		dateandtime = Calendar.getInstance(Locale.US);
 		df = new SimpleDateFormat("dd/MM/yyyy");
 		curDate = df.format(dateandtime.getTime());
@@ -251,7 +251,7 @@ public class TransferHistory extends Activity implements OnClickListener {
 			debAccs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spi_account_no.setAdapter(debAccs);
 
-			String[] tranTypeArr = { "Same Bank","NEFT","RTGS"};//, "NEFT", "RTGS", "IMPS", "All" };// "QRCODE",
+			String[] tranTypeArr = { "Same Bank"};//, "NEFT", "RTGS", "IMPS", "All" };// "QRCODE",
 			ArrayAdapter<String> tranTypes = new ArrayAdapter<String>(act,
 					R.layout.spinner_item, tranTypeArr);
 			tranTypes

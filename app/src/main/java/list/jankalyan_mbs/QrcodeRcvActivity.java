@@ -1,17 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.MyThread;
-
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -20,24 +8,37 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.graphics.Paint.Align;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import androidx.core.content.FileProvider;
+import mbLib.MyThread;
 
 public class QrcodeRcvActivity extends Activity implements OnClickListener {
 	ImageView myImage;
@@ -68,7 +69,7 @@ public class QrcodeRcvActivity extends Activity implements OnClickListener {
 		qr_str = (TextView) findViewById(R.id.qr_str);
 		btn_share_qr = (Button) findViewById(R.id.btn_share_qr);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.transfer);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		txt_heading.setText(R.string.lbl_qr_code);
 		
 		//btn_home.setImageResource(R.mipmap.ic_home_d);

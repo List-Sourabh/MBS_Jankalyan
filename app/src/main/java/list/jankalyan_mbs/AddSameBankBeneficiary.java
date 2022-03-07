@@ -100,7 +100,7 @@ public class AddSameBankBeneficiary  extends Activity implements OnClickListener
 		  var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.add_beneficiary);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		txt_heading = (TextView) findViewById(R.id.txt_heading);
 		txtAccNo = (EditText) findViewById(R.id.txtAccNo2);
 		txtAccNoconf=(EditText) findViewById(R.id.txtAccNoconf);

@@ -55,10 +55,11 @@
         <mbLib.CustomButton
             android:id="@+id/btn_ok"
             style="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@mipmap/button_style"
+
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:text="@string/lbl_001"
@@ -72,10 +73,11 @@
         <mbLib.CustomButton
             android:id="@+id/btn_cancel"
             style="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@mipmap/button_style"
+
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:text="@string/lbl_002"

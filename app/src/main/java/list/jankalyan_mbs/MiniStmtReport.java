@@ -1,20 +1,15 @@
 package list.jankalyan_mbs;
 
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CustomDialogClass;
-import mbLib.MBSUtils;
-import mbLib.MiniStatementBean;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -26,6 +21,25 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.security.PrivateKey;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import androidx.core.content.FileProvider;
+import mbLib.CustomDialogClass;
+import mbLib.MBSUtils;
+import mbLib.MiniStatementBean;
+import mbLib.MyThread;
 //import android.annotation.SuppressLint;
 
 //@SuppressLint("NewApi")
@@ -115,7 +129,7 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 	public void setValues() 
 	{
 		txt_heading.setText(getString(R.string.lbl_mini_statement));
-		img_heading.setBackgroundResource(R.mipmap.ministatement);
+		img_heading.setBackgroundResource(R.mipmap.checkbkstatus2);
 		String sel_str = spi_str;
 		sel_str=sel_str.replaceAll("-", "#");
 		Accounts acObj=new Accounts(sel_str);
@@ -201,7 +215,7 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 						String strcrdr=MiniStmntBean.get(i).getDrCr();
 						String stramount=MiniStmntBean.get(i).getAmount();
 						String strdesc=MiniStmntBean.get(i).getDescr();
-						String sharestring=strdate+"\t"+strcrdr+"\t"+stramount+"\n"+strdesc;
+						String sharestring=strdate+"\t"+strcrdr+" \t"+stramount+"\t"+strdesc;
 						showshareAlert(sharestring);
 					}
 				});
@@ -232,13 +246,66 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 						break;
 
 					case R.id.btn_cancel:
-						String shareBody = null;
-						shareBody = "Beneficiary Name : ";
-						Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-						sharingIntent.setType("text/plain");
-						sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-						sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-						startActivity(sharingIntent);
+//						String shareBody = null;
+//						shareBody = "Beneficiary Name : ";
+//						Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+//						sharingIntent.setType("text/plain");
+//						sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+//						sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+//						startActivity(sharingIntent);
+
+
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+						String CurrentDateTime = sdf.format(c.getTime());
+						Intent share = new Intent(Intent.ACTION_SEND);
+						Bitmap src = BitmapFactory.decodeResource(getResources(), R.mipmap.bg); // the original file yourimage.jpg i added in resources
+						Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
+
+						String shareBody1 = "Paid On : "+"CurrentDateTimeMMMMMMMMMMMMM";//mm
+						Typeface typeface1 = Typeface.createFromAsset(getContext().getAssets(), "fonts/calibri.ttf");
+						Canvas cs = new Canvas(dest);
+						Paint tPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+						tPaint.setTypeface(typeface1);
+						tPaint.setTextSize(20);
+						tPaint.setColor(Color.BLACK);
+						cs.drawBitmap(src, 0f, 0f, null);
+						float height = tPaint.measureText("yY");
+						float width = tPaint.measureText(shareBody1);
+						float x_coord = (src.getWidth() - width)/2;//jObj.getString("BENFNAME")
+						height=100f;
+
+						//String sharestring=strdate+"\t"+strcrdr+" \t"+stramount+"\t\n"+strdesc;
+
+						String []arr = str.split("\t");
+
+
+
+
+
+
+
+
+
+						cs.drawText("Date : "+arr[0], 20, height+20f, tPaint);//270 100
+						cs.drawText("Account No : "+accNo.getText().toString(), 25, height+60f, tPaint);//220
+						cs.drawText("Amount : "+arr[2], 20, height+100f, tPaint);//320
+						cs.drawText("Remark : ", 20, height+130f, tPaint);//370
+						//cs.drawText(chenextlne(str), x_coord, height+370f, tPaint);//370
+						MBSUtils.drawMultilineText(cs,str,20,height+150f,tPaint);
+						try {
+							dest.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(new File("/sdcard/SharedImage.jpg")));
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+						// dest is Bitmap, if you want to preview the final image, you can display it on screen also before saving
+						share.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+						share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+						Uri apkURI = FileProvider.getUriForFile(act,act.getPackageName(), new File("/sdcard/SharedImage.jpg"));
+						share.putExtra(Intent.EXTRA_STREAM,	Uri.parse("file:///sdcard/SharedImage.jpg"));
+						share.putExtra(Intent.EXTRA_STREAM,apkURI);
+						share.setType("image/*");
+						startActivityForResult(Intent.createChooser(share, "Share Image"),0);
 						break;
 					default:
 						break;

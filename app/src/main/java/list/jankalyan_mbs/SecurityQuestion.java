@@ -1,24 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,6 +20,24 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class SecurityQuestion extends Activity implements OnClickListener
 {
@@ -74,7 +73,7 @@ public class SecurityQuestion extends Activity implements OnClickListener
 		  var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.register);
+		img_heading.setBackgroundResource(R.mipmap.ministmnt2);
 		Bundle b1=new Bundle();
 		b1=getIntent().getExtras();
 		if(b1!=null)

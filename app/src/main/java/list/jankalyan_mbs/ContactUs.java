@@ -88,7 +88,7 @@ public class ContactUs extends Activity implements OnClickListener
 		btn_back.setImageResource(R.mipmap.backover);
 		txt_heading=(TextView)findViewById(R.id.txt_heading);
 		img_heading=(ImageView)findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.contact);
+		img_heading.setBackgroundResource(R.mipmap.contact_us);
 		txt_heading.setText(getString(R.string.lbl_contact_us));
 		btn_back.setOnClickListener(this);
 		txt_bank_email.setOnClickListener(this);

@@ -89,7 +89,7 @@ public class Register extends Activity implements OnClickListener
 		btn_back.setImageResource(R.mipmap.backover);
 		custid=(TextView)findViewById(R.id.custid);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.register);
+		img_heading.setBackgroundResource(R.mipmap.ministmnt2);
 		btn_back.setOnClickListener(this);
 		btn_home.setOnClickListener(this);
 		btn_Validate.setOnClickListener(this);

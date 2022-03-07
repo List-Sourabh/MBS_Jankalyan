@@ -114,7 +114,7 @@ public class ChangeMpin extends Activity implements OnClickListener {
 		layout_otp = (LinearLayout) findViewById(R.id.layout_otp);
 		txt_heading = (TextView) findViewById(R.id.txt_heading);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.change_mpin);
+		img_heading.setBackgroundResource(R.mipmap.other_services2);
 		txt_ref_id = (TextView) findViewById(R.id.txt_ref_id);
 		txt_heading.setText(getString(R.string.lbl_title_change_mpin));
 		etotptxt = (EditText) findViewById(R.id.etotptxt);

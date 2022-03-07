@@ -88,7 +88,7 @@ public class Recharges extends Activity implements OnClickListener
 		txt_heading=(TextView)findViewById(R.id.txt_heading);
 		txt_heading.setText(recharge.getString(R.string.lbl_rech_Recharges));
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.recharge);
+		img_heading.setBackgroundResource(R.mipmap.mobile);
 		btn_back = (ImageButton) findViewById(R.id.btn_back);
 		btn_back.setImageResource(R.mipmap.backover);
 		btnAddNew=(Button)findViewById(R.id.btnAddNew);

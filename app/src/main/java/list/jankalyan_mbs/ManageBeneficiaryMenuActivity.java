@@ -1,26 +1,25 @@
 package list.jankalyan_mbs;
 
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
 import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import mbLib.DialogBox;
-import mbLib.MyThread;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.DialogBox;
+import mbLib.MyThread;
 
 public class ManageBeneficiaryMenuActivity extends Activity implements View.OnClickListener
 {
@@ -62,7 +61,7 @@ public class ManageBeneficiaryMenuActivity extends Activity implements View.OnCl
 	btn_back.setOnClickListener(this);
 	btn_home.setOnClickListener(this);
 	txt_heading.setText(getString(R.string.lbl_manage_beneficiary));
-	img_heading.setBackgroundResource(R.mipmap.list_beneficiary);
+	img_heading.setBackgroundResource(R.mipmap.benefeciary2);
 
 	list_benf.setOnClickListener(this);
 	remove_benf.setOnClickListener(this);

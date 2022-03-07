@@ -1,30 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.MyThread;
-
-import mbLib.MBSUtils;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
-
-
-
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -54,6 +29,24 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class AddOtherBankBeneficiary extends Activity implements OnClickListener {
 	AddOtherBankBeneficiary act = this;
@@ -114,7 +107,7 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		dbms = new DatabaseManagement("list.jankalyan_mbs", "jankalyanmbs");
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.add_beneficiary);
+		img_heading.setBackgroundResource(R.mipmap.benefeciary2);
 		// SharedPreferences sp = act.getSharedPreferences(MY_SESSION,
 		 var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");

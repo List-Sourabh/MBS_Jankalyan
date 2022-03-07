@@ -1,20 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +18,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 //import android.annotation.SuppressLint;
 
 //@SuppressLint("NewApi")
@@ -68,7 +69,7 @@ public class SavingAccountsDetails extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.balance_report);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.savings);
+		img_heading.setBackgroundResource(R.mipmap.term_deposit2);
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		act=this;
 		  var1 = (PrivateKey) getIntent().getSerializableExtra("var1");

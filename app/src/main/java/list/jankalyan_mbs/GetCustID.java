@@ -89,7 +89,7 @@ public class GetCustID extends Activity implements OnClickListener {
 		  var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.register);
+		img_heading.setBackgroundResource(R.mipmap.other_services2);
 		txt_accno = (EditText) findViewById(R.id.txt_accno);
 		txt_mobileno = (EditText) findViewById(R.id.txt_mobileno);
 		btn_proceed = (Button) findViewById(R.id.btn_proceed);

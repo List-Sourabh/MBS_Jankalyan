@@ -1,21 +1,11 @@
 package mbLib;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.security.SecureRandom;
-import java.util.Enumeration;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-
-import list.jankalyan_mbs.ErrorDialogClass;
-import list.jankalyan_mbs.R;
-
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,8 +22,6 @@ import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.safetynet.SafetyNet;
@@ -43,6 +31,18 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.security.SecureRandom;
+import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
+import list.jankalyan_mbs.ErrorDialogClass;
+import list.jankalyan_mbs.R;
 @SuppressLint({"MissingPermission", "NewApi"})
 public class MBSUtils {
 	static int recCnt = 0;
@@ -566,5 +566,30 @@ public static String getMacAddressnew(String interfaceName,Activity act) {
 
 			}
 		};alert.show();
+	}
+	public static String chenextlne(String str)
+	{
+		StringBuilder sb = new StringBuilder(str);
+
+		int i = 0;
+		while ((i = sb.indexOf(" ", i + 35)) != -1) {
+			sb.replace(i, i + 1, "\n");
+		}
+
+		System.out.println(sb.toString());
+		return sb.toString();
+	}
+
+	public static float drawMultilineText(Canvas cs, String str, float x_coord, float height, Paint tPaint)
+	{
+		str=chenextlne(str);
+		String []lines=str.split("\n");
+		for(int i=0;i<lines.length;i++,height+=20)
+		{
+			String tempStr=lines[i];
+			cs.drawText(tempStr, x_coord, height, tPaint);
+		}
+		//370
+		return height;
 	}
 }

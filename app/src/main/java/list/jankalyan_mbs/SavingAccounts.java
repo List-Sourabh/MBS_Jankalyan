@@ -2,15 +2,6 @@ package list.jankalyan_mbs;
 
 
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.Accountbean;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +18,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.Accountbean;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 //import android.annotation.SuppressLint;
 
@@ -114,7 +115,7 @@ public class SavingAccounts extends Activity implements OnClickListener{
 		//Log.e("HOME FRAGMENT11111","stringValue=="+stringValue);
 		//Log.e("HOME FRAGMENT11111","chekacttype=="+chekacttype);
 		
-			img_heading.setBackgroundResource(R.mipmap.savings);
+			img_heading.setBackgroundResource(R.mipmap.term_deposit2);
 			txt_heading.setText(getString(R.string.lbl_saving_and_current));
 		
 			

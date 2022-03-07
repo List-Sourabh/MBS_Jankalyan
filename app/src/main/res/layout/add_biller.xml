@@ -59,7 +59,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="0.8"
-                        android:background="@color/spinner_bg_color"
+                        android:background="@mipmap/rounded_corner_spinner"
                         android:src="@mipmap/spinner_down" />
                 </LinearLayout>
             </LinearLayout>

@@ -1,24 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.Accountbean;
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -46,6 +27,24 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.Accountbean;
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 //import mbLib.DialogBox;
 //import android.annotation.SuppressLint;
 //import android.annotation.SuppressLint;
@@ -132,7 +131,7 @@ public class MiniStmtActivity extends Activity implements OnClickListener,
 		all_acnts = stringValue;
 
 		txt_heading.setText(getString(R.string.lbl_mini_statement));
-		img_heading.setBackgroundResource(R.mipmap.ministatement);
+		img_heading.setBackgroundResource(R.mipmap.checkbkstatus2);
 		btn_back.setOnClickListener(this);
 		btn_home.setOnClickListener(this);
 		addAccounts(all_acnts);

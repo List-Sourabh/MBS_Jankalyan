@@ -34,7 +34,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_rech_mobile" />
 
             <mbLib.CustomButton
@@ -43,7 +43,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_rech_DTH" />
 
             <mbLib.CustomButton
@@ -52,7 +52,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_rech_Datacard" />
         </LinearLayout>
 
@@ -104,7 +104,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_rech_AddNew" />
 
             <mbLib.CustomButton
@@ -113,7 +113,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_rech_Remove" />
             
             <mbLib.CustomButton
@@ -122,7 +122,7 @@
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_view_history"/>
         </LinearLayout>
     </LinearLayout>

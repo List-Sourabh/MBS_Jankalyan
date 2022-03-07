@@ -177,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@mipmap/button_style"
+                    android:background="@drawable/dash_btn_border"
                     android:gravity="center"
                     android:text="@string/lbl_020"
                     android:textSize="20dip" >

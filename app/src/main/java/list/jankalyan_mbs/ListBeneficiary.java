@@ -1,24 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +20,26 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class ListBeneficiary extends Activity implements OnClickListener {
 	
@@ -101,7 +102,7 @@ public class ListBeneficiary extends Activity implements OnClickListener {
 
 		txt_heading = (TextView) findViewById(R.id.txt_heading);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.list_beneficiary);
+		img_heading.setBackgroundResource(R.mipmap.benefeciary2);
 		btn_home = (ImageButton) findViewById(R.id.btn_home);
 		btn_back = (ImageButton) findViewById(R.id.btn_back);
 		//btn_home.setImageResource(R.mipmap.ic_home_d);

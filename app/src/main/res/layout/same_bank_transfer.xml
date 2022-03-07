@@ -182,7 +182,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="80dip"
                     android:layout_weight="2.6"
-                    android:background="@mipmap/button_style"
+                    android:background="@drawable/dash_btn_border"
                     android:gravity="center"
                     android:text="@string/lbl_submit_btn"></mbLib.CustomButton>
 
@@ -408,6 +408,7 @@
                 <mbLib.CustomButton
                     android:id="@+id/btn_confirm"
                     style="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.6"

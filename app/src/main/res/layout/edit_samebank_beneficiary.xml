@@ -59,7 +59,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="0.8"
-                    android:background="@color/spinner_bg_color"
+                    android:background="@mipmap/rounded_corner_spinner"
                     android:src="@mipmap/spinner_down" />
             </LinearLayout>
             <!-- Design for Account no -->
@@ -87,7 +87,7 @@
                 style="@style/button_text"
                 android:layout_width="wrap_content"
                 android:layout_height="0dip"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:clickable="false"
                 android:enabled="false"
                 android:gravity="center"
@@ -190,7 +190,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.6"
-                        android:background="@mipmap/button_style"
+                        android:background="@drawable/dash_btn_border"
                         android:text="@string/lbl_020" >
                     </mbLib.CustomButton>
 

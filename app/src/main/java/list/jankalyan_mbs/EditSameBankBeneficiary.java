@@ -103,7 +103,7 @@ public class EditSameBankBeneficiary extends Activity implements
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		dbms = new DatabaseManagement("list.jankalyan_mbs", "jankalyanmbs");
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.edit_beneficiary);
+		img_heading.setBackgroundResource(R.mipmap.benefeciary2);
 		txtAccNo = (EditText) findViewById(R.id.txtAccNo2);
 		btn_fetchname = (Button) findViewById(R.id.btn_fetchName2);
 		txtName = (EditText) findViewById(R.id.txtName2);

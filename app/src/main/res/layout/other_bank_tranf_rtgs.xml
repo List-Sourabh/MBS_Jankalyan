@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:text="@string/lbl_debite_acc"></mbLib.CusFntTextView>
+                    android:text="@string/lbl_debite_acc"/>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -59,7 +59,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="0.8"
-                        android:background="@color/spinner_bg_color"
+                        android:background="@mipmap/rounded_corner_spinner"
                         android:src="@mipmap/spinner_down" />
                 </LinearLayout>
             </LinearLayout>
@@ -70,13 +70,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/current_balance"
-                android:textColor="#372c24"></mbLib.CusFntTextView>
+                android:textColor="#372c24"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/sameBnkTrantxtBal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"></mbLib.CustomEditText>
+                android:editable="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:text="@string/lbl_add_ben"></mbLib.CusFntTextView>
+                    android:text="@string/lbl_add_ben"/>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -112,7 +112,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="0.8"
-                        android:background="@color/spinner_bg_color"
+                        android:background="@mipmap/rounded_corner_spinner"
                         android:src="@mipmap/spinner_down" />
                 </LinearLayout>
             </LinearLayout>
@@ -126,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:text="@string/lbl_payment_options"></mbLib.CusFntTextView>
+                    android:text="@string/lbl_payment_options"/>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -151,7 +151,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="0.8"
-                        android:background="@color/spinner_bg_color"
+                        android:background="@mipmap/rounded_corner_spinner"
                         android:src="@mipmap/spinner_down" />
                 </LinearLayout>
             </LinearLayout>
@@ -162,13 +162,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/lbl_acc_number"
-                android:textColor="#372c24"></mbLib.CusFntTextView>
+                android:textColor="#372c24"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtAccNo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"></mbLib.CustomEditText>
+                android:editable="false"/>
 
             <mbLib.CusFntTextView
                 android:id="@+id/lblbranch"
@@ -177,7 +177,7 @@
                 android:layout_marginTop="10dip"
                 android:text="@string/lbl_branch"
                 android:textColor="#372c24"
-                android:visibility="gone"></mbLib.CusFntTextView>
+                android:visibility="gone"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtBranch"
@@ -186,7 +186,7 @@
                 android:enabled="false"
 
                 android:text=""
-                android:visibility="gone"></mbLib.CustomEditText>
+                android:visibility="gone"/>
 
             <mbLib.CusFntTextView
                 android:id="@+id/lblIFSCCode"
@@ -194,21 +194,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/lbl_ifsc_code"
-                android:textColor="#372c24"></mbLib.CusFntTextView>
+                android:textColor="#372c24"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtIFSCCode"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text=""></mbLib.CustomEditText>
+                android:text=""/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtBank"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:visibility="gone"></mbLib.CustomEditText>
+                android:visibility="gone"/>
 
             <mbLib.CusFntTextView
                 android:id="@+id/lblAmt"
@@ -216,14 +216,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/lbl_amount"
-                android:textColor="#372c24"></mbLib.CusFntTextView>
+                android:textColor="#372c24"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtAmt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:text=""></mbLib.CustomEditText>
+                android:text=""/>
 
             <mbLib.CusFntTextView
                 android:id="@+id/lblRemk"
@@ -231,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/lbl_remark"
-                android:textColor="#372c24"></mbLib.CusFntTextView>
+                android:textColor="#372c24"/>
 
             <mbLib.CustomEditText
                 android:id="@+id/otherIfsctxtRemk"
@@ -240,7 +240,7 @@
                 android:layout_marginBottom="10dip"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
                 android:maxLength="200"
-                android:text=""></mbLib.CustomEditText>
+                android:text=""/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -261,9 +261,9 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="80dip"
                     android:layout_weight="2.6"
-                    android:background="@mipmap/button_style"
+                    android:background="@drawable/dash_btn_border"
                     android:gravity="center"
-                    android:text="@string/lbl_submit_btn"></Button>
+                    android:text="@string/lbl_submit_btn"/>
 
                 <TextView
                     android:layout_width="0dip"
@@ -276,7 +276,7 @@
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:layout_gravity="center"
-                android:visibility="invisible"></ProgressBar>
+                android:visibility="invisible"/>
         </LinearLayout>
 
         <LinearLayout
@@ -486,6 +486,7 @@
                 <Button
                     android:id="@+id/btn_confirm"
                     style="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.6"

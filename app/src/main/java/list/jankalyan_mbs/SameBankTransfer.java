@@ -1,29 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
-
-
-
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -42,9 +18,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,9 +32,27 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
-public class SameBankTransfer extends Activity implements OnClickListener 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
+
+public class
+SameBankTransfer extends Activity implements OnClickListener
 {
 	private static String METHOD_NAME = "";
 	private static String METHOD_SAVE_TRANSFERTRAN = "";
@@ -117,7 +112,7 @@ public class SameBankTransfer extends Activity implements OnClickListener
 		setContentView(R.layout.same_bank_transfer);
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.transfer);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		act=this;
 		noAccounts=false;
 		dbms = new DatabaseManagement("list.jankalyan_mbs", "jankalyanmbs");

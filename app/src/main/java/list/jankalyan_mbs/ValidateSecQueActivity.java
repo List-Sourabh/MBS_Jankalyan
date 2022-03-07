@@ -1,22 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +19,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class ValidateSecQueActivity extends CustomWindow implements
 		OnClickListener, LocationListener {
@@ -83,7 +82,7 @@ public class ValidateSecQueActivity extends CustomWindow implements
 		txt_heading = (TextView) findViewById(R.id.txt_heading);
 		txt_heading.setText(getString(R.string.lbl_security_que));
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.register);
+		img_heading.setBackgroundResource(R.mipmap.ministmnt2);
 		Bundle b1 = this.getIntent().getExtras();
 
 		if (b1 != null) {

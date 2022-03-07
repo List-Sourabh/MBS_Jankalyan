@@ -147,7 +147,8 @@
                 <mbLib.CustomButton
                     android:id="@+id/btn_confirm"
                     style="@mipmap/button_style"
-                    android:background="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
+
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:layout_weight="1.5"
@@ -158,7 +159,8 @@
                <mbLib.CustomButton
                     android:id="@+id/btncnf_back"
                     style="@mipmap/button_style"
-                    android:background="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
+
                     android:layout_width="0dip"
                     android:layout_margin="5dip"
                     android:layout_height="fill_parent"

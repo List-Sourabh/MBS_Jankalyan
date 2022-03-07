@@ -117,6 +117,7 @@
             android:weightSum="1" >
 
             <mbLib.CustomButton
+                android:background="@drawable/dash_btn_border"
                 android:id="@+id/btn_Validate"
                 style="@mipmap/button_style"
                 android:layout_width="0dip"

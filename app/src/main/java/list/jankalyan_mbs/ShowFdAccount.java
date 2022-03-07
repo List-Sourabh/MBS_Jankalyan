@@ -1,14 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.Accountbean;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +17,16 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.Accountbean;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class ShowFdAccount extends Activity implements OnClickListener{
 	private ListView listView1;
@@ -92,7 +93,7 @@ public class ShowFdAccount extends Activity implements OnClickListener{
         
         //all_acnts ="2#101#SB#4642#Mr. KADAM SUSHANT  D##0020001010004642#O~2#201#CA#1915#Mr. KADAM SUSHANT  D##0020002010001915#O~2#302#LO#10481#Mr. KADAM SUSHANT  D##0020003020010481#I~2#501#FD#36006#Mr. KADAM SUSHANT  D##0020005010036006#O~2#602#RP#4066#Mr. KADAM SUSHANT  D##0020006020004066#O~2#801#RA#5845#Mr. KADAM SUSHANT  D##0020008010005845#O~2#901#PG#11611#Mr. KADAM SUSHANT  D##0020009010011611#O~~";//stringValue;
         all_acnts =stringValue;
-        img_heading.setBackgroundResource(R.mipmap.deposit);
+        img_heading.setBackgroundResource(R.mipmap.term_deposit2);
 		txt_heading.setText(getString(R.string.lbl_deposits));
 		
 		addAccounts(all_acnts, acc_type);

@@ -73,7 +73,7 @@ public class ForgotPassword extends Activity implements OnClickListener
 			MBSUtils.showAlertDialogAndExitApp(getString(R.string.alert_sup),ForgotPassword.this);
 		}
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.register);
+		img_heading.setBackgroundResource(R.mipmap.other_services2);
 		var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		Bundle b1=new Bundle();

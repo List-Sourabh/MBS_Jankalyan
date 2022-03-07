@@ -1,21 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -35,6 +19,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
 
 public class GetTermsCondition extends Activity implements OnClickListener 
 {
@@ -90,7 +89,7 @@ public class GetTermsCondition extends Activity implements OnClickListener
 		txt_heading = (TextView)findViewById(R.id.txt_heading);
 		txt_heading.setText(getString(R.string.lbl_terms_cond));	
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.ministatement);
+		img_heading.setBackgroundResource(R.mipmap.checkbkstatus2);
 		txt_heading1 = (TextView)findViewById(R.id.txt_heading1);
 		txt_heading2= (TextView)findViewById(R.id.txt_heading2);
 		txt_heading3 = (TextView)findViewById(R.id.txt_heading3);

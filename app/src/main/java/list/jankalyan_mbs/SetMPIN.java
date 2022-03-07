@@ -1,23 +1,5 @@
 package list.jankalyan_mbs;
 
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +20,22 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class SetMPIN extends Activity implements OnClickListener {
 	private static String NAMESPACE = "";
@@ -113,7 +111,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 		btn_save_pass = (Button) findViewById(R.id.btn_save_pass);
 		btn_reset = (Button) findViewById(R.id.btn_reset);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.change_mpin);
+		img_heading.setBackgroundResource(R.mipmap.mobile);
 		btn_home = (ImageButton) findViewById(R.id.btn_home);
 		btn_back = (ImageButton) findViewById(R.id.btn_back);
 		//btn_home.setImageResource(R.mipmap.bank_logo);

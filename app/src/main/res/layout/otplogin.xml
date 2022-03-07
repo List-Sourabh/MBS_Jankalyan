@@ -103,7 +103,7 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal|center"
             android:layout_weight="2.6"
-            android:background="@mipmap/button_style"
+            android:background="@drawable/dash_btn_border"
             android:textColor="@color/white"
             android:text="@string/lbl_submit_btn"
             android:textSize="20dip" />
@@ -136,7 +136,7 @@
             android:layout_gravity="center_horizontal|center"
             android:layout_weight="2.6"
             android:textColor="@color/white"
-            android:background="@mipmap/button_style"
+            android:background="@drawable/dash_btn_border"
             android:text="@string/resend_OTP"
             android:textSize="20dip" />
 

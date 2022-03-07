@@ -71,7 +71,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginTop="10dip"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_add_biller" />
 
             <mbLib.CustomButton
@@ -81,7 +81,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginTop="10dip"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_remove_biller" />
 
             <mbLib.CustomButton
@@ -91,7 +91,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginTop="10dip"
                 android:layout_weight="1"
-                android:background="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:text="@string/lbl_history" />
         </LinearLayout>
     </LinearLayout>

@@ -1,17 +1,4 @@
 package list.jankalyan_mbs;
-import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +11,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class TransferHistoryRpt extends Activity implements OnClickListener
 {
@@ -51,7 +51,7 @@ public class TransferHistoryRpt extends Activity implements OnClickListener
 		txt_heading=(TextView)findViewById(R.id.txt_heading);
 		txt_acc_no=(TextView)findViewById(R.id.txt_acc_no);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.transfer_history);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		back = (ImageButton) findViewById(R.id.btn_back);
 		btn_home=(ImageButton)findViewById(R.id.btn_home);
 		//btn_home.setImageResource(R.mipmap.ic_home_d);

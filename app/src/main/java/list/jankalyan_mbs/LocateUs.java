@@ -100,7 +100,7 @@ public class LocateUs extends FragmentActivity implements LocationListener,
 		txt_heading = (TextView)findViewById(R.id.txt_heading);
 		txt_heading.setText(getString(R.string.lbl_locate_us));
 		img_heading=(ImageView)findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.location);
+		img_heading.setBackgroundResource(R.mipmap.locate_us);
 		obj = this;
 		/*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.map);
 		SupportMapFragment mapFragment = (SupportMapFragment) fragment;

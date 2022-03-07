@@ -1,26 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-import mbLib.MyThread;
-
-import mbLib.MBSUtils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -51,6 +30,24 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 
 public class OtherBankTranRTGS extends Activity implements OnClickListener 
@@ -136,7 +133,7 @@ public class OtherBankTranRTGS extends Activity implements OnClickListener
 		spi_sel_beneficiery = (Spinner)findViewById(R.id.otherIfscspi_sel_beneficiery);
 		spi_payment_option= (Spinner)findViewById(R.id.payment_options);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.transfer);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		btn_submit = (Button)findViewById(R.id.otherIfscbtn_submit);
 		txtAccNo = (EditText)findViewById(R.id.otherIfsctxtAccNo);
 		txtAmt = (EditText)findViewById(R.id.otherIfsctxtAmt);

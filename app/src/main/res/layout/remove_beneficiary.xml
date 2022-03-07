@@ -173,7 +173,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dip"
-                    android:background="@mipmap/button_style"
+                    android:background="@drawable/dash_btn_border"
                     android:text="@string/lbl_remove_btn" >
                 </mbLib.CustomButton>
 

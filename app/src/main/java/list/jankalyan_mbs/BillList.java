@@ -102,7 +102,7 @@ public class BillList extends Activity implements OnClickListener, OnItemClickLi
         txt_heading = (TextView)findViewById(R.id.txt_heading);
 		txt_heading.setText(billObj.getString(R.string.lbl_bills));
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.bill);
+		img_heading.setBackgroundResource(R.mipmap.bill2);
 		var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 		var3 = (String) getIntent().getSerializableExtra("var3");
 	   

@@ -71,7 +71,7 @@ public class LoanAccountDetails extends Activity implements OnClickListener {
 		setContentView(R.layout.loanaccount_details);
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.loan);
+		img_heading.setBackgroundResource(R.mipmap.loan2);
 		  var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 	       var3 = (String) getIntent().getSerializableExtra("var3");
 		accNo = (TextView) findViewById(R.id.accNo);

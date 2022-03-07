@@ -1,14 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.Accountbean;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,6 +16,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.security.PrivateKey;
+import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.Accountbean;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class ShowAccForQrcode extends Activity implements OnClickListener,
 android.view.View.OnKeyListener
@@ -62,7 +63,7 @@ android.view.View.OnKeyListener
 		btn_home = (ImageButton) findViewById(R.id.btn_home);
 		btn_back = (ImageButton) findViewById(R.id.btn_back);
 		//btn_home.setImageResource(R.mipmap.ic_home_d);
-		img_heading.setBackgroundResource(R.mipmap.transfer);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 		btn_back.setImageResource(R.mipmap.backover);
 		txt_heading.setText(getString(R.string.lbl_qr_receive));
 		btn_get_stmt.setText("Generate QR Code");

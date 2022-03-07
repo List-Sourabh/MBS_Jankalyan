@@ -80,7 +80,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 		btn_back.setOnClickListener(this);
 		btn_home.setOnClickListener(this);
 		txt_heading.setText(getString(R.string.lbl_fund_transfer));
-		img_heading.setBackgroundResource(R.mipmap.transfer);
+		img_heading.setBackgroundResource(R.mipmap.fund_trnsfer2);
 
 		try {
 			PackageInfo pInfo = this.getPackageManager().getPackageInfo(

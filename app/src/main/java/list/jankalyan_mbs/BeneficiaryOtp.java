@@ -1,26 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CommonLib;
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -37,13 +16,33 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CommonLib;
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class BeneficiaryOtp extends Activity implements OnClickListener {
 	int cnt = 0, flag = 0;
@@ -101,7 +100,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 		btn_otp_submit = (Button) findViewById(R.id.btn_otp_submit);
 		btn_otp_resend = (Button) findViewById(R.id.btn_otp_resend);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.otp);
+		img_heading.setBackgroundResource(R.mipmap.mobile);
 		txt_heading = (TextView) findViewById(R.id.txt_heading);
 		txt_heading.setText(getString(R.string.lbl_otp_validtn));
 		dbms = new DatabaseManagement("list.jankalyan_mbs", "jankalyanmbs");

@@ -50,7 +50,7 @@
                 android:id="@+id/etCustId"
                 style="@style/Login_EditTextStyle"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:hint="@string/lbl_008"
                 android:gravity="center_vertical"
@@ -80,7 +80,7 @@
                 android:id="@+id/etMpin"
                 style="@style/Login_EditTextStyle"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:gravity="center_vertical"
                 android:hint="@string/lbl_009"
@@ -102,8 +102,10 @@
             android:weightSum="1" >
 
             <mbLib.CustomButton
+
                 android:id="@+id/button1"
                 style="@mipmap/button_style"
+                android:background="@drawable/dash_btn_border"
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -131,11 +133,11 @@
             <ImageButton
                 android:id="@+id/contactus"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/contact" />
+                android:src="@mipmap/contact_us" />
 
             <mbLib.CusFntTextView
                 android:id="@+id/txt_forgot_pass"
@@ -170,7 +172,7 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/location" />
+                android:src="@mipmap/locate_us" />
         </LinearLayout>
     </LinearLayout>
 

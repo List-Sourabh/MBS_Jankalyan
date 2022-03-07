@@ -38,6 +38,7 @@
     <mbLib.CustomButton
         style="@style/ButtonStyle"
         android:id="@+id/btn_ok"
+        android:background="@drawable/dash_btn_border"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_gravity="center"

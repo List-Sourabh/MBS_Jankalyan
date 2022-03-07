@@ -34,6 +34,7 @@
         <mbLib.CustomButton
             android:id="@+id/continue_btn"
             style="@mipmap/button_style"
+android:background="@drawable/dash_btn_border"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_margin="1dip"
