@@ -65,7 +65,7 @@ public class ManageBeneficiaryMenuActivity extends Activity implements View.OnCl
 
 	list_benf.setOnClickListener(this);
 	remove_benf.setOnClickListener(this);
-	add_other_benf.setOnClickListener(this);
+	//add_other_benf.setOnClickListener(this);
 	add_same_benf.setOnClickListener(this);
 	
 	t1 = new MyThread(timeOutInSecs,this,var1,var3);
@@ -101,13 +101,13 @@ public class ManageBeneficiaryMenuActivity extends Activity implements View.OnCl
 				act.startActivity(in);
 				act.finish();
 				break;
-			case R.id.add_other_benf:
-				in = new Intent(act,AddOtherBankBeneficiary.class);
-				in.putExtra("var1", var1);
-				   in.putExtra("var3", var3);
-				act.startActivity(in);
-				act.finish();
-				break;
+//			case R.id.add_other_benf:
+//				in = new Intent(act,AddOtherBankBeneficiary.class);
+//				in.putExtra("var1", var1);
+//				   in.putExtra("var3", var3);
+//				act.startActivity(in);
+//				act.finish();
+//				break;
 			case R.id.remove_benf:
 				
 				in = new Intent(act,RemoveBeneficiary.class);

@@ -446,6 +446,7 @@
     <string name="alert_138">User Name Is Not Available</string>
     <string name="alert_193">Your Transaction Amount Is Greater Than Single Transaction Limit</string>
     <string name="alert_194">Your Daily Transaction Amount Limit Exceeds </string>
+    <string name="alert_194_new">This Funcationality has been Disabled For Today By The Bank Please Some Other Time</string>
     <string name="alert_invalid_otp">Invalid OTP</string>
     <string name="alert_167_2">Invalid Account</string>
     <string name="alert_050">Enter Correct Old MPIN!</string>
@@ -480,7 +481,6 @@
         <item>JSONEXCEPTION</item>
         <item>Error</item>
     </string-array>
-
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="zxing_app_name">QR Code Scanner</string>
     <string name="zxing_button_ok">OK</string>

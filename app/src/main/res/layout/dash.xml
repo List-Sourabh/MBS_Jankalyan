@@ -12,6 +12,7 @@
 
     <LinearLayout
 
+        android:weightSum="4"
         android:layout_weight="4.1"
         android:layout_width="fill_parent"
         android:orientation="vertical"
@@ -20,13 +21,14 @@
         android:layout_height="0dip">
 
         <mbLib.CusFntTextView
+
             android:id="@+id/cust_nm"
             android:layout_width="fill_parent"
             android:layout_height="0dip"
             android:layout_marginLeft="15dip"
             android:layout_marginRight="15dip"
-            android:layout_weight="0.8"
-            android:gravity="bottom"
+            android:layout_weight="1.2"
+            android:gravity="top"
             android:text="Shrikant S Patil"
             android:textSize="20sp" />
 
@@ -36,8 +38,8 @@
             android:layout_height="0dip"
             android:layout_marginLeft="15dip"
             android:layout_marginRight="15dip"
-            android:layout_weight="1"
-            android:gravity="top"
+            android:layout_weight="0.5"
+            android:gravity="bottom"
             android:text=""
             android:textSize="16sp" />
 
@@ -130,11 +132,10 @@
                 android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
-                
                 android:weightSum="1" >
 
                 <ImageView
-                    android:layout_margin="18dip"
+                    android:layout_margin="10dip"
                     android:layout_gravity="center"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
@@ -143,7 +144,7 @@
 
                 <mbLib.CusFntTextView
                     android:layout_width="fill_parent"
-                    android:layout_height="0dip"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:gravity="top|center_horizontal"
                     android:text="Recharge"
@@ -172,13 +173,13 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="0dip"
-                    android:layout_margin="18dip"
+                    android:layout_margin="10dip"
                     android:layout_weight="0.7"
                     android:src="@mipmap/bill2" />
 
                 <mbLib.CusFntTextView
                     android:layout_width="fill_parent"
-                    android:layout_height="0dip"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:gravity="top|center_horizontal"
                     android:text="Pay Bill"
@@ -215,13 +216,13 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="0dip"
-                    android:layout_margin="18dip"
+                    android:layout_margin="10dip"
                     android:layout_weight="0.7"
                     android:src="@mipmap/fund_trnsfer2" />
 
                 <mbLib.CusFntTextView
                     android:layout_width="fill_parent"
-                    android:layout_height="0dip"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:gravity="top|center_horizontal"
                     android:text="Fund Transfer"
@@ -246,13 +247,13 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="0dip"
-                    android:layout_margin="18dip"
+                    android:layout_margin="10dip"
                     android:layout_weight="0.7"
                     android:src="@mipmap/checkbkstatus2" />
 
                 <mbLib.CusFntTextView
                     android:layout_width="fill_parent"
-                    android:layout_height="0dip"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:gravity="top|center_horizontal"
                     android:text="Mini Statement"

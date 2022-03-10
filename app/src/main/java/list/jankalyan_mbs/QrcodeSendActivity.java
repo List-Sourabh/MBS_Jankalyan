@@ -1,3 +1,4 @@
+
 package list.jankalyan_mbs;
 
 import android.annotation.SuppressLint;
@@ -46,7 +47,6 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.IntentIntegrator;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.json.JSONException;
@@ -74,7 +74,6 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 {
 	private static String METHOD_SAVE_TRANSFERTRAN = "";
 	private static String METHOD_GET_TRANSFERCHARGE = "";
-
 	private static String NAMESPACE = "";
 	private static String SOAP_ACTION = "";
 	private static String URL = "";
@@ -1086,16 +1085,17 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			switch (v.getId()) 
 			{
 				case R.id.btnCamera:
-					act.QRAMT=strAmount;
-					act.RCUSTID=custId;
-					act.QRDBTACCNO=strFromAccNo;
-					act.QRREMARK=strRemark;
-					act.scanOption=1;
-					custId=custId;
-					debitAccno=strFromAccNo;
-					amt=strAmount;
-					reMark=strRemark;
-					new IntentIntegrator(QrcodeSendActivity.this).initiateScan();
+//					act.QRAMT=strAmount;
+//					act.RCUSTID=custId;
+//					act.QRDBTACCNO=strFromAccNo;
+//					act.QRREMARK=strRemark;
+//					act.scanOption=1;
+//					custId=custId;
+//					debitAccno=strFromAccNo;
+//					amt=strAmount;
+//					reMark=strRemark;
+//					new IntentIntegrator(QrcodeSendActivity.this).initiateScan();
+					Toast.makeText(activity, "This Is Coming Soon ", Toast.LENGTH_SHORT).show();
 					break;
 				case R.id.btnGalary:
 					custId=custId;
@@ -1388,7 +1388,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		Log.e("DEMOHOME","11====="+requestCode);
 		Log.e("DEMOHOME","22====="+resultCode);
 		Log.e("DEMOHOME","33====="+data);
-		if(requestCode==100)
+		if(true)
 		{
 			if(data==null || data.equals(null))
         	{

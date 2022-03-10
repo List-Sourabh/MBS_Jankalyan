@@ -306,14 +306,18 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 						share.putExtra(Intent.EXTRA_STREAM,apkURI);
 						share.setType("image/*");
 						startActivityForResult(Intent.createChooser(share, "Share Image"),0);
+						
 						break;
 					default:
 						break;
 				}
 				dismiss();
+
+
 			}
 		};
 		alert.show();
+
 	}
 
 	@Override

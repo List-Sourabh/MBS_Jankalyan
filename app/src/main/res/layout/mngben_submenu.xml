@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
         android:weightSum="4"
         android:id="@+id/list_benf">
@@ -23,13 +23,10 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
             android:layout_weight="0.7"
-            android:background="@mipmap/border_logo"
             android:gravity="center_vertical"
-            android:src="@mipmap/benefeciary2" />
+            android:src="@mipmap/arrow" />
 
         <mbLib.CusFntTextView
             android:layout_width="0dip"
@@ -51,7 +48,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
         android:weightSum="4"
         android:id="@+id/add_same_benf">
@@ -61,13 +58,10 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
             android:layout_weight="0.7"
-            android:background="@mipmap/border_logo"
             android:gravity="center_vertical"
-            android:src="@mipmap/benefeciary2" />
+            android:src="@mipmap/arrow" />
 
         <mbLib.CusFntTextView
             android:layout_width="0dip"
@@ -83,13 +77,14 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dip"
+        android:layout_height="0dip"
         android:background="@android:color/darker_gray" />
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
         android:weightSum="4"
         android:id="@+id/add_other_benf">
@@ -99,13 +94,11 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
             android:layout_weight="0.7"
-            android:background="@mipmap/border_logo"
+
             android:gravity="center_vertical"
-            android:src="@mipmap/benefeciary2" />
+            android:src="@mipmap/arrow" />
 
         <mbLib.CusFntTextView
             android:layout_width="0dip"
@@ -127,7 +120,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
         android:weightSum="4"
         android:id="@+id/remove_benf">
@@ -137,13 +130,11 @@
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
             android:layout_weight="0.7"
-            android:background="@mipmap/border_logo"
+
             android:gravity="center_vertical"
-            android:src="@mipmap/benefeciary2" />
+            android:src="@mipmap/arrow" />
 
         <mbLib.CusFntTextView
             android:layout_width="0dip"

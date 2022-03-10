@@ -205,7 +205,7 @@ public class TransferOTP extends Activity implements OnClickListener {
 			
 			if(strFromAct.equalsIgnoreCase("RTNTBANK"))
 			{
-				Intent in = new Intent(this, OtherBankTranRTGS.class);
+				Intent in = new Intent(this, FundTransferMenuActivity.class);
 				in.putExtra("var1", var1);
 				in.putExtra("var3", var3);
 				startActivity(in);
@@ -219,7 +219,7 @@ public class TransferOTP extends Activity implements OnClickListener {
 			}
 			else if(strFromAct.equalsIgnoreCase("QRSEND"))
 			{
-				Intent in = new Intent(this, QrcodeSendActivity.class);
+				Intent in = new Intent(this, FundTransferMenuActivity.class);
 				in.putExtra("var1", var1);
 				in.putExtra("var3", var3);
 				startActivity(in);
@@ -227,7 +227,7 @@ public class TransferOTP extends Activity implements OnClickListener {
 			}
 			else if(strFromAct.equalsIgnoreCase("SAMEBANK"))
 			{
-				Intent in = new Intent(this, SameBankTransfer.class);
+				Intent in = new Intent(this, FundTransferMenuActivity.class);
 				in.putExtra("var1", var1);
 				in.putExtra("var3", var3);
 				startActivity(in);
@@ -1072,6 +1072,7 @@ public class TransferOTP extends Activity implements OnClickListener {
 			}
 		};
 		alert.show();
+
 
 	}
 

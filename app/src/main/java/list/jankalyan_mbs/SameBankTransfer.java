@@ -259,6 +259,7 @@ SameBankTransfer extends Activity implements OnClickListener
 				}
 						
 			}
+//
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) 
@@ -1532,6 +1533,11 @@ Log.e("debitAccno===same", debitAccno);
     						//loadProBarObj.dismiss();
     						showAlert(retMess);
     					}
+				else if (reTval.indexOf("TRANSTOP") > -1) {
+					retMess = getString(R.string.alert_194_new);
+					//loadProBarObj.dismiss();
+					showAlert(retMess);
+				}
                        	else {
 					// this case consider when in retval string contains only
 					// "FAILED"
