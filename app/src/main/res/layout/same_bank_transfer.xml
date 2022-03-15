@@ -22,7 +22,7 @@
             android:layout_marginRight="10dip"
             android:layout_marginBottom="30dip"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,7 +206,7 @@
             android:layout_height="fill_parent"
             android:layout_below="@id/inc_hd"
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:weightSum="12.5">
 
             <mbLib.CusFntTextView

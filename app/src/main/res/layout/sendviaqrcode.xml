@@ -374,10 +374,34 @@ android:background="@drawable/dash_btn_border"
                     android:layout_weight="0.1" />
             </LinearLayout>
         </LinearLayout>
-       <!-- <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_width="0dip"
-        android:layout_height="0dip" />-->
+<!--        <FrameLayout-->
+<!--            android:id="@+id/frame_qr"-->
+<!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:visibility="gone"-->
+<!--            android:layout_height="match_parent">-->
+
+
+<!--            <com.gpfreetech.awesomescanner.ui.ScannerView-->
+<!--                android:id="@+id/scanner_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight=".3"-->
+<!--                app:autoFocusButtonColor="@android:color/white"-->
+<!--                app:autoFocusButtonVisible="true"-->
+<!--                app:flashButtonColor="@android:color/white"-->
+<!--                app:flashButtonVisible="true"-->
+<!--                app:frameAspectRatioHeight="1"-->
+<!--                app:frameAspectRatioWidth="1"-->
+<!--                app:frameColor="@android:color/white"-->
+<!--                app:frameCornersRadius="0dp"-->
+<!--                app:frameCornersSize="50dp"-->
+<!--                app:frameSize="0.70"-->
+<!--                app:frameThickness="5dp"-->
+<!--                app:maskColor="#77000000"-->
+<!--                app:isAnimated="true"/>-->
+<!--        </FrameLayout>-->
     </RelativeLayout>
 
 </ScrollView>

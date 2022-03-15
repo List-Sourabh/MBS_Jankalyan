@@ -92,6 +92,7 @@
             </intent-filter>
         </activity>
 
+
         <activity
             android:name="list.jankalyan_mbs.DashboardActivity"
             android:label="@string/app_name"
@@ -120,7 +121,14 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:hardwareAccelerated="true"
-            android:theme="@style/AppThemeNoTitle" />
+            android:theme="@style/AppThemeNoTitle">
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+    </activity>
+
         <activity
             android:name="list.jankalyan_mbs.Recharges"
             android:label="@string/app_name"
@@ -345,7 +353,10 @@
             android:screenOrientation="sensorLandscape"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden" >
+
+        </activity>
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

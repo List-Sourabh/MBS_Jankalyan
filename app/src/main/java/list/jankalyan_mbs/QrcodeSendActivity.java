@@ -30,6 +30,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,6 +48,8 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
+import com.google.zxing.client.android.IntentIntegrator;
+import com.google.zxing.client.android.IntentResult;
 import com.google.zxing.common.HybridBinarizer;
 
 import org.json.JSONException;
@@ -99,6 +102,7 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 	Intent in;
 	ProgressBar pb_wait;
 	Spinner spi_debit_account;
+	FrameLayout frame_qr;
 	
 	String str = "",str2 = "",stringValue="",benSrno ="",strFromAccNo,strToAccNo, 
 			strAmount,strRemark,benAccountNumber = "",drBrnCD = "",drSchmCD = "",
@@ -125,6 +129,9 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
 	ImageView img_heading;
+	//private CodeScanner mCodeScanner;
+//	private static final int REQUEST_CODE_QR_SCAN = 101;
+//	private GpCodeScanner mCodeScanner;
 	
 	@SuppressLint("WrongConstant")
 	protected void onCreate(Bundle savedInstanceState)
@@ -177,6 +184,9 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 		btn_con_back.setOnClickListener(this);
 		spinenr_btn = (ImageButton) findViewById(R.id.spinner_btn);
 		spinenr_btn.setOnClickListener(this);
+		//frame_qr  = findViewById(R.id.frame_qr);
+//		ScannerView scannerView = findViewById(R.id.scanner_view);
+//		mCodeScanner = new GpCodeScanner(this, scannerView);
 		
 		spi_debit_account = (Spinner) findViewById(R.id.sameBnkTranspi_debit_account);
 txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
@@ -195,6 +205,8 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		Log.e("QRSEND","initialized");
 		// logic to get debit a/c number from spi_debit_account according to
 		// selected debit account
+//		CodeScannerView scannerView = findViewById(R.id.scanner_view);
+//		mCodeScanner = new CodeScanner(this, scannerView);
 		if(flg==0)
 		{	
 		
@@ -1070,7 +1082,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			super.onCreate(bdn);
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setContentView(R.layout.scan_option);
-			
 			btnGalary = (Button) findViewById(R.id.btnGalary);
 			btnCamera = (Button) findViewById(R.id.btnCamera);
 			btnGalary.setVisibility(Button.VISIBLE);
@@ -1085,17 +1096,24 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			switch (v.getId()) 
 			{
 				case R.id.btnCamera:
-//					act.QRAMT=strAmount;
-//					act.RCUSTID=custId;
-//					act.QRDBTACCNO=strFromAccNo;
-//					act.QRREMARK=strRemark;
-//					act.scanOption=1;
-//					custId=custId;
-//					debitAccno=strFromAccNo;
-//					amt=strAmount;
-//					reMark=strRemark;
-//					new IntentIntegrator(QrcodeSendActivity.this).initiateScan();
-					Toast.makeText(activity, "This Is Coming Soon ", Toast.LENGTH_SHORT).show();
+					act.QRAMT=strAmount;
+					act.RCUSTID=custId;
+					act.QRDBTACCNO=strFromAccNo;
+					act.QRREMARK=strRemark;
+					act.scanOption=1;
+					custId=custId;
+					debitAccno=strFromAccNo;
+					amt=strAmount;
+					reMark=strRemark;
+					IntentIntegrator integrator = new IntentIntegrator(QrcodeSendActivity.this);
+					integrator.initiateScan();
+//					frame_qr.setVisibility(View.VISIBLE);
+//					mCodeScanner.startPreview();
+
+					//showAlert("This Facility is Coming Soon......!");
+
+
+
 					break;
 				case R.id.btnGalary:
 					custId=custId;
@@ -1114,6 +1132,11 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			this.hide();
 		}// end onClick
 	}// end InputDialogBox
+
+	public void scanqr()
+	{
+
+	}
 
 	public void showAlert(final String str) 
 	{
@@ -1384,127 +1407,110 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{
+		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 		super.onActivityResult(requestCode, resultCode, data);
 		Log.e("DEMOHOME","11====="+requestCode);
 		Log.e("DEMOHOME","22====="+resultCode);
 		Log.e("DEMOHOME","33====="+data);
-		if(true)
-		{
-			if(data==null || data.equals(null))
-        	{
+		if(requestCode == 100) {
+			if (data == null || data.equals(null)) {
 				Toast.makeText(QrcodeSendActivity.this, "Image Not Selected", Toast.LENGTH_SHORT).show();
-        		/*Fragment fragment = new QrcodeSendActivity();
-        		act.setTitle(getString(R.string.lbl_qr_send));
-				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-				act.frgIndex=55;*/
-        	}
-			else
-			{	
-				InputStream imageStream = null;
-	            try 
-	            {
-	            		
-	    			Uri selectedImage = data.getData();
-	                //getting the image
-	    			Log.e("QRSEND","data.getData()111111====="+selectedImage);
-	    			
-	                imageStream = act.getContentResolver().openInputStream(selectedImage);
-	            } 
-	            catch (FileNotFoundException e) 
-	            {
-	                Toast.makeText(act, "File not found", Toast.LENGTH_SHORT).show();
-	                e.printStackTrace();
-	            }
-	            catch (Exception e) 
-	            {
-	                Toast.makeText(act, "File not found", Toast.LENGTH_SHORT).show();
-	                e.printStackTrace();
-	            }
-	            //decoding bitmap
-	            Bitmap bMap = BitmapFactory.decodeStream(imageStream);
-	            //Scan.setImageURI(selectedImage);// To display selected image in image view
-	            int[] intArray = new int[bMap.getWidth() * (bMap.getHeight()-25)];
-	            // copy pixel data from the Bitmap into the 'intArray' array
-	            bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(),(bMap.getHeight()-25));
-	
-	            Log.e("DEMOHOME","img ht==="+bMap.getHeight());
-	            LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(),(bMap.getHeight()-25), intArray);
-	            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-	
-	            Reader reader = new MultiFormatReader();// use this otherwise
-	            Log.e("DEMOHOME","reader===="+reader);
-	            // ChecksumException
-	            try 
-	            {
-	                Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
-	               
-	                //Log.e("DEMOHOME","barcode=111="+barcode);
-	                decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-	               // Log.e("DEMOHOME","barcode=222="+barcode);
-	                decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-	                Log.e("DEMOHOME","decodeHints=333="+decodeHints);
-	                Result result = reader.decode(bitmap, decodeHints);
-	                Log.e("DEMOHOME","result=444="+result);
-	 //*I have created a global string variable by the name of barcode to easily manipulate data across the application*//
-	                barcode =  result.getText().toString().trim();
-	                Log.e("DEMOHOME","barcode=555="+barcode);
-	               
-	                if(barcode!=null)
-	                {
-	                	
-	                	if(validateAccNo(barcode))
-	    				{
-	                		  Log.e("DEMOHOME5555","barcode==++"+barcode);	
-	             
-	                		//DEMOHOME5555: barcode==++00200138000000027
-	                		  Log.e("debitAccno","debitAccno==++"+debitAccno);
-	                		
-	                		//debitAccno==++0020013800000002 (Savings) 
-	                		  
-	                		  
-	                		  //accNo="00200042010036521";
-	                		  accNo= barcode.substring(0,barcode.length()-1);
-	                		  Log.e("accNo===============","accNo==++"+accNo);
-	                		  // accNo==++0020013800000002
-	                		  debitAccno=strFromAccNo.substring(0,16);
-	                		  Log.e("SAM==========","debitAccno=="+debitAccno);
+			/*Fragment fragment = new QrcodeSendActivity();
+			act.setTitle(getString(R.string.lbl_qr_send));
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+			act.frgIndex=55;*/
+			} else {
 
-	                		  Log.e("SAM==========","debitAccno=="+debitAccno+"=="+accNo);
-	                		if(accNo.equals(debitAccno) )
-	                		{
-	                			showAlert(getString(R.string.alert_canNotSame));
-	                		}
-	                		else
-	                		{
-	                		flg=1;
-	                		
-	                		 CallWebServiceGetSrvcCharg c=new CallWebServiceGetSrvcCharg();
-	                			c.execute();
-	                		}
-	    				}
-	    				else
-	    				{
-	    					Toast.makeText(act, "Invalid Account Number", Toast.LENGTH_LONG).show();
-	    					/*Fragment fragment = new FundTransferMenuActivity(act);
-	    					FragmentManager fragmentManager = getFragmentManager();
-	    					fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();*/
-	    				}
-	            		
-	            		
-	                }
-	                else
-	                {
-	                	Log.e("QRSEND","ERROR");
-	                }
-	             //the end of do something with the button statement.
-	
-	            } catch (NotFoundException e) 
-	            {
-	            	Log.e("DEMOHOME","invalid image");
-	                Toast.makeText(act, "Nothing Found", Toast.LENGTH_SHORT).show();
-	                e.printStackTrace();
-	            } catch (com.google.zxing.NotFoundException e) {
+
+				InputStream imageStream = null;
+				try {
+
+					Uri selectedImage = data.getData();
+					//getting the image
+					Log.e("QRSEND", "data.getData()111111=====" + selectedImage);
+
+					imageStream = act.getContentResolver().openInputStream(selectedImage);
+				} catch (FileNotFoundException e) {
+					Toast.makeText(act, "File not found", Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				} catch (Exception e) {
+					Toast.makeText(act, "File not found", Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				}
+				//decoding bitmap
+				Bitmap bMap = BitmapFactory.decodeStream(imageStream);
+				//Scan.setImageURI(selectedImage);// To display selected image in image view
+				int[] intArray = new int[bMap.getWidth() * (bMap.getHeight() - 25)];
+				// copy pixel data from the Bitmap into the 'intArray' array
+				bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), (bMap.getHeight() - 25));
+
+				Log.e("DEMOHOME", "img ht===" + bMap.getHeight());
+				LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), (bMap.getHeight() - 25), intArray);
+				BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+				Reader reader = new MultiFormatReader();// use this otherwise
+				Log.e("DEMOHOME", "reader====" + reader);
+				// ChecksumException
+				try {
+					Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
+
+					//Log.e("DEMOHOME","barcode=111="+barcode);
+					decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+					// Log.e("DEMOHOME","barcode=222="+barcode);
+					decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+					Log.e("DEMOHOME", "decodeHints=333=" + decodeHints);
+					Result result = reader.decode(bitmap, decodeHints);
+					Log.e("DEMOHOME", "result=444=" + result);
+					//*I have created a global string variable by the name of barcode to easily manipulate data across the application*//
+					barcode = result.getText().toString().trim();
+					Log.e("DEMOHOME", "barcode=555=" + barcode);
+
+					if (barcode != null) {
+
+						if (validateAccNo(barcode)) {
+							Log.e("DEMOHOME5555", "barcode==++" + barcode);
+
+							//DEMOHOME5555: barcode==++00200138000000027
+							Log.e("debitAccno", "debitAccno==++" + debitAccno);
+
+							//debitAccno==++0020013800000002 (Savings)
+
+
+							//accNo="00200042010036521";
+							accNo = barcode.substring(0, barcode.length() - 1);
+							Log.e("accNo===============", "accNo==++" + accNo);
+							// accNo==++0020013800000002
+							debitAccno = strFromAccNo.substring(0, 16);
+							Log.e("SAM==========", "debitAccno==" + debitAccno);
+
+							Log.e("SAM==========", "debitAccno==" + debitAccno + "==" + accNo);
+							if (accNo.equals(debitAccno)) {
+								showAlert(getString(R.string.alert_canNotSame));
+							} else {
+								flg = 1;
+
+								CallWebServiceGetSrvcCharg c = new CallWebServiceGetSrvcCharg();
+								c.execute();
+							}
+						} else {
+							Toast.makeText(act, "Invalid Account Number", Toast.LENGTH_LONG).show();
+						/*Fragment fragment = new FundTransferMenuActivity(act);
+						FragmentManager fragmentManager = getFragmentManager();
+						fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();*/
+						}
+
+
+					} else {
+						Log.e("QRSEND", "ERROR");
+					}
+					//the end of do something with the button statement.
+
+				} catch (NotFoundException e) {
+					Log.e("DEMOHOME", "invalid image");
+					Toast.makeText(act, "Nothing Found", Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				} catch (com.google.zxing.NotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (ChecksumException e) {
@@ -1513,10 +1519,59 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				} catch (FormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
-	          
+				}
+
 			}
+
 		}
+		else if(scanResult == null)
+		{
+
+
+			Toast.makeText(QrcodeSendActivity.this, "Image Not Selected", Toast.LENGTH_SHORT).show();
+			/*Fragment fragment = new QrcodeSendActivity();
+			act.setTitle(getString(R.string.lbl_qr_send));
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+			act.frgIndex=55;*/
+		} else {
+
+			int in  = 100;
+			String contents = scanResult.getContents();
+			Log.e("QRSEND", "data.getData()111111===== " + contents);
+
+			try {
+				if(contents != null)
+				{
+
+				accNo = contents.substring(0, contents.length() - 1);
+					Log.e("TAG", "onActivityResult: --------------------------->"+accNo);
+
+				if (accNo.equals(debitAccno)) {
+					showAlert(getString(R.string.alert_canNotSame));
+				} else {
+					flg = 1;
+
+					CallWebServiceGetSrvcCharg c = new CallWebServiceGetSrvcCharg();
+					c.execute();
+				}
+			} else {
+					Log.e("QRSEND", "ERROR");
+				}
+				//the end of do something with the button statement.
+
+			} catch (Exception e) {
+				Log.e("DEMOHOME", "invalid image"+e.getMessage());
+				Toast.makeText(act, "Nothing Found", Toast.LENGTH_SHORT).show();
+				showAlert("Invalid Image Please Try Again");
+
+				e.printStackTrace();
+			}
+
+
+
+		}
+
 	}
 	
 	public boolean validateAccNo(String str)
