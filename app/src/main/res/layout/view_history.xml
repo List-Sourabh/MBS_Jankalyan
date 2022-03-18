@@ -47,6 +47,7 @@
                     android:weightSum="4" >
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/spi_category"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -92,6 +93,7 @@
                     android:weightSum="4" >
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/spi_operator"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"

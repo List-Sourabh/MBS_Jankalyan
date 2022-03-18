@@ -43,6 +43,7 @@
                 android:weightSum="1" >
 
                 <Spinner
+                    android:spinnerMode="dropdown"
                     android:id="@+id/spin_operator"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"

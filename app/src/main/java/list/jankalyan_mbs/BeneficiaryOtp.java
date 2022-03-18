@@ -576,7 +576,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 			String value4 = getString(R.string.namespace);
 			String value5 = getString(R.string.soap_action);
 			String value6 = getString(R.string.url);
-			final String value7 = "webServiceTwo";
+			final String value7 = getString(R.string.OTP_Validate_FUNCTION);
 
 			try {
 				String keyStr = CryptoClass.Function2();
@@ -1260,7 +1260,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 			String value4 = getString(R.string.namespace);
 			String value5 = getString(R.string.soap_action);
 			String value6 = getString(R.string.url);
-			final String value7 = "webServiceOne";
+			final String value7 = getString(R.string.OTP_Generate_FUNCTION);
 
 			try {
 				String keyStr = CryptoClass.Function2();

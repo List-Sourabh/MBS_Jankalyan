@@ -45,6 +45,7 @@
                 android:weightSum="4" >
 
                 <Spinner
+                    android:spinnerMode="dropdown"
                     android:id="@+id/sameBnkTranspi_sel_beneficiery"
                     style="@style/spinnerStyle"
                     android:layout_width="0dip"

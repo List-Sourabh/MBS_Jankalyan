@@ -43,6 +43,7 @@
                 android:weightSum="4" >
 
                 <Spinner
+                    android:spinnerMode="dropdown"
                     android:id="@+id/spi_account_no"
                     style="@style/spinnerStyle"
                     android:layout_width="0dip"
@@ -82,6 +83,7 @@
                 android:weightSum="4" >
 
                 <Spinner
+                    android:spinnerMode="dropdown"
                     android:id="@+id/spi_transfer_type"
                     style="@style/spinnerStyle"
                     android:layout_width="0dip"
@@ -121,6 +123,7 @@
                 android:weightSum="4" >
 
                 <Spinner
+                    android:spinnerMode="dropdown"
                     android:id="@+id/spi_status"
                     style="@style/spinnerStyle"
                     android:layout_width="0dip"

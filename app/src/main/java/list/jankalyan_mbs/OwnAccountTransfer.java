@@ -1568,6 +1568,7 @@ Log.e("debitAccno===same", debitAccno);
 		Log.e("post_success","reTval=="+reTval);
 		same_bnk_layout.setVisibility(same_bnk_layout.INVISIBLE);
 		confirm_layout.setVisibility(confirm_layout.VISIBLE);
+
 		// Log.e("SAMEBANKTRANSFER","xml_data[0]=="+xml_data[0]);
 
 		String retStr = reTval.split("~")[1];

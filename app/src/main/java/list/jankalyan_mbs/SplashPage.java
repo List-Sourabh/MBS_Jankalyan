@@ -93,6 +93,7 @@ public class SplashPage extends Activity implements OnClickListener {
 		dynamicmsg.setEllipsize(TruncateAt.MARQUEE);
 		dynamicmsg.setSingleLine(true);
 
+
 		String macadd = MBSUtils.getMacAddressnew("eth0", SplashPage.this);// getMacAddress(LoginActivity.this);
 		String macadd1 = MBSUtils.getMacAddressnew("wlan0", SplashPage.this);
 		Log.e("mac adrress", macadd);

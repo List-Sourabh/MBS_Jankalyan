@@ -390,25 +390,33 @@ public static String getMacAddress(Activity act){
 public static String getMacAddressnew(String interfaceName,Activity act) {
     try {
         Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+
         while (interfaces.hasMoreElements()) {
             NetworkInterface networkInterface = interfaces.nextElement();
 
             if (TextUtils.equals(networkInterface.getName(), interfaceName)) {
                 byte[] bytes = networkInterface.getHardwareAddress();
+				//Log.e("TAG", "getMacAddressnew: "+ bytes);
                 StringBuilder builder = new StringBuilder();
-                for (byte b : bytes) {
-                    builder.append(String.format("%02X:", b));
-                }
+				//Log.e("TAG", "getMacAddressnew: "+ builder);
+				if(bytes != null) {
+					for (byte b : bytes) {
+						builder.append(String.format("%02X:", b));
+					}
+				}
 
                 if (builder.length() > 0) {
                     builder.deleteCharAt(builder.length() - 1);
                 }
-
+				else {
+					return "<EMPTY>";
+				}
                 return builder.toString();
             }
         }
+		return "<EMPTY>";
 
-        return "<EMPTY>";
+
     } catch (SocketException e) {
        // Log.e(Constants.TAG, "Get Mac Address Error", e);
         return "<ERROR>";

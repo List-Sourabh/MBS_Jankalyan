@@ -1544,8 +1544,10 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				if(contents != null)
 				{
 
+					debitAccno = debitAccno.substring(0,16);
 				accNo = contents.substring(0, contents.length() - 1);
-					Log.e("TAG", "onActivityResult: --------------------------->"+accNo);
+					Log.e("TAG", "onActivityResult: QR ACCOUNT--------------------------->"+accNo);
+					Log.e("TAG", "onActivityResult: Original Acount--------------------------->"+debitAccno);
 
 				if (accNo.equals(debitAccno)) {
 					showAlert(getString(R.string.alert_canNotSame));

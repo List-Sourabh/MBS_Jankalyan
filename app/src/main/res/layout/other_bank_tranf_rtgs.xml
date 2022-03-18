@@ -45,6 +45,7 @@
                     android:weightSum="4">
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/otherIfsc_spi_debit_account"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -98,6 +99,7 @@
                     android:weightSum="4">
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/otherIfscspi_sel_beneficiery"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -137,6 +139,7 @@
                     android:weightSum="4">
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/payment_options"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"

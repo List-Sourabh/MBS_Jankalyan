@@ -45,6 +45,7 @@
                     android:weightSum="4">
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/sameBnkTranspi_debit_account"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -98,6 +99,7 @@
                     android:weightSum="4">
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/sameBnkTranspi_sel_beneficiery"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -207,7 +209,7 @@
             android:layout_below="@id/inc_hd"
             android:orientation="vertical"
             android:visibility="invisible"
-            android:weightSum="12.5">
+            android:weightSum="12">
 
             <mbLib.CusFntTextView
                 android:layout_width="fill_parent"
@@ -226,11 +228,11 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
                 android:layout_marginTop="10dip"
-                android:layout_weight="2"
-                android:gravity="center"
+                android:layout_weight="1.5"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:weightSum="2">
 
                 <mbLib.CusFntTextView
@@ -244,7 +246,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_from"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -271,7 +273,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_to"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -286,7 +288,6 @@
                 android:layout_weight="1.5"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingBottom="10dip"
                 android:weightSum="2">
 
                 <mbLib.CusFntTextView
@@ -300,7 +301,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_trantype"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -312,7 +313,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_marginTop="10dip"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -328,7 +329,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_amount"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -357,7 +358,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_charges"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -385,7 +386,7 @@
 
                 <mbLib.CusFntTextView
                     android:id="@+id/txt_remark"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
@@ -396,6 +397,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
+                android:layout_marginTop="10dip"
                 android:layout_weight="2"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -408,7 +410,7 @@
                 <mbLib.CustomButton
                     android:id="@+id/btn_confirm"
                     style="@mipmap/button_style"
-android:background="@drawable/dash_btn_border"
+                    android:background="@drawable/dash_btn_border"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.6"

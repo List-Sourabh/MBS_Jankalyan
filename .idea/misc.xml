@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/border_ui.xml" value="0.1085" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/button_style.xml" value="0.1085" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/dash_btn_border.xml" value="0.1525" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/homeborder.xml" value="0.1525" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/drawable/ur_border.xml" value="0.1525" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/account_list.xml" value="0.1921875" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/activity_same_bank_transfer.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_biller.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_otherbank_beneficiary.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_otherbank_beneficiary.xml" value="0.25" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/add_samebank_beneficiary.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/addrech_dthno.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/addrech_mobileno.xml" value="0.1921875" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/bill_select_cat.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/biller_list.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/change_mpin.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/confirm_page.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/confirm_recharges.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/contact_us.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/custom_alert_dialog.xml" value="0.1921875" />
@@ -68,12 +70,12 @@
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/register.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/remove_beneficiary.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/remove_biller.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/same_bank_transfer.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/same_bank_transfer.xml" value="0.2" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/savingaccounts.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/scan_option.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/security_question.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/sendviaqrcode.xml" value="0.1" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/set_mpin.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/security_question.xml" value="0.22" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/sendviaqrcode.xml" value="0.22" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/set_mpin.xml" value="0.33" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/show_fd_account.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/spinner_item.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/spinner_layout.xml" value="0.1921875" />
@@ -82,14 +84,16 @@
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/template.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/terms_condition.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_dialog.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history_list.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history_rpt.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history.xml" value="0.25" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history_list.xml" value="0.25" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/transfer_history_rpt.xml" value="0.25" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/validsecque.xml" value="0.1921875" />
         <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_ben_rpt.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_beneficiary.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_history.xml" value="0.1921875" />
-        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_mini_stmt_report.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_beneficiary.xml" value="0.25" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_history.xml" value="0.33" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/view_mini_stmt_report.xml" value="0.25" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/zxing_barcode_scanner.xml" value="0.1921875" />
+        <entry key="..\:/Sourabh/Android Projects/MBS/MBS_Jankalyan/app/src/main/res/layout/zxing_capture.xml" value="0.1921875" />
       </map>
     </option>
   </component>

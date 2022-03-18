@@ -3,6 +3,8 @@ package mbLib;
 import android.app.Activity;
 import android.app.AlertDialog;
 
+import list.jankalyan_mbs.R;
+
 public class DialogBox 
 {
 	AlertDialog.Builder adb;
@@ -14,7 +16,7 @@ public class DialogBox
 		adb = new AlertDialog.Builder(activity);
 		//adb.setView(R.layout.custom_dialog);
 		
-		adb.setTitle("शिवसमर्थ मल्टीस्टेट को.ऑप. क्रेडिट सोसायटी,तळमावले");//adb.setTitle(activity.getString(R.string.bank_name));
+		adb.setTitle(activity.getString(R.string.bank_name));//adb.setTitle(activity.getString(R.string.bank_name));
 		adb.setMessage("Are You Sure To Exit?");
 		adb.create();
 	}

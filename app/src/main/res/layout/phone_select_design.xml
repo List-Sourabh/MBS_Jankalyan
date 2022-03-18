@@ -24,6 +24,7 @@
         android:orientation="vertical" >
 
         <Spinner
+            android:spinnerMode="dropdown"
             android:id="@+id/spnr_select_phone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

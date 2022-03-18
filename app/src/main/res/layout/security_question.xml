@@ -48,6 +48,7 @@
                     android:weightSum="4" >
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/security_que1"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"
@@ -117,6 +118,7 @@
                         android:layout_weight="0.2" />
 
                     <Spinner
+                        android:spinnerMode="dropdown"
                         android:id="@+id/security_que2"
                         style="@style/spinnerStyle"
                         android:layout_width="0dip"

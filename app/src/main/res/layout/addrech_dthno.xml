@@ -44,6 +44,7 @@
 
                 <Spinner
                     android:id="@+id/spin_operator"
+                    android:spinnerMode="dropdown"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal"
