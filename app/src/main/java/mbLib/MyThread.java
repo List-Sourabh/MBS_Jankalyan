@@ -1,22 +1,26 @@
 package mbLib;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import list.jankalyan_mbs.*;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import list.jankalyan_mbs.ErrorDialogClass;
+import list.jankalyan_mbs.R;
+import list.jankalyan_mbs.SessionTimeout;
 
 
 public class MyThread extends Thread {
@@ -96,10 +100,9 @@ PrivateKey var1 = null;
 			try {
 				// Log.e("@DEBUG","LOGOUT preExecute()");
 				jsonObj.put("CUSTID", custid);
-				jsonObj.put("IMEINO",
-						MBSUtils.getImeiNumber(act));
+				jsonObj.put("IMEINO",MBSUtils.getImeiNumber(act));
 				jsonObj.put("SIMNO", MBSUtils.getSimNumber(act));
-	 jsonObj.put("METHODCODE","29"); 
+	 			jsonObj.put("METHODCODE","29");
 				// valuesToEncrypt[0] = custid;
 				// valuesToEncrypt[1] =
 				// MBSUtils.getImeiNumber(DashboardDesignActivity.this);
@@ -148,7 +151,7 @@ PrivateKey var1 = null;
 			JSONObject jsonObj;
 			try
 			{
-String str=CryptoClass.Function6(var5,var2);
+				String str=CryptoClass.Function6(var5,var2);
 				jsonObj = new JSONObject(str.trim());
 			
 				if (jsonObj.has("RESPCODE"))

@@ -1195,6 +1195,11 @@ public class OtherBankTranRTGS extends Activity implements OnClickListener
 									loadProBarObj.dismiss();
 									showAlert(retMess);//setAlert();
 							}
+						else if (retval.indexOf("STOPTRAN") > -1) {
+							loadProBarObj.dismiss();
+							retMess = getString(R.string.stop_transation);
+							showAlert(retMess);
+						}
 						else 
 						{
 							retMess = getString(R.string.alert_032);

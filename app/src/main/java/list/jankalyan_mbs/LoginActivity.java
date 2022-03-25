@@ -892,7 +892,8 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 				super(activity);
 			}// end InputDialogBox
 
-			protected void onCreate(Bundle bdn) {
+			protected void onCreate(Bundle bdn)
+			{
 				super.onCreate(bdn);
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 				setContentView(R.layout.otplogin);
@@ -900,7 +901,6 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 				resennd = (Button)findViewById(R.id.btn_otp_resend);
 				txt_ref_id=(TextView)findViewById(R.id.txt_ref_id);
 				txt_otp=(EditText)findViewById(R.id.txt_otp);
-				
 				txt_ref_id.setText(txt_ref_id.getText().toString() + " :" + strRefId);
 				submit.setOnClickListener(this);
 				resennd.setOnClickListener(this);

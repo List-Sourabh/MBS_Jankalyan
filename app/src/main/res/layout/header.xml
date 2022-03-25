@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_alignParentTop="true"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:background="#FFFFFF"
         android:orientation="horizontal"
         android:weightSum="6">

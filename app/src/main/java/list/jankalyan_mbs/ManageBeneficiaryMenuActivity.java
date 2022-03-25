@@ -65,7 +65,7 @@ public class ManageBeneficiaryMenuActivity extends Activity implements View.OnCl
 
 	list_benf.setOnClickListener(this);
 	remove_benf.setOnClickListener(this);
-	//add_other_benf.setOnClickListener(this);
+	add_other_benf.setOnClickListener(this);
 	add_same_benf.setOnClickListener(this);
 	
 	t1 = new MyThread(timeOutInSecs,this,var1,var3);

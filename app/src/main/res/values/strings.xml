@@ -6,7 +6,7 @@
 <!--    webServiceTwo-->
 
     <string name="alert_network_problem_pease_try_again">Network Problem. Please Try after some Time.</string>
-    <string name="app_name">Jankalyan Mobile Banking Service</string>
+    <string name="app_name">Jankalyan Mobile Banking</string>
     <string name="lbl_exit">Really Want To Exit?(Y/N)</string>
     <string name="bank_name">Jankalyan Nagari Sahakari Patsanstha Maryadit, Karad</string>
     <string name="hello_world">Hello world!</string>
@@ -16,8 +16,8 @@
     <string name="map_key">AIzaSyB3z-E-zchBsS1Q9Vq2RKaP2h1CnUZ5scM</string>
 
 <!--    Main Live Link-->
-    <string name="url">http://103.114.221.107:19739/axis2/services/FrontLineWebServices</string>
-<!--    ourside <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>-->
+<!--    <string name="url">http://103.114.221.107:19739/axis2/services/FrontLineWebServices</string>-->
+    ourside <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>
     <!--<string name="url"> http://59.92.8.50:18038/axis2/services/FrontLineWebServices</string>-->
 <!--     <string name="url">https://mobilebanking.shivsamarth.co.in:18038/axis2/services/FrontLineWebServices</string>-->
 
@@ -277,6 +277,7 @@
     <string name="lbl_transfer_history">Transfer History</string>
     <string name="lbl_transfer_funds">Transfer Funds</string>
     <string name="lbl_qr_code">QR Code</string>
+    <string name="imps">IMPS Transfer</string>
 
     <string name="lbl_deposits">Deposits</string>
     <string name="lbl_loan">Operative Loan</string>
@@ -312,6 +313,7 @@
     <string name="alert_097">Please Enter Remarks Having Length Less Than 200 Characters</string>
     <string name="alert_067">Account number is empty,Because Beneficiary not available</string>
     <string name="alert_031">Fund Transfer Amount Exceeds Limite.</string>
+    <string name="stop_transation">Transfer Services Are Unavailable</string>
 
 
     <string name="lbl_add_benf">Add Beneficiary</string>

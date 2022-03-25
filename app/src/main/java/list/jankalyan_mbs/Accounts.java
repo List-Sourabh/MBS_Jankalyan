@@ -61,7 +61,6 @@ public class Accounts {
 	{
 		return schCd;
 	}
-	
 	String getAccNm()
 	{
 		return accNm;

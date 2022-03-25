@@ -113,12 +113,16 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 						R.mipmap.arrow),
 //				new MenuIcon(getString(R.string.lbl_other_bank_fund_trans_rtgs),
 //						R.mipmap.arrow),
+//				new MenuIcon((getString(R.string.imps)),
+//						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_send), 
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_receive),
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_transfer_history),
-						R.mipmap.arrow), };
+						R.mipmap.arrow),
+				};
+
 
 		MenuAdaptor adapter = new MenuAdaptor(this, R.layout.listview_item_row,
 				menuItem);
@@ -249,15 +253,24 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 
-//		case 3:
-//
-//			Log.e("MBS Case -2", "........11 OtherbanktransferRTGS");
-//			intet = new Intent(getApplicationContext(),OtherBankTranRTGS.class);
-//			intet.putExtra("var1", var1);
-//			intet.putExtra("var3", var3);
-//			startActivity(intet);
-//			finish();
-//			break;
+		case 99:
+
+			Log.e("MBS Case -2", "........11 OtherbanktransferRTGS");
+			intet = new Intent(getApplicationContext(),OtherBankTranRTGS.class);
+			intet.putExtra("var1", var1);
+			intet.putExtra("var3", var3);
+			startActivity(intet);
+			finish();
+			break;
+		case 98:
+
+			Log.e("MBS Case -2", "........11 OtherbanktransferIMPS");
+			intet = new Intent(getApplicationContext(), OtherBankTranIMPS.class);
+			intet.putExtra("var1", var1);
+			intet.putExtra("var3", var3);
+			startActivity(intet);
+			finish();
+			break;
 			
 		case 3:
 

@@ -1,7 +1,6 @@
 package mbLib;
 
 
-import list.jankalyan_mbs.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import list.jankalyan_mbs.R;
 
 
 
@@ -33,7 +34,6 @@ import android.widget.TextView;
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setCanceledOnTouchOutside(false);
-			
 			setContentView(R.layout.custom_dialog_box);		
 			ok = (Button)findViewById(R.id.btn_ok);
 			sms = (Button)findViewById(R.id.btn_cancel);
