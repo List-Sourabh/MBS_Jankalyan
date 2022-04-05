@@ -261,7 +261,6 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 						Intent share = new Intent(Intent.ACTION_SEND);
 						Bitmap src = BitmapFactory.decodeResource(getResources(), R.mipmap.bg); // the original file yourimage.jpg i added in resources
 						Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
-
 						String shareBody1 = "Paid On : "+"CurrentDateTimeMMMMMMMMMMMMM";//mm
 						Typeface typeface1 = Typeface.createFromAsset(getContext().getAssets(), "fonts/calibri.ttf");
 						Canvas cs = new Canvas(dest);
@@ -274,19 +273,8 @@ public class MiniStmtReport extends Activity implements OnClickListener {
 						float width = tPaint.measureText(shareBody1);
 						float x_coord = (src.getWidth() - width)/2;//jObj.getString("BENFNAME")
 						height=100f;
-
 						//String sharestring=strdate+"\t"+strcrdr+" \t"+stramount+"\t\n"+strdesc;
-
 						String []arr = str.split("\t");
-
-
-
-
-
-
-
-
-
 						cs.drawText("Date : "+arr[0], 20, height+20f, tPaint);//270 100
 						cs.drawText("Account No : "+accNo.getText().toString(), 25, height+60f, tPaint);//220
 						cs.drawText("Amount : "+arr[2], 20, height+100f, tPaint);//320
