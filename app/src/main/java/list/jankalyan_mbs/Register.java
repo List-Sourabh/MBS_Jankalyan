@@ -249,7 +249,7 @@ public class Register extends Activity implements OnClickListener
 					Log.e("btn_ok", "msg=="+textMessage.trim());
 					Log.e("btn_ok", "msg11=="+getString(R.string.alert_007).trim());
 					
-					if(textMessage.trim().equalsIgnoreCase(getString(R.string.alert_007).trim()))
+					if(textMessage.trim().equalsIgnoreCase(getString(R.string.alert_003).trim()))
 					{
 						Log.e("in if","in if ok");
 						//Intent in = new Intent(regAct,ValidateSecQueActivity.class);
@@ -259,6 +259,7 @@ public class Register extends Activity implements OnClickListener
 					//	in.putExtras(b);
 					//	regAct.startActivity(in);
 						regAct.finish();
+						this.dismiss();
 					}
 					else
 					{
@@ -450,8 +451,8 @@ public class Register extends Activity implements OnClickListener
 						}
 	                    else if (retVal.indexOf("DIFFIMEI") >= 0)
 						{
-							retMess=getString(R.string.login_alert_009);
-							showAlert(getString(R.string.login_alert_009));
+							retMess=getString(R.string.alert_003);
+							showAlert(getString(R.string.alert_003));
 							
 							/*if(retMess == getString(R.string.login_alert_009))
 							{

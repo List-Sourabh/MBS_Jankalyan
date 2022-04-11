@@ -17,8 +17,8 @@
 
 <!--    Main Live Link-->
 <!--    <string name="url">http://103.114.221.107:19739/axis2/services/FrontLineWebServices</string>-->
-    ourside <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>
-    <!--<string name="url"> http://59.92.8.50:18038/axis2/services/FrontLineWebServices</string>-->
+    list pointed <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>
+    <!--<string name="url"> http://59.9.8.50:18038/axis2/services/FrontLineWebServices</string>-->
 <!--     <string name="url">https://mobilebanking.shivsamarth.co.in:18038/axis2/services/FrontLineWebServices</string>-->
 
     <string name="alert_179_2">Problem At Server Please Try After Sometime.</string>
@@ -35,6 +35,7 @@
     <string name="login_alert_007">Registered Mobile No. Does not Match.</string>
     <string name="login_alert_008">Something went Wrong.</string>
     <string name="login_alert_009">You Are Trying To Login With Different Device.</string>
+
     <string name="login_alert_010">Enter Valid Customer Id</string>
     <string name="alert_login_fail">Invalid Login Credentials.</string>
     <string name="alert_prblm_login">Problem In Login.</string>

@@ -1,31 +1,13 @@
 package list.jankalyan_mbs;
 
 
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Map;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Base64;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import mbLib.CryptoClass;
-import mbLib.DialogBox;
-import mbLib.MBSUtils;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo.State;
 import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +18,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import org.apache.commons.codec.binary.Base64;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Map;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
 
 public class SessionOut extends Activity implements OnClickListener {
 	Button continueBtn;
@@ -101,7 +101,7 @@ public class SessionOut extends Activity implements OnClickListener {
 		Log.e("SAM","ONCLICK1 ");
 		Log.e("SAM2","ONCLICK if 2 ");
 		Intent in = new Intent(this, LoginActivity.class);
-	in.putExtra("var1", var1);
+		in.putExtra("var1", var1);
 		in.putExtra("var3", var3);
 		startActivity(in);
 		finish();

@@ -1,10 +1,5 @@
 package com.journeyapps.barcodescanner;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import list.jankalyan_mbs.R;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +7,12 @@ import android.util.AttributeSet;
 
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPoint;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import list.jankalyan_mbs.R;
 
 /**
  * A view for scanning barcodes.
@@ -24,6 +25,7 @@ import com.google.zxing.ResultPoint;
  *
  * @see CameraPreview for more details on the preview lifecycle.
  */
+@SuppressWarnings("unchecked")
 public class BarcodeView extends CameraPreview {
 
     private enum DecodeMode {

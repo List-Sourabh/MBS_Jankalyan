@@ -547,6 +547,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 				jsonObj.put("LATITUDE", location.split("~")[0]);
 				jsonObj.put("LONGITUDE", location.split("~")[1]);
 				jsonObj.put("METHODCODE", "03");
+				Log.d("TAG", "onPreExecute:------------> "+jsonObj.toString());
 
 			} catch (JSONException e1) {
 				// TODO Auto-generated catch block
@@ -603,9 +604,11 @@ public class SetMPIN extends Activity implements OnClickListener {
 				try {
 					String str = CryptoClass.Function6(var5, var2);
 
+					Log.e("TAG", "onPostExecute: ---------->"+str );
 					jsonObj = new JSONObject(str.trim());
 					if (jsonObj.has("RESPCODE")) {
 						respcode = jsonObj.getString("RESPCODE");
+						Log.e("TAG", "onPostExecute: ---------->"+respcode );
 					} else {
 						respcode = "-1";
 					}
@@ -627,6 +630,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 					showAlert(respdescChangeMPIN);
 				} else {
 					if (retval.indexOf("SUCCESS") > -1) {
+
 						post_successChangeMPIN(retval);
 
 					} else if (retval.indexOf("FAILED~") > -1) {
@@ -641,6 +645,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 						// System.out.println("in else ***************************************");
 						showAlert(getString(R.string.alert_085));
 					}
+//					i6Ffn/UqjJpBJ3io0VUACG4H65eDbtf774mV8PteCnbXk7vs7tBdIW5ApP+MhcAk
 				}
 			} else {
 				retMess = getString(R.string.alert_000);

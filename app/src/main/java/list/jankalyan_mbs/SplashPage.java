@@ -135,7 +135,8 @@ public class SplashPage extends Activity implements OnClickListener {
 				CallWSFirst c = new CallWSFirst();
 				c.execute();
 			} else {
-				showAlert(getString(R.string.alert_000));
+				//Log.e("TAG", "onCreate: -----------1" );
+				//showAlert(getString(R.string.alert_000));
 			}
 		}
 	}
@@ -266,7 +267,7 @@ public class SplashPage extends Activity implements OnClickListener {
 				Log.e("DSP","splashpage---str==="+resp);
 				if(resp.indexOf("EXCEPTION")>-1)
 				{
-					showAlertserver(respdesc);
+					showAlertserver("There Is Problem With Server Please Try Again");
 				}
 				else if(resp.indexOf("OLDVERSION")>-1)
 				{
@@ -341,7 +342,7 @@ public class SplashPage extends Activity implements OnClickListener {
 	}
 
 	public void showversionAlert(final String str) {
-		Log.e("SAM","===ShowAlert ");
+		Log.e("SAM","===ShowAlert version ");
 		ErrorDialogClass alert = new ErrorDialogClass(SplashPage.this, "" + str)
 
 		{
@@ -395,19 +396,19 @@ public class SplashPage extends Activity implements OnClickListener {
 					// retMess =
 					// "Network Disconnected. Please Check Network Settings.";
 					retMess = getString(R.string.alert_014);
-					showAlert(retMess);
+					//showAlert(retMess);
 					break;
 				default:
 					flag = 1;
 					// retMess = "Network Unavailable. Please Try Again.";
 					retMess = getString(R.string.alert_000);
-					showAlert(retMess);
+					//showAlert(retMess);
 					break;
 				}
 			} else {
 				flag = 1;
 				retMess = getString(R.string.alert_000);
-				showAlert(retMess);
+				//showAlert(retMess);
 			}
 		} catch (NullPointerException ne) {
 
@@ -415,14 +416,14 @@ public class SplashPage extends Activity implements OnClickListener {
 			flag = 1;
 			// retMess = "Can Not Get Connection. Please Try Again.";
 			retMess = getString(R.string.alert_000);
-			showAlert(retMess);
+			//showAlert(retMess);
 
 		} catch (Exception e) {
 			// Log.i("mayuri", "Exception" + e);
 			flag = 1;
 			// retMess = "Connection Problem Occured.";
 			retMess = getString(R.string.alert_000);
-			showAlert(retMess);
+			//showAlert(retMess);
 		}
 		return flag;
 	}
@@ -566,7 +567,7 @@ public class SplashPage extends Activity implements OnClickListener {
 
 	public void showAlertNW(String str) {
 
-		Log.e("SAM", "===ShowAlert ");
+		Log.e("SAM", "===ShowAlert NEW ");
 		ErrorDialogClass alert = new ErrorDialogClass(SplashPage.this, "" + str)
 
 		{
@@ -590,7 +591,7 @@ public class SplashPage extends Activity implements OnClickListener {
 
 	public void showAlert(String str) {
 
-		Log.e("SAM", "===ShowAlert ");
+		Log.e("SAM", "===ShowAlert  594 line");
 		ErrorDialogClass alert = new ErrorDialogClass(SplashPage.this, "" + str)
 
 		{
@@ -600,7 +601,6 @@ public class SplashPage extends Activity implements OnClickListener {
 			public void onClick(View v) {
 				switch (v.getId()) {
 				case R.id.btn_ok:
-
 					dismiss();
 					break;
 				}
