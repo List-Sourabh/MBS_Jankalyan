@@ -1,12 +1,5 @@
 package mbLib;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-
-import list.jankalyan_mbs.R;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,8 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.view.ViewCompat;
-import androidx.core.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
@@ -31,6 +22,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.EdgeEffectCompat;
+import list.jankalyan_mbs.R;
 
 public class HorizontalListView extends AdapterView<ListAdapter> 
 {
@@ -168,6 +168,7 @@ public class HorizontalListView extends AdapterView<ListAdapter>
 	HoneycombPlus.setFriction(mFlingTracker, FLING_FRICTION);
 	}
 	}
+
 
 	/** Registers the gesture detector to receive gesture notifications for this view */
 	private void bindGestureDetector() {

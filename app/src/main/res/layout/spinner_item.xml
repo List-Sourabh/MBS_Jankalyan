@@ -23,7 +23,8 @@
     android:singleLine="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ellipsize="marquee"
     android:textColor="#FFFFFF"
+    android:padding="5dp"
+    android:background="#FF5722"
     android:textAlignment="inherit"/>
 

@@ -63,7 +63,7 @@
         <item name="android:dropDownHeight">wrap_content</item>
         <item name="android:background">#f79e5c</item>
         <item name="android:textColor">#F01533</item>
-        <item name="android:textSize">35sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:layout_marginRight">2dp</item>
         <item name="android:layout_marginLeft">2dp</item>
         <item name="android:paddingLeft">2dp</item>

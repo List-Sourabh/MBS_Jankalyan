@@ -182,7 +182,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 			
 			ArrayAdapter<String> debAccs = new ArrayAdapter<String>(this,R.layout.spinner_item, debAccArr);
 			//CustomSpinner debAccs = new CustomSpinner(this,R.layout.spinner_item, debAccArr);
-			debAccs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			debAccs.setDropDownViewResource(R.layout.spinner_dropdown_item);
 			select_accnt.setAdapter(debAccs);
 			
 			Accounts selectedDrAccount=acArray[0];
