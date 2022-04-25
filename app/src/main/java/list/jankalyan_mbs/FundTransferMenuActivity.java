@@ -111,10 +111,10 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_same_bnk_trans),
 						R.mipmap.arrow),
-//				new MenuIcon(getString(R.string.lbl_other_bank_fund_trans_rtgs),
-//						R.mipmap.arrow),
-//				new MenuIcon((getString(R.string.imps)),
-//						R.mipmap.arrow),
+				new MenuIcon(getString(R.string.lbl_other_bank_fund_trans_rtgs),
+						R.mipmap.arrow),
+				new MenuIcon((getString(R.string.imps)),
+						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_send), 
 						R.mipmap.arrow),
 				new MenuIcon(getString(R.string.lbl_qr_receive),
@@ -253,7 +253,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 
-		case 99:
+		case 3:
 
 			Log.e("MBS Case -2", "........11 OtherbanktransferRTGS");
 			intet = new Intent(getApplicationContext(),OtherBankTranRTGS.class);
@@ -262,7 +262,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			startActivity(intet);
 			finish();
 			break;
-		case 98:
+		case 4:
 
 			Log.e("MBS Case -2", "........11 OtherbanktransferIMPS");
 			intet = new Intent(getApplicationContext(), OtherBankTranIMPS.class);
@@ -272,7 +272,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 			
-		case 3:
+		case 5:
 
 			Log.e("MBS Case -2", "........11 QrcodeSendActivity");
 			intet = new Intent(getApplicationContext(),
@@ -282,7 +282,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			startActivity(intet);
 			finish();
 			break;
-		case 4:
+		case 6:
 			Log.e("MBS Case -2", "........11 QrcodeRcvActivity");
 			intet = new Intent(getApplicationContext(), ShowAccForQrcode.class);
 			intet.putExtra("var1", var1);
@@ -291,7 +291,7 @@ public class FundTransferMenuActivity extends Activity implements AdapterView.On
 			finish();
 			break;
 
-		case 5:
+		case 7:
 			Log.e("MBS Case -2", "........11 TransferHistory");
 			intet = new Intent(getApplicationContext(), TransferHistory.class);
 			intet.putExtra("var1", var1);

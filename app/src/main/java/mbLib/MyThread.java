@@ -82,8 +82,8 @@ PrivateKey var1 = null;
 	
 		@Override
 		protected void onPreExecute() {
-			
-			dbms = new DatabaseManagement("samarth.mbank", "listMobileBanking");
+
+			dbms = new DatabaseManagement("list.jankalyan_mbs", "jankalyanmbs");
 			dbms.initDatabase();
 			Cursor c1 = dbms.selectFromTable("SHAREDPREFERENCE", "", null);
 			if (c1 != null) 

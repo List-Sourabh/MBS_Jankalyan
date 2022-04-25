@@ -1,20 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +20,22 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
 
 public class ShowFdAccountDetails extends Activity implements OnClickListener {
 	Editor e;
@@ -75,7 +76,7 @@ public class ShowFdAccountDetails extends Activity implements OnClickListener {
 		setContentView(R.layout.fdrdaccount_details);
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		img_heading = (ImageView) findViewById(R.id.img_heading);
-		img_heading.setBackgroundResource(R.mipmap.deposit);
+		img_heading.setBackgroundResource(R.mipmap.term_deposit2);
 		act = this;
 		Bundle bObj = getIntent().getExtras();
 		if (bObj != null) {

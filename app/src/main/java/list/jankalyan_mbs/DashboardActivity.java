@@ -190,9 +190,15 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 			String drOrCr="";
 			float amt=Float.parseFloat(balStr);
 			if(amt>0)
+			{
 				drOrCr=" Cr";
+			}
 			else if(amt<0)
+			{
 				drOrCr=" Dr";
+				amt = (-1)*amt;
+
+			}
 			if(balStr.indexOf(".")==-1)
 				balStr=balStr+".00";
 			balStr=balStr+drOrCr;
