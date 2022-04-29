@@ -94,7 +94,7 @@ public class OtherBankTranRTGS extends Activity implements OnClickListener
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	ImageView img_heading;
 	
 	public void onBackPressed() 
@@ -329,7 +329,7 @@ public class OtherBankTranRTGS extends Activity implements OnClickListener
 		//System.out.println("========== 8 ============");
 		txtAmt.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
-		t1 = new MyThread(timeOutInSecs,OtherBankTranRTGS.this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),OtherBankTranRTGS.this,var1,var3);
 		t1.start();
 	}
 
@@ -1807,7 +1807,7 @@ public class OtherBankTranRTGS extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

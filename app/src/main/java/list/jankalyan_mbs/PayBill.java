@@ -108,7 +108,7 @@ public class PayBill extends Activity implements OnClickListener
 	ArrayList<String> fieldArr = new ArrayList<String>();
 	ArrayList<String> arrListTemp = new ArrayList<String>();
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -194,7 +194,7 @@ public class PayBill extends Activity implements OnClickListener
        // {
         //	showAlert(billObj.getString(R.string.alert_000));
        // }
-        	t1 = new MyThread(timeOutInSecs,this,var1,var3);
+        	t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
     		t1.start();
     }
 	
@@ -1627,7 +1627,7 @@ public class PayBill extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

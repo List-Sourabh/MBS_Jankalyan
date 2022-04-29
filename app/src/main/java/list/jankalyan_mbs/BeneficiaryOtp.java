@@ -78,7 +78,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 	private static String responseJSON = "NULL";
 	String imeiNo = "";
 	private MyThread t1;
-	int timeOutInSecs = 300;
+	
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -91,6 +91,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.otp_activity);
+		
 		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 		var3 = (String) getIntent().getSerializableExtra("var3");
@@ -154,7 +155,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 			c.execute();
 		}
 
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 
@@ -1218,7 +1219,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ", "sec11==" + t1.sec);
 		return super.onTouchEvent(event);
 	}

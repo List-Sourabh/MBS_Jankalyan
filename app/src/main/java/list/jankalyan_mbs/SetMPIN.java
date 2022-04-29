@@ -65,7 +65,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 	boolean isWSCalled = false;
 	private EditText txt_user_id;
 	private MyThread t1;
-	int timeOutInSecs = 300;
+	//int  Integer.parseInt(getString(R.string.Time_out)) = 300;
 	private String availUserId;
 	private TextView lbl_chk_avail;
 	private LinearLayout lyt_usrnm_txt;
@@ -141,7 +141,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 				Log.e("userId", "......" + cust_name);
 			}
 		}
-		t1 = new MyThread(timeOutInSecs, this, var1, var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)), this, var1, var3);
 		t1.start();
 	}
 
@@ -940,7 +940,7 @@ public class SetMPIN extends Activity implements OnClickListener {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ", "sec11==" + t1.sec);
 		return super.onTouchEvent(event);
 	}

@@ -97,7 +97,7 @@ public class OwnAccountTransfer extends Activity implements OnClickListener
 	String reTval="",getBeneficiariesrespdesc="",saveTransferTranrespdesc="",getTransferChargesrespdesc="";
 	String wsFlag ="false",retval = "",respcode="",respdesc_fetch_all_beneficiaries="",respdesc_web2="",respdesc_GetSrvcCharg="";
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -287,7 +287,7 @@ public class OwnAccountTransfer extends Activity implements OnClickListener
 		this.pb_wait.setVisibility(4);
 		txtAmt.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 	
@@ -1605,7 +1605,7 @@ Log.e("debitAccno===same", debitAccno);
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

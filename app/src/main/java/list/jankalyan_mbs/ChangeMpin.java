@@ -1,22 +1,5 @@
 package list.jankalyan_mbs;
 
-import java.security.PrivateKey;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import mbLib.CryptoClass;
-import mbLib.DatabaseManagement;
-import mbLib.DialogBox;
-
-import mbLib.MBSUtils;
-import mbLib.MyThread;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +25,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.security.PrivateKey;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import mbLib.CryptoClass;
+import mbLib.DatabaseManagement;
+import mbLib.DialogBox;
+import mbLib.MBSUtils;
+import mbLib.MyThread;
+
 public class ChangeMpin extends Activity implements OnClickListener {
 	ChangeMpin changMpin;
 	LinearLayout layout_mpin, layout_tranmpin, layout_otp;
@@ -63,7 +63,6 @@ public class ChangeMpin extends Activity implements OnClickListener {
 	ImageButton btn_home, btn_back;
 	ImageView img_heading;
 	private MyThread t1;
-	int timeOutInSecs = 300;
 	int cnt = 0, flag = 0, radioflag = 0;
 	private static String NAMESPACE = "";
 	private static String URL = "";
@@ -190,7 +189,7 @@ public class ChangeMpin extends Activity implements OnClickListener {
 				Log.e("UserId", "c......" + userId);
 			}
 		}
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 
 	}
@@ -1068,7 +1067,7 @@ public class ChangeMpin extends Activity implements OnClickListener {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ", "sec11==" + t1.sec);
 		return super.onTouchEvent(event);
 	}

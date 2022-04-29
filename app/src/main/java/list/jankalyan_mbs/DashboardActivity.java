@@ -64,7 +64,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 	Accounts acArray[];
 	DialogBox dbs;
 	int flag=0;
-	int timeOutInSecs=300;
+	 
 	private static String NAMESPACE = "";
 	private static String URL = "";
 	private static String SOAP_ACTION = "";
@@ -141,7 +141,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 		addAccounts(retValStr);
 		select_accnt.setOnItemSelectedListener(this);
 		
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 	
@@ -890,7 +890,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

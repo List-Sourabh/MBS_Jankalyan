@@ -84,7 +84,7 @@ public class AddPayee extends Activity implements OnClickListener
 	public  ArrayList<BillerBean> billerBeanArray=null;
 	boolean flg=false;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	private static String NAMESPACE = "";
 	private static String URL = "";
 	private static String SOAP_ACTION = "";
@@ -193,7 +193,7 @@ public class AddPayee extends Activity implements OnClickListener
 		    new CallWebServiceFetchBiller().execute();
 		}
 		
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
     }
 	
@@ -1500,7 +1500,7 @@ public class AddPayee extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

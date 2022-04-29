@@ -36,7 +36,6 @@ public class SessionTimeout extends Fragment
 	{
 		View rootView = null ;
 		Log.e("SessionTimeout===","onCreateView===");
-		
 		return rootView;
 	}
 	
