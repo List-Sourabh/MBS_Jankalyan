@@ -669,16 +669,13 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 	}
 
 	public void postSuccess_validateOTP(String retval) {
-
 		CallWebService_save_beneficiary storeTran = new CallWebService_save_beneficiary();
 		storeTran.execute();
 	}
 
-	class CallWebService_save_beneficiary extends AsyncTask<Void, Void, Void> {
-
-		// JSONObject jsonObj = new JSONObject();
+	class CallWebService_save_beneficiary extends AsyncTask<Void, Void, Void>
+	{
 		LoadProgressBar loadProBarObj = new LoadProgressBar(act);
-
 		boolean isWSCalled = false;
 
 		@Override
@@ -689,22 +686,21 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 			strRefId = strRefId.substring(strRefId.indexOf(":") + 1).trim();
 
 			try {
-				// jObj.put("OTPVAL",
-				// ListEncryption.encryptData(strOTP+strCustId));
 				String location = MBSUtils.getLocation(act);
 				jObj.put("IMEINO", MBSUtils.getImeiNumber(act));
 				jObj.put("REFID", strRefId);
 				jObj.put("ISREGISTRATION", "N");
 				jObj.put("SIMNO", MBSUtils.getSimNumber(act));
-
 				jObj.put("TRANPIN", encrptdTranMpin);
 				jObj.put("MOBILENO", MBSUtils.getMyPhoneNO(act));
 				jObj.put("IPADDRESS", MBSUtils.getLocalIpAddress());
 				jObj.put("OSVERSION", Build.VERSION.RELEASE);
 				jObj.put("LATITUDE", location.split("~")[0]);
 				jObj.put("LONGITUDE", location.split("~")[1]);
-				jObj.put("METHODCODE", "14");
-				Log.e("sevebenf", "========" + jObj.toString());
+				if(strFromAct.equalsIgnoreCase("ADDSAMBENF"))
+					jObj.put("METHODCODE", "14");
+				else
+					jObj.put("METHODCODE", "95");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -754,13 +750,6 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 				try {
 					String str = CryptoClass.Function6(var5, var2);
 					jsonObj = new JSONObject(str.trim());
-
-					/*
-					 * if (jsonObj.has("VALIDATIONDATA") &&
-					 * ValidationData.equals
-					 * (jsonObj.getString("VALIDATIONDATA"))) {
-					 */
-
 					if (jsonObj.has("RESPCODE")) {
 						respcode = jsonObj.getString("RESPCODE");
 					} else {
@@ -780,20 +769,9 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 					if (respdescvalidate.length() > 0) {
 						showAlertPost(respdescvalidate);
 					} else {
-						// Log.e("TRANSFEROTP","retval==="+retval);
 						if (retval.indexOf("FAILED") > -1) {
-							// SUCCESS/FAILED~DUPLICATEACCOUNT/DUPLICATENICKNAME
-							// FAILED~DUPLICATEACCOUNT~
 							if (retval.indexOf("DUPLICATEACCOUNT") > -1) {
-
-								// loadProBarObj.dismiss();
-								// retMess="Duplicate Account Number. This Account Number Is Already Added.";
-								// ///retMess =
-								// "Failed To Add Other Bank Beneficiary Due To Duplicate Account Number.";
-								/*
-								 * if(strFromAct.equals("ADDOTHBENF")) { retMess
-								 * = act.getString(R.string.alert_019); } else
-								 */if (strFromAct.equals("ADDSAMBENF")) {
+								if (strFromAct.equals("ADDSAMBENF")) {
 									retMess = getString(R.string.alert_016);
 								 	}
 									 else if(strFromAct.equals("ADDOTHERBENF")) {
@@ -806,15 +784,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 								showAlert(retMess);
 
 							} else if (retval.indexOf("DUPLICATENICKNAME") > -1) {
-
-								// loadProBarObj.dismiss();
-								// retMess="Duplicate Nickname. Use Other Nickname.";
-								// ////retMess="Failed To Add Other Bank Beneficiary Due To Duplicate Nickname.";
-
-								/*
-								 * if(strFromAct.equals("ADDOTHBENF")) { retMess
-								 * = act.getString(R.string.alert_020); } else
-								 */if (strFromAct.equals("ADDSAMBENF")) {
+								if (strFromAct.equals("ADDSAMBENF")) {
 									retMess = getString(R.string.alert_0171);
 								}
 								else if (strFromAct.equals("ADDOTHERBENF")) {
@@ -825,23 +795,12 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 								}
 
 								showAlert(retMess);
-							} /*
-							 * else if (retval.indexOf("INCORRECTIFSC") > -1) {
-							 * //loadProBarObj.dismiss(); //
-							 * retMess="Duplicate Nickname. Use Other Nickname."
-							 * ; // ////retMess=
-							 * "Failed To Add Other Bank Beneficiary Due To Duplicate Nickname."
-							 * ; retMess =
-							 * act.getString(R.string.alert_185);//alert_018);
-							 * showAlert(retMess); }
-							 */
+							}
 							else if (retval.indexOf("INCORRECTIFSC") > -1) {
-/**/
 								retMess = getString(R.string.alert_185);//alert_018);
 								showAlert(retMess);
 							}
 							else if (retval.indexOf("WRONGMPIN") > -1) {
-								// loadProBarObj.dismiss();
 								retMess = getString(R.string.alert_125);
 								showAlert(retMess);
 							} else if (retval.indexOf("INVALIDTRANS") > -1) {
@@ -854,39 +813,22 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 								retMess = getString(R.string.alert_167_2);
 								showAlert(retMess);
 
-							} else {
-
-								// /////retMess="Failed To Add Other Bank Beneficiary Due To Server Problem.";
-								/*
-								 * if(strFromAct.equals("ADDOTHBENF")) { retMess
-								 * = act.getString(R.string.alert_021); } else
-								 */if (strFromAct.equals("ADDSAMBENF")) {
+							}
+							else
+							{
+								if (strFromAct.equals("ADDSAMBENF")) {
 									retMess = getString(R.string.alert_018);
 								}
 								
 								else if (strFromAct.equals("ADDOTHERBENF")) {
 									retMess = getString(R.string.alert_021);
 								}
-								// loadProBarObj.dismiss();
 								showAlert(retMess);
-								// initAll();
-
 							}
-							/*Intent in = new Intent(BeneficiaryOtp.this,ManageBeneficiaryMenuActivity.class);
-							in.putExtra("var1", var1);
-							in.putExtra("var3", var3);
-							startActivity(in);
-							finish();*/
 						} else {
-							// loadProBarObj.dismiss();
 							post_successsaveBeneficiaries(retval);
 						}
 					}
-
-					/*
-					 * } else { MBSUtils.showInvalidResponseAlert(act); }
-					 */
-
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -905,7 +847,6 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 	}
 
 	public void post_successsendcust(String retval) {
-
 		respdescsendcust = "";
 		respcode = "";
 		showAlert1(getString(R.string.alert_send_custID));
@@ -923,60 +864,35 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 				startActivity(in);
 				finish();
 				this.dismiss();
-				/*
-				 * FragmentManager fragmentManager; Fragment fragment = new
-				 * FundTransferMenuActivity(act);
-				 * act.setTitle(getString(R.string.lbl_same_bnk_trans));
-				 * fragmentManager = getFragmentManager();
-				 * fragmentManager.beginTransaction
-				 * ().replace(R.id.frame_container, fragment).commit();
-				 */
 			}
-
 		};
-		// this.dismiss();
 		alert.setCancelable(false);
 		alert.show();
 	}
 
 	public void post_successsaveBeneficiaries(String reTval) {
-		/*
-		 * if(strFromAct.equalsIgnoreCase("ADDOTHBENF")) { respcode=""; retMess
-		 * =act.getString(R.string.alert_022); //showAlert(retMess); } else
-		 */if (strFromAct.equalsIgnoreCase("ADDSAMBENF")) {
+		if (strFromAct.equalsIgnoreCase("ADDSAMBENF")) {
 			respcode = "";
 			retMess = getString(R.string.alert_023);
-
-			// showAlert(retMess);
 		}
-		
-		  else if(strFromAct.equalsIgnoreCase("ADDOTHERBENF")) {
+		else if(strFromAct.equalsIgnoreCase("ADDOTHERBENF"))
+		{
 			respcode="";
-		  retMess = getString(R.string.alert_022); 
-		  //showAlert(retMess); 
-		  }
-		 
+		  	retMess = getString(R.string.alert_022);
+		}
 		else {
 			respcode = "";
 			retMess = getString(R.string.alert_017);
 		}
-
 		showAlert(retMess);
-		/*Intent in = new Intent(BeneficiaryOtp.this,ManageBeneficiaryMenuActivity.class);
-		in.putExtra("var1", var1);
-		in.putExtra("var3", var3);
-		startActivity(in);
-		finish();*/
 	}
 
 	public int chkConnectivity() {
-		// pb_wait.setVisibility(ProgressBar.VISIBLE);
 		ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo ni = cm.getActiveNetworkInfo();
 		try {
 			State state = ni.getState();
 			boolean state1 = ni.isAvailable();
-			//System.out.println("OtherBankTranRTGS	in chkConnectivity () state1 ---------"							+ state1);
 			if (state1) {
 				switch (state) {
 				case CONNECTED:
@@ -986,112 +902,51 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 					break;
 				case DISCONNECTED:
 					flag = 1;
-					// retMess =
-					// "Network Disconnected. Please Check Network Settings.";
 					retMess = getString(R.string.alert_014);
 					showAlert(retMess);
-					/*
-					 * dbs = new DialogBox(this);
-					 * dbs.get_adb().setMessage(retMess);
-					 * dbs.get_adb().setPositiveButton("Ok", new
-					 * DialogInterface.OnClickListener() { public void
-					 * onClick(DialogInterface arg0, int arg1) { arg0.cancel();
-					 * } }); dbs.get_adb().show();
-					 */
+
 					break;
 				default:
 					flag = 1;
-					// retMess = "Network Unavailable. Please Try Again.";
 					retMess = getString(R.string.alert_000);
 					showAlert(retMess);
-
-					/*
-					 * dbs = new DialogBox(this);
-					 * dbs.get_adb().setMessage(retMess);
-					 * dbs.get_adb().setPositiveButton("Ok", new
-					 * DialogInterface.OnClickListener() { public void
-					 * onClick(DialogInterface arg0, int arg1) { arg0.cancel();
-					 * Intent in = null; in = new
-					 * Intent(getApplicationContext(), LoginActivity.class);
-					 * startActivity(in); finish(); } }); dbs.get_adb().show();
-					 */
 					break;
 				}
 			} else {
 				flag = 1;
 				retMess = getString(R.string.alert_000);
 				showAlert(retMess);
-
-				/*
-				 * dbs = new DialogBox(this); dbs.get_adb().setMessage(retMess);
-				 * dbs.get_adb().setPositiveButton("Ok", new
-				 * DialogInterface.OnClickListener() { public void
-				 * onClick(DialogInterface arg0, int arg1) { arg0.cancel();
-				 * Intent in = null; in = new Intent(getApplicationContext(),
-				 * LoginActivity.class); startActivity(in); finish(); } });
-				 * dbs.get_adb().show();
-				 */
 			}
 		} catch (NullPointerException ne) {
-
-			//Log.i("OtherBankTranRTGS    mayuri",					"NullPointerException Exception" + ne);
 			flag = 1;
-			// retMess = "Network Unavailable. Please Try Again.";
 			retMess = getString(R.string.alert_000);
 			showAlert(retMess);
-
-			/*
-			 * dbs = new DialogBox(this); dbs.get_adb().setMessage(retMess);
-			 * dbs.get_adb().setPositiveButton("Ok", new
-			 * DialogInterface.OnClickListener() { public void
-			 * onClick(DialogInterface arg0, int arg1) { arg0.cancel(); Intent
-			 * in = null; in = new Intent(getApplicationContext(),
-			 * LoginActivity.class); startActivity(in); finish(); } });
-			 * dbs.get_adb().show();
-			 */
-
 		} catch (Exception e) {
-			//Log.i("OtherBankTranRTGS   mayuri", "Exception" + e);
 			flag = 1;
-			// retMess = "Network Unavailable. Please Try Again.";
 			retMess = getString(R.string.alert_000);
 			showAlert(retMess);
-
-			
 		}
 		return flag;
 	}// end chkConnectivity
 
-	
 	public int chkConnectivityold() {
-		// Log.i("1111", "1111");
-		// p_wait.setVisibility(ProgressBar.VISIBLE);
 		ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo ni = cm.getActiveNetworkInfo();
-		// Log.i("2222", "2222");
 		try {
 			State state = ni.getState();
-			// Log.i("3333", "3333");
 			boolean state1 = ni.isAvailable();
-			// Log.i("4444", "4444");
-			// System.out.println("state1 ---------" + state1);
 			if (state1) {
 				switch (state) {
 				case CONNECTED:
-
-					// Log.i("5555", "5555");
 					if (ni.getType() == ConnectivityManager.TYPE_MOBILE
 							|| ni.getType() == ConnectivityManager.TYPE_WIFI) {
 
 						gpsFlg = 1;
 						flag = 0;
-
 					}
 					break;
 				case DISCONNECTED:
-					// Log.i("6666", "6666");
 					flag = 1;
-					// retMess = "Network Disconnected. Please Try Again.";
 					retMess = getString(R.string.alert_000);
 					dbs = new DialogBox(this);
 					dbs.get_adb().setMessage(retMess);
@@ -1105,12 +960,8 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 					dbs.get_adb().show();
 					break;
 				default:
-					// Log.i("7777", "7777");
 					flag = 1;
-					// retMess = "Network Unavailable. Please Try Again.";
 					retMess = getString(R.string.alert_000);
-					// setAlert();
-
 					dbs = new DialogBox(this);
 					dbs.get_adb().setMessage(retMess);
 					dbs.get_adb().setPositiveButton("Ok",
@@ -1131,12 +982,8 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 					break;
 				}
 			} else {
-				// Log.i("8888", "8888");
 				flag = 1;
-				// retMess = "Network Unavailable. Please Try Again.";
 				retMess = getString(R.string.alert_000);
-				// setAlert();
-
 				dbs = new DialogBox(this);
 				dbs.get_adb().setMessage(retMess);
 				dbs.get_adb().setPositiveButton("Ok",
@@ -1155,13 +1002,8 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 				dbs.get_adb().show();
 			}
 		} catch (NullPointerException ne) {
-
-			Log.i("mayuri", "NullPointerException Exception" + ne);
 			flag = 1;
-			// retMess = "Network Unavailable. Please Try Again.";
 			retMess = getString(R.string.alert_000);
-			// setAlert();
-
 			dbs = new DialogBox(this);
 			dbs.get_adb().setMessage(retMess);
 			dbs.get_adb().setPositiveButton("Ok",
@@ -1180,12 +1022,8 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 			dbs.get_adb().show();
 
 		} catch (Exception e) {
-			Log.i("mayuri", "Exception" + e);
 			flag = 1;
-			// retMess = "Network Unavailable. Please Try Again.";
 			retMess = getString(R.string.alert_000);
-			// setAlert();
-
 			dbs = new DialogBox(this);
 			dbs.get_adb().setMessage(retMess);
 			dbs.get_adb().setPositiveButton("Ok",
@@ -1208,18 +1046,15 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		t1.sec = -1;
 		System.gc();
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-
+	public boolean onTouchEvent(MotionEvent event)
+	{
 		t1.sec = timeOutInSecs;
-		Log.e("sec11= ", "sec11==" + t1.sec);
 		return super.onTouchEvent(event);
 	}
 
@@ -1231,9 +1066,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 
 	class CallWebServiceGenerateOtp extends AsyncTask<Void, Void, Void> {
 		LoadProgressBar loadProBarObj = new LoadProgressBar(act);
-
 		boolean isWSCalled = false;
-
 		JSONObject jsonObj = new JSONObject();
 
 		@Override
@@ -1296,9 +1129,7 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 
 				JSONObject jsonObj;
 				try {
-					Log.e("strotpbenf", "======" + var5);
 					String str = CryptoClass.Function6(var5, var2);
-					Log.e("strotpbenf", "======" + str.trim());
 					jsonObj = new JSONObject(str.trim());
 
 					if (jsonObj.has("RESPCODE")) {
@@ -1328,12 +1159,10 @@ public class BeneficiaryOtp extends Activity implements OnClickListener {
 							showAlert(retMess);
 						}
 					}
-
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			} else {
 				retMess = getString(R.string.alert_000);
 				showAlert(retMess);

@@ -110,7 +110,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.otp_activity);
-		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 		act=this;
 		var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
 		var3 = (String) getIntent().getSerializableExtra("var3");
@@ -161,10 +160,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 				strMobNo = c1.getString(4);
 			}
 		}
-
-		/*
-		 * InputDialogBox inputBox = new InputDialogBox(act); inputBox.show();
-		 */
 
 		int flag = chkConnectivity();
 		if (flag == 0) {
@@ -561,11 +556,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 					String str = CryptoClass.Function6(var5, var2);
 					jsonObj = new JSONObject(str.trim());
 
-					/*
-					 * if (jsonObj.has("VALIDATIONDATA") &&
-					 * ValidationData.equals
-					 * (jsonObj.getString("VALIDATIONDATA"))) {
-					 */
 					if (jsonObj.has("RESPCODE")) {
 						respcode = jsonObj.getString("RESPCODE");
 					} else {
@@ -633,11 +623,9 @@ public class TransferOTP extends Activity implements OnClickListener {
 			strOTP = txt_otp.getText().toString().trim();
 			strRefId=txt_ref_id.getText().toString().trim();
 			strRefId=strRefId.substring(strRefId.indexOf(":")+1).trim();
-			
 
 			try
 			{
-				
 				if(strFromAct.equalsIgnoreCase("QRSEND"))
 				{
 					jObj.put("TRANSFERTYPE", "QR");
@@ -646,28 +634,22 @@ public class TransferOTP extends Activity implements OnClickListener {
 				{
 					jObj.put("TRANSFERTYPE", "P2A");
 				}
-				//jObj.put("OTPVAL", ListEncryption.encryptData(strOTP+strCustId));
+
 				String location=MBSUtils.getLocation(act);
 				jObj.put("IMEINO", MBSUtils.getImeiNumber(act));
 				jObj.put("REFID", strRefId);
 				jObj.put("ISREGISTRATION", "N");
 				jObj.put("SIMNO", MBSUtils.getSimNumber(act));
-			
 				jObj.put("TRANPIN", encrptdTranMpin);
 				jObj.put("MOBILENO", MBSUtils.getMyPhoneNO(act));
 				jObj.put("IPADDRESS", MBSUtils.getLocalIpAddress());
 				jObj.put("OSVERSION", Build.VERSION.RELEASE);
 				jObj.put("LATITUDE", location.split("~")[0]);
 				jObj.put("LONGITUDE", location.split("~")[1]);
-				jObj.put("METHODCODE","16"); 
-				Log.e("transfertran","========"+jObj.toString());
-               
-				
-				/*Log.e("MOBILENO=","MOBILENO==="+MBSUtils.getMyPhoneNO(act));
-				Log.e("IPADDRESS=","IPADDRESS==="+MBSUtils.getLocalIpAddress());
-				Log.e("OSVERSION=","OSVERSION==="+Build.VERSION.RELEASE);
-				Log.e("LATITUDE=","LATITUDE==="+location.split("~")[0]);
-				Log.e("LONGITUDE=","LONGITUDE==="+location.split("~")[1]);*/
+				if(strFromAct.equalsIgnoreCase("IMPSBANK") || strFromAct.equalsIgnoreCase("RTNTBANK"))
+					jObj.put("METHODCODE","96");
+				else
+					jObj.put("METHODCODE","16");
 			}
 			catch(Exception e)
 			{
@@ -714,196 +696,171 @@ public class TransferOTP extends Activity implements OnClickListener {
 			loadProBarObj.dismiss();
 			String errorCode="";
 			if (isWSCalled) 
-			{			
-				
+			{
                 JSONObject jsonObj;
 				try
 				{
 					String str=CryptoClass.Function6(var5,var2);
 					jsonObj = new JSONObject(str.trim());
 					
-					Log.e("strwebtran", "---------------"+str.trim());
-						if (jsonObj.has("RESPCODE"))
+					if (jsonObj.has("RESPCODE"))
+					{
+						respcode = jsonObj.getString("RESPCODE");
+					}
+					else
+					{
+						respcode="-1";
+					}
+					if (jsonObj.has("RETVAL"))
+					{
+						retval = jsonObj.getString("RETVAL");
+					}
+					else
+					{
+						retval = "";
+					}
+					if(jsonObj.has("RESPDESC"))
+					{
+						respdescvalidate = jsonObj.getString("RESPDESC");
+					}
+					else
+					{
+						respdescvalidate = "";
+					}
+					if(respdescvalidate.length()>0 && respdescvalidate.indexOf("Success")==-1)
+					{
+						showAlertPost(respdescvalidate);
+					}
+					else
+					{
+						if (retval.indexOf("SUCCESS")>-1)
 						{
-							respcode = jsonObj.getString("RESPCODE");
+							post_successsaveTransferTran(retval);
 						}
 						else
 						{
-							respcode="-1";
-						}
-						if (jsonObj.has("RETVAL"))
-						{
-							retval = jsonObj.getString("RETVAL");
-						}
-						else
-						{
-							retval = "";
-						}
-						if(jsonObj.has("RESPDESC"))
-						{
-							respdescvalidate = jsonObj.getString("RESPDESC");
-						}
-						else
-						{	
-							respdescvalidate = "";
-						}
-						if(respdescvalidate.length()>0 && respdescvalidate.indexOf("Success")==-1)
-						{
-							showAlertPost(respdescvalidate);
-						}
-						else
-						{
-							if (retval.indexOf("SUCCESS")>-1) 
-							{				
-								post_successsaveTransferTran(retval);
-							} 
-							else
+							if (retval.indexOf("LIMIT_EXCEEDS") > -1)
 							{
-								if (retval.indexOf("LIMIT_EXCEEDS") > -1) 
-								{
-									retMess = act.getString(R.string.alert_031);
-									showAlertnew(retMess);
-									/*Intent in = new Intent(TransferOTP.this, FundTransferMenuActivity.class);
-									in.putExtra("var1", var1);
-									in.putExtra("var3", var3);
-									startActivity(in);
-									finish();*/
-								} 
-								else if (retval.indexOf("DUPLICATE") > -1) 
-								{
-									try {
-										retMess = act.getString(R.string.alert_119) + jObj.getString("TRANID")+ "\n"+ act.getString(R.string.alert_120);
-									} catch (JSONException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									showAlertnew(retMess);
-								/*	Intent in = new Intent(TransferOTP.this, FundTransferMenuActivity.class);
-									in.putExtra("var1", var1);
-									in.putExtra("var3", var3);
-									startActivity(in);
-									finish();*/
-								} 
-								else if (retval.indexOf("WRONGTRANPIN") > -1) 
-								{
-									
-									String msg[] = retval.split("~");
-									String first = msg[1];
-									String second = msg[2];
-									
-									int count = Integer.parseInt(second);
-									count = 5 - count;
-									retMess = act.getString(R.string.alert_125_1) + " " + count
-											+ " " + act.getString(R.string.alert_125_2);
-									showAlertnew(retMess);
+								retMess = act.getString(R.string.alert_031);
+								showAlertnew(retMess);
+							}
+							else if (retval.indexOf("DUPLICATE") > -1)
+							{
+								try {
+									retMess = act.getString(R.string.alert_119) + jObj.getString("TRANID")+ "\n"+ act.getString(R.string.alert_120);
+								} catch (JSONException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-								else if (retval.indexOf("BLOCKEDFORDAY") > -1) 
-								{
-									//loadProBarObj.dismiss();
-									retMess = act.getString(R.string.login_alert_005);
-									showAlertnew(retMess);
-								} 
-								else if (retval.indexOf("FAILED~") > -1) 
-								{
-									String msg[] = retval.split("~");
-									if (msg.length > 3) 
-									{
-										String postingStatus = msg[1];
-										String req_id = msg[2];
-										String errorMsg = msg[3];
-										if (req_id.length() > 0) 
-										{
-											if (req_id != null || req_id.length() > 0)
-												retMess = act.getString(R.string.alert_162) + " "+ req_id;
-										} 
-										else if (errorMsg.length() > 0) 
-										{
-											retMess = act.getString(R.string.alert_032) + errorMsg;
-										}
-									} 
-									else 
-									{
-										retMess = act.getString(R.string.alert_032);
-									}
-									showAlertnew(retMess);
+								showAlertnew(retMess);
+							}
+							else if (retval.indexOf("WRONGTRANPIN") > -1)
+							{
 
-									//FragmentManager fragmentManager;
-									/*Intent in = new Intent(TransferOTP.this, FundTransferMenuActivity.class);
-									in.putExtra("var1", var1);
-									in.putExtra("var3", var3);
-									startActivity(in);
-									finish();*/
-								}
-								else if (retval.indexOf("FAILED") > -1)
+								String msg[] = retval.split("~");
+								String first = msg[1];
+								String second = msg[2];
+
+								int count = Integer.parseInt(second);
+								count = 5 - count;
+								retMess = act.getString(R.string.alert_125_1) + " " + count
+										+ " " + act.getString(R.string.alert_125_2);
+								showAlertnew(retMess);
+							}
+							else if (retval.indexOf("BLOCKEDFORDAY") > -1)
+							{
+								retMess = act.getString(R.string.login_alert_005);
+								showAlertnew(retMess);
+							}
+							else if (retval.indexOf("FAILED~") > -1)
+							{
+								String msg[] = retval.split("~");
+								if (msg.length > 3)
 								{
-									if(retval.split("~")[1].length()>0)
+									String postingStatus = msg[1];
+									String req_id = msg[2];
+									String errorMsg = msg[3];
+									if (req_id.length() > 0)
 									{
-										errorCode=retval.split("~")[1];
+										if (req_id != null || req_id.length() > 0)
+											retMess = act.getString(R.string.alert_162) + " "+ req_id;
 									}
-									else
+									else if (errorMsg.length() > 0)
 									{
-										errorCode="NA";
+										retMess = act.getString(R.string.alert_032) + errorMsg;
 									}
-									
-									if(errorCode.equalsIgnoreCase("999"))
-									{
-										retMess = act.getString(R.string.alert_179);
-									}
-									else if(errorCode.equalsIgnoreCase("001"))
-									{
-										 retMess = act.getString(R.string.alert_180);
-									}
-									else if(errorCode.equalsIgnoreCase("002"))
-									{
-										retMess = act.getString(R.string.alert_181);
-									}
-									else if(errorCode.equalsIgnoreCase("003"))
-									{
-										retMess = act.getString(R.string.alert_182);
-									}
-									else if(errorCode.equalsIgnoreCase("004"))
-									{
-										retMess = act.getString(R.string.alert_179);
-									}
-									else if(errorCode.equalsIgnoreCase("005"))
-									{
-										retMess = act.getString(R.string.alert_183);
-									}
-									else if(errorCode.equalsIgnoreCase("006"))
-									{
-										retMess = act.getString(R.string.alert_184);
-									}
-									else if(errorCode.equalsIgnoreCase("007"))
-									{
-										retMess = act.getString(R.string.alert_179);
-									}
-									else if(errorCode.equalsIgnoreCase("008"))
-									{
-										retMess = act.getString(R.string.alert_176);
-									}
-									else
-									{
-										retMess = act.getString(R.string.trnsfr_alert_001);
-										
-									}
-									
-									showAlertPost(retMess);
 								}
-								else 
+								else
 								{
 									retMess = act.getString(R.string.alert_032);
-									showAlertnew(retMess);
 								}
+								showAlertnew(retMess);
+							}
+							else if (retval.indexOf("FAILED") > -1)
+							{
+								if(retval.split("~")[1].length()>0)
+								{
+									errorCode=retval.split("~")[1];
+								}
+								else
+								{
+									errorCode="NA";
+								}
+
+								if(errorCode.equalsIgnoreCase("999"))
+								{
+									retMess = act.getString(R.string.alert_179);
+								}
+								else if(errorCode.equalsIgnoreCase("001"))
+								{
+									 retMess = act.getString(R.string.alert_180);
+								}
+								else if(errorCode.equalsIgnoreCase("002"))
+								{
+									retMess = act.getString(R.string.alert_181);
+								}
+								else if(errorCode.equalsIgnoreCase("003"))
+								{
+									retMess = act.getString(R.string.alert_182);
+								}
+								else if(errorCode.equalsIgnoreCase("004"))
+								{
+									retMess = act.getString(R.string.alert_179);
+								}
+								else if(errorCode.equalsIgnoreCase("005"))
+								{
+									retMess = act.getString(R.string.alert_183);
+								}
+								else if(errorCode.equalsIgnoreCase("006"))
+								{
+									retMess = act.getString(R.string.alert_184);
+								}
+								else if(errorCode.equalsIgnoreCase("007"))
+								{
+									retMess = act.getString(R.string.alert_179);
+								}
+								else if(errorCode.equalsIgnoreCase("008"))
+								{
+									retMess = act.getString(R.string.alert_176);
+								}
+								else
+								{
+									retMess = act.getString(R.string.trnsfr_alert_001);
+								}
+								showAlertPost(retMess);
+							}
+							else
+							{
+								retMess = act.getString(R.string.alert_032);
+								showAlertnew(retMess);
 							}
 						}
-					
-					
+					}
 				} catch (JSONException e) 
 				{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			}
 			else
 			{
@@ -965,18 +922,10 @@ public class TransferOTP extends Activity implements OnClickListener {
 			request_id=tranId;
 			retMess = act.getString(R.string.alert_030) + " "+ act.getString(R.string.alert_121) + " " + tranId;			
 		}	
-		
-		//showAlertnew(retMess);
+
 		showshareAlert(retMess);
 
-		
 		   lod.dismiss();
-
-	/*	Intent in = new Intent(TransferOTP.this, FundTransferMenuActivity.class);
-		in.putExtra("var1", var1);
-		in.putExtra("var3", var3);
-		startActivity(in);
-		finish();*/
 	}
 
 	public void showshareAlert(final String str)
@@ -1050,11 +999,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 							share.putExtra(Intent.EXTRA_STREAM,apkURI);
 							share.setType("image/*");
 							startActivity(Intent.createChooser(share, "Share Image"));
-							//startActivity(new Intent(TransferOTP.this,FundTransferMenuActivity.class));
-							//startActivityForResult(share,1);
-
-
-
 						} catch (FileNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -1066,14 +1010,10 @@ public class TransferOTP extends Activity implements OnClickListener {
 					default:
 						break;
 				}
-
 				dismiss();
-
 			}
 		};
 		alert.show();
-
-
 	}
 
 	public void post_successresend(String retval) {
@@ -1130,14 +1070,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 				startActivity(in);
 				finish();
 				this.dismiss();
-				/*
-				 * FragmentManager fragmentManager; Fragment fragment = new
-				 * FundTransferMenuActivity(act);
-				 * act.setTitle(getString(R.string.lbl_same_bnk_trans));
-				 * fragmentManager = getFragmentManager();
-				 * fragmentManager.beginTransaction
-				 * ().replace(R.id.frame_container, fragment).commit();
-				 */
 			}
 
 		};
@@ -1146,8 +1078,6 @@ public class TransferOTP extends Activity implements OnClickListener {
 		alert.setCancelable(false);
 		alert.show();
 	}
-
-	
 
 	public int chkConnectivity() {
 		// Log.i("1111", "1111");

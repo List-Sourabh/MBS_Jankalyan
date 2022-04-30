@@ -58,7 +58,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
     DialogBox dbs;
     ProgressBar pb_wait;
     SharedPreferences.Editor e;
-    String benf="";
+    String benf="",benfName="";
     LinearLayout confirm_layout,other_bnk_layout;
     private String benInfo = "";
     private static String URL = "";
@@ -70,7 +70,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
     View mainView;
     DatabaseManagement dbms;
     public String encrptdTranMpin;
-    String retStr = "", userId = "", cust_mob_no = "", transferType = "";
+    String chrgsRetval="",retStr = "", userId = "", cust_mob_no = "", transferType = "";
     String postingStatus = "", req_id = "",errorCode="",gst="";
     int frmno = 0, tono = 0, flag = 0, cnt = 0;
     String stringValue, str = "", retMess = "", cust_name = "", custId = "",
@@ -224,31 +224,18 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                                 String str1[] = allStr[i].split("#");
                                 nickname=str1[2] + "(" + str1[1] + ")";
 
-                                //System.out.println("==== str :" + str);
-                                //System.out									.println("Beneficiary serial number:=====>"											+ str1[0]);
-                                //System.out.println("(" + str1[1] + ")");
-
-                                // if (str.indexOf("(" + str1[1] + ")") > -1)
-                                //if (str.indexOf(str1[2]) > -1)
-                                if(str.equalsIgnoreCase(nickname)){
-                                    //System.out	.println("========== inside if ============");
-                                    benSrno = str1[0];
+                                if(str.equalsIgnoreCase(nickname))
+                                {
+                                    benfName=str1[1];
+                                    //benSrno = str1[0];
                                     benAccountNumber = str1[3];
                                     otherIfsctxtIFSCCode = str1[4];
                                     ifsCD = otherIfsctxtIFSCCode;
-                                    //Log.e("OTHERBANK","ifsCD====="+ifsCD);
-
                                     flag = chkConnectivity();
-                                    if (flag == 0)
-                                    {
-                                        //new CallWebServiceFetBnkBrn().execute();
-                                    }
+                                    benSrno=str1[9];
                                 }
                             }// end for
 
-                            //txtAccNo.setText(benAccountNumber.trim());
-                            //Log.e("LIST","benAccountNumber"+benAccountNumber);
-                            //Log.e("LISt","IFSC CODE=="+ifsCD);
                             txtAccNo.setText(benAccountNumber);
                             txtIfsc.setText(ifsCD.trim());
                         }
@@ -375,44 +362,24 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
 
     }// end addAccount
     private void addBeneficiaries(String retval) {
-        //System.out				.println("================ IN addBeneficiaries() of OtherBankTranRTGS ======================");
-        //System.out.println("OtherBankTranRTGS IN addBeneficiaries()" + retval);
-        //Log.e("retval==", "retval==" + retval);
-        //Log.e("retval==", "retval==" + retval);
-        //Log.e("retval==", "retval==" + retval);
         try {
             ArrayList<String> arrList = new ArrayList<String>();
             String allstr[] = retval.split("~");
 
             int noOfben = allstr.length;
-            //Log.e("OTHERBNK","noOfben=="+noOfben);
-            //Log.e("OTHERBNK","noOfben=="+noOfben);
-            //Log.e("OTHERBNK","noOfben=="+noOfben);
             String benName = "";
             arrList.add("Select Beneficiary");
 
             for (int i = 1; i < noOfben; i++) {
-                //System.out.println(i + "----STR1-----------" + allstr[i - 1]);
                 String[] str2 = allstr[i].split("#");
-
-                //Log.e("OTHERBNK", "noOfben==" + noOfben);
-                //Log.e("OTHERBNK", "noOfben==" + noOfben);
-                //Log.e("OTHERBNK", "forth====" + str2[4]);
-                //Log.e("OTHERBNK", "forth====" + str2[4]);
-                //Log.e("OTHERBNK", "third====" + str2[3]);
-                //Log.e("OTHERBNK", "third====" + str2[3]);
-                // String benName = "";
                 if (!(str2[4].equals("NA") || (str2[3].equals("-9999")))) {
                     benName = str2[2] + "(" + str2[1] + ")";
                     arrList.add(benName);
-                    //System.out.println("=============== benificiary Name is:======"							+ benName);
                 }
             }
 
             String[] benfArr = new String[arrList.size()];
             benfArr = arrList.toArray(benfArr);
-			/*CustomeSpinnerAdapter accs = new CustomeSpinnerAdapter(act,
-					R.layout.spinner_layout, benfArr);*/
             ArrayAdapter<String> benfAccs = new ArrayAdapter<String>(OtherBankTranIMPS.this,R.layout.spinner_item, benfArr);
             benfAccs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spi_sel_beneficiery.setAdapter(benfAccs);
@@ -770,16 +737,12 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
 
         protected void onPostExecute(Void paramVoid)
         {
-
-
-            //System.out.println("xml_data :" + xml_data);
-            //Log.e("TRANSFER",xml_data[0]);
-
             loadProBarObj.dismiss();
 
             JSONObject jsonObj;
             try
-            {String str=CryptoClass.Function6(var5,var2);
+            {
+                String str=CryptoClass.Function6(var5,var2);
                 jsonObj = new JSONObject(str.trim());
 
 
@@ -999,39 +962,22 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
         in.putExtra("var3", var3);
         startActivity(in);
         finish();
-
-
     }
 
     // to get values from getBnkBrn method.....
     class CallWebServiceGetSrvcCharg extends AsyncTask<Void, Void, Void> {
         String retval = "";
         LoadProgressBar loadProBarObj = new LoadProgressBar(act);
-
-
-
         JSONObject jsonObj = new JSONObject();
 
         String accNo, debitAccno, benAcNo, amt, reMark;
 
         protected void onPreExecute() {
             try {
-                // pb_wait.setVisibility(ProgressBar.VISIBLE);
                 loadProBarObj.show();
                 accNo = txtAccNo.getText().toString().trim();
-                //Log.e("ohtertranImpsbtn_submit",						" spnr size= " + arrListTemp.size());
-                //Log.e("ohtertranImpsbtn_submit", " spnr index "						+ spi_sel_beneficiery.getSelectedItemPosition());
-
-                //..debitAccno = spi_debit_account.getSelectedItem().toString();
-                //debitAccno = spi_debit_account.getItemAtPosition(spi_debit_account.getSelectedItemPosition()-1).toString();
                 debitAccno = spi_debit_account.getItemAtPosition(spi_debit_account.getSelectedItemPosition()).toString();
                 debitAccno=debitAccno.substring(0, 16);
-
-                //Log.e("debitAccno","debitAccno11111===="+debitAccno);
-                //debitAccno=debitAccno.substring(0, 16);
-
-                ////Log.e("debitAccno","debitAccno222===="+debitAccno);
-
                 benAcNo = spi_sel_beneficiery.getSelectedItem().toString();
 
                 tranType = spi_payment_option.getItemAtPosition(
@@ -1058,17 +1004,16 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                     transaction="IMPS";
                 }
 
-
-                //Log.e("ohtertranImpsbtn_submit", " onPreExecute ");
                 jsonObj.put("CUSTID", custId);
                 jsonObj.put("TRANTYPE", tranType);
+                jsonObj.put("PAYMODE", tranType);
                 jsonObj.put("DRACCNO", debitAccno);
                 jsonObj.put("AMOUNT", amt);
                 jsonObj.put("CRACCNO", accNo);
                 jsonObj.put("IMEINO", MBSUtils.getImeiNumber(act));
                 jsonObj.put("SIMNO", MBSUtils.getSimNumber(act));
                 jsonObj.put("BENFSRNO", benSrno);
-                jsonObj.put("METHODCODE","28");
+                jsonObj.put("METHODCODE","97");
                 Log.e("jsonObj","jsonObj===="+jsonObj);
             } catch (JSONException je) {
                 je.printStackTrace();
@@ -1106,19 +1051,13 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             return null;
         }// end dodoInBackground2
 
-        protected void onPostExecute(Void paramVoid) {
-            // String[] xmlTags = { "RETVAL" };
-            // String[] xml_data = CryptoUtil.readXML(retval, xmlTags);
+        protected void onPostExecute(Void paramVoid)
+        {
             loadProBarObj.dismiss();
-
-
-            //Log.e("DEBUG@ANAND",decryptedAccounts );
-
             JSONObject jsonObj;
             try
             {
                 String str=CryptoClass.Function6(var5,var2);
-                Log.e("DSP","strRTGS====="+str);
                 String decryptedAccounts =str.trim();
                 jsonObj = new JSONObject(str.trim());
 
@@ -1132,7 +1071,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 }
                 if (jsonObj.has("RETVAL"))
                 {
-                    retval = jsonObj.getString("RETVAL");
+                    chrgsRetval = jsonObj.getString("RETVAL");
                 }
                 else
                 {
@@ -1153,7 +1092,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 else{
                     if (retval.indexOf("SUCCESS") > -1) {
                         loadProBarObj.dismiss();
-                        post_GetSrvcCharg(retval);
+                        post_GetSrvcCharg(chrgsRetval);
                     } else {
                         if (retval.indexOf("TRANAMTLIMIT") > -1) {
 
@@ -1180,7 +1119,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                             loadProBarObj.dismiss();
                             showAlert(retMess);
                         }
-
                         else if (retval.indexOf("TotalLimitExceeded") > -1) {
                             retMess = getString(R.string.alert_194);
                             loadProBarObj.dismiss();
@@ -1205,22 +1143,18 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                         }
                     }// end else
                 }
-
-            } catch (JSONException e)
+            }
+            catch (JSONException e)
             {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
-
         }// end onPostExecute
     }// end CallWebServiceGetSrvcCharg
 
-    public void post_GetSrvcCharg(String retval){
-
+    public void post_GetSrvcCharg(String retval)
+    {
         respcode="";	respdesc_GetSrvcCharg= "";
-        //act.frgIndex = 52;
-
         retStr = retval.split("~")[1];
 
         String retStr1 = "";
@@ -1228,12 +1162,12 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
         if (retStr1.equalsIgnoreCase("nextDay"))
         {
             proceedTransaction();
-        } else
+        }
+        else
         {
-            //Log.e("HELL",retStr);
-
             other_bnk_layout.setVisibility(other_bnk_layout.INVISIBLE);
             confirm_layout.setVisibility(confirm_layout.VISIBLE);
+            Log.e("CHRGS=",retStr);
             String[] val=retStr.split("#");
             txt_heading.setText("Confirmation");
             txt_remark.setText(strRemark);
@@ -1257,13 +1191,9 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
 
             if(cess.equalsIgnoreCase("null"))
                 cess="0";
-
-            //Log.e("OTHERBNKTRAN","2222servChrg==="+servChrg+"==cess=="+cess);
-            txt_charges.setText("INR "+(Float.parseFloat(val[0])+Float.parseFloat(servChrg)+Float.parseFloat(cess)));
-
+            //txt_charges.setText("INR "+(Float.parseFloat(val[0])+Float.parseFloat(servChrg)+Float.parseFloat(cess)));
+            txt_charges.setText("0");
         }
-
-
     }
 
     public void proceedTransaction() {
@@ -1300,16 +1230,13 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
 
                 break;
             case R.id.spinner_btn:
-                //Log.e("DROP DOWN IMG BTN CLICKED....spinner_btn",					"DROP DOWN IMG BTN CLICKED....");
                 spi_debit_account.performClick();
                 break;
 
             case R.id.spinner_btn2:
-                //Log.e("DROP DOWN IMG BTN CLICKED....spinner_btn2",					"DROP DOWN IMG BTN CLICKED....");
                 spi_sel_beneficiery.performClick();
                 break;
             case R.id.spinner_btn3:
-                //Log.e("DROP DOWN IMG BTN CLICKED....spinner_btn3",					"DROP DOWN IMG BTN CLICKED....");
                 spi_payment_option.performClick();
                 break;
 
@@ -1320,19 +1247,12 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 strRemark = txtRemk.getText().toString().trim().trim();
                 String transferType=spi_payment_option.getSelectedItem().toString();
                 String balString = txtBalance.getText().toString().trim();//acArray[spi_debit_account.getSelectedItemPosition()-1].getBalace();
-                //double balance = Double.parseDouble(balString);
-                //balance = Math.abs(balance);
                 double balance=0.0;//Double.parseDouble(balString);
-                //balance=Math.abs(balance);
                 if(balString.length()>0)
                 {
                     balString=balString.substring(0,balString.length()-2);
-                    //Log.e("balance=","balString=="+balString);
-                    //Log.e("balance=","balString=="+balString);
                     balance=Double.parseDouble(balString);
                     balance=Math.abs(balance);
-                    //Log.e("balance=","balance=="+balance);
-                    //Log.e("balance=","balance=="+balance);
                 }
 
                 String debitAcc=strFromAccNo.substring(0, 16);
@@ -1395,7 +1315,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                     catch (Exception e)
                     {
                         e.printStackTrace();
-                        //System.out.println("Exception in CallWebServiceGetSrvcCharg is:" + e);
                     }
                 }
                 break;
@@ -1414,38 +1333,21 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                     if(retMess!=null && retMess.length()>0)
                         showAlert(retMess);
                 } else if (str.length() == 0) {
-                    //System.out.println("Cuttent thread name:==>"						+ Thread.currentThread().getName());
-                    //System.out.println("--------------- 22 ------------");
                     retMess = getString(R.string.alert_033);
-                    //System.out.println("--------------- 22.1 ------------");
                     showAlert(retMess);
-                    //System.out.println("--------------- 22.2 ------------");
                     txtAmt.requestFocus();
-                    //System.out.println("--------------- 22.3 ------------");
                 } else {
-                    //int amt = Integer.parseInt(str); Gives error for fraction so
                     double amt = Double.parseDouble(str);
                     if (amt <= 0) {
-                        //System.out.println("--------------- 44 ------------");
                         retMess = getString(R.string.alert_034);
                         showAlert(retMess);
                         txtAmt.requestFocus();
                     } else {
-					/*if (str2.length() == 0) {
-						//System.out.println("--------------- 33 ------------");
-						retMess = getString(R.string.alert_035);
-						showAlert(retMess);
-						txtRemk.requestFocus();
-					} else */
-
-                        {
                             InputDialogBox inputBox = new InputDialogBox(act);
                             inputBox.show();
-                        } // end else
                     }
                 }// end if
                 break;
-
             default:
                 break;
         }
@@ -1453,16 +1355,13 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
     }// end onClick
 
     public void showAlert(final String str) {
-        // Toast.makeText(this, str, Toast.LENGTH_LONG).show();
         ErrorDialogClass alert = new ErrorDialogClass(act, "" + str) {
 
             @Override
             public void onClick(View v) {
                 switch (v.getId())
                 {
-                    //retval = "",respcode="",="",,="",="",="";
                     case R.id.btn_ok:
-                        ////Log.e("SetMPIN","SetMPIN...CASE trru="+WSCalled);
                         if((str.equalsIgnoreCase(respdesc_fetch_all_beneficiaries)) &&  (respcode.equalsIgnoreCase("0")))
                         {
                             post_fetch_all_beneficiaries(retval);
@@ -1481,7 +1380,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                         }
                         if((str.equalsIgnoreCase(respdesc_GetSrvcCharg)) &&  (respcode.equalsIgnoreCase("0")))
                         {
-                            post_GetSrvcCharg(retval);
+                            post_GetSrvcCharg(chrgsRetval);
                         }
                         else if((str.equalsIgnoreCase(respdesc_GetSrvcCharg)) && (respcode.equalsIgnoreCase("1")))
                         {
@@ -1503,22 +1402,16 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 }
                 if(flg=="true")
                 {
-                    //Log.e("Inside If","Inside if==="+flg);
                     switch (v.getId())
                     {
                         case R.id.btn_ok:
-                            //dismiss();
                             Intent in=new Intent(act, FundTransferMenuActivity.class);
                             in.putExtra("var1", var1);
                             in.putExtra("var3", var3);
                             startActivity(in);
                             finish();
-
-
                     }this.dismiss();
                 }//End If
-
-
                 switch (v.getId()) {
                     case R.id.btn_ok:
                         if (noAccounts) {
@@ -1533,7 +1426,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                                         .setVisibility(confirm_layout.INVISIBLE);
                                 other_bnk_layout
                                         .setVisibility(other_bnk_layout.VISIBLE);
-                                //act.frgIndex = 51;
                             }
                         }
                         break;
@@ -1574,32 +1466,20 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
         @Override
         public void onClick(View v) {
             try {
-
-                // //System.out.println("========= inside onClick ============***********");
                 String str = mpin.getText().toString();
-                encrptdTranMpin =str; //ListEncryption.encryptData(custId + str);
+                encrptdTranMpin =str;
                 if (str.length() == 0) {
                     retMess = getString(R.string.alert_116);
                     showAlert(retMess);// setAlert();
                     this.show();
-                } /*else if (str.length() != 6) {
-					retMess = getString(R.string.alert_037);
-					showAlert(retMess);// setAlert();
-					this.show();
-				} */
+                }
                 else {
-
-                    {
-                        //saveData();
                         callValidateTranpinService validateTran= new callValidateTranpinService();
                         validateTran.execute();
                         this.hide();
-                    }
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                //System.out.println("Exception in InputDialogBox of onClick:=====>"+ e);
             }
         }// end onClick
     }// end InputDialogBox
@@ -1623,7 +1503,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             tranType = "IMPS";
 
         String crAccNo = txt_to.getText().toString().trim();
-        String charges = txt_charges.getText().toString().split(" ")[1];
+        String charges = txt_charges.getText().toString();//.split(" ")[1];
         String drAccNo = txt_from.getText().toString().trim();
 
         drAccNo = strFromAccNo.substring(0, 16);
@@ -1637,6 +1517,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             jsonObj.put("AMOUNT", amt);
             jsonObj.put("REMARK", reMark);
             jsonObj.put("TRANSFERTYPE", tranType);
+            jsonObj.put("PAYMODE", tranType);
             jsonObj.put("IMEINO", MBSUtils.getImeiNumber(act));
             jsonObj.put("CUSTID", custId);
             jsonObj.put("CHARGES", charges);
@@ -1645,20 +1526,13 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             jsonObj.put("SERVCHRG", servChrg);
             jsonObj.put("CESS", cess);
             jsonObj.put("TRANPIN", encrptdTranMpin);
+            jsonObj.put("BENFNAME", benfName);
             jsonObj.put("SIMNO", MBSUtils.getSimNumber(act));
         }
         catch (JSONException je)
         {
             je.printStackTrace();
         }
-		/*Bundle bundle=new Bundle();
-		Fragment fragment = new TransferOTP(act);
-		bundle.putString("CUSTID", custId);
-		bundle.putString("FROMACT", "RTNTBANK");
-		bundle.putString("JSONOBJ", jsonObj.toString());
-		fragment.setArguments(bundle);
-		FragmentManager fragmentManager = this.getFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();*/
 
         Bundle bundle=new Bundle();
         bundle.putString("CUSTID", custId);
@@ -1684,7 +1558,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
         {
             loadProBarObj.show();
 
-
             try
             {
                 obj.put("SIMNO", MBSUtils.getSimNumber(act));
@@ -1692,14 +1565,11 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 obj.put("TRANPIN", encrptdTranMpin);
                 obj.put("CUSTID", custId);
                 obj.put("METHODCODE","73");
-
-
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-
         }
 
         protected Void doInBackground(Void... arg0)
@@ -1734,9 +1604,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
 
         protected void onPostExecute(Void paramVoid)
         {
-
-
-            //Log.e("SAM===","xml_data[0]=decryptedAccounts:"+decryptedAccounts);
             loadProBarObj.dismiss();
             String str=CryptoClass.Function6(var5,var2);
             String decryptedAccounts = str.trim();

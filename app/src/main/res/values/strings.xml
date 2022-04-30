@@ -16,8 +16,8 @@
     <string name="map_key">AIzaSyB3z-E-zchBsS1Q9Vq2RKaP2h1CnUZ5scM</string>
 
 <!--    Main Live Link-->
-<!--    <string name="url">http://103.114.221.107:19739/axis2/services/FrontLineWebServices</string>-->
-    list pointed <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>
+    <string name="url">http://103.114.221.107:19739/axis2/services/FrontLineWebServices</string>
+    <!--list pointed <string name="url">http://listspl.ddns.net:8087/axis2/services/FrontLineWebServices</string>-->
     <!--<string name="url"> http://59.9.8.50:18038/axis2/services/FrontLineWebServices</string>-->
 <!--     <string name="url">https://mobilebanking.shivsamarth.co.in:18038/axis2/services/FrontLineWebServices</string>-->
 
@@ -117,6 +117,7 @@
     <string name="lbl_account_type">Account Type :</string>
     <string name="lbl_acc_no">Account No :</string>
     <string name="lbl_name">Name:</string>
+    <string name="lbl_mmid">MMID:</string>
     <string name="lbl_ifsc_code">IFSC Code:</string>
     <string name="lbl_clear_balance">Clear Balance (In Rs.):</string>
     <string name="lbl_unclear_balance">Unclear Balance (In Rs.):</string>
@@ -505,7 +506,7 @@
     <string name="alert_111">Enter Transaction MPIN</string>
     <string name="alert_162">Fund Transfer Failed due to server problem.Your Request Is </string>
     <string name="lbl_genotp_btn">Generate OTP</string>
-    <string name="lbl_MMID">Virtual Account Number:</string>
+    <string name="lbl_VPA">Virtual Account Number:</string>
     <string name="lbl_bank_nm">Select Bank Name</string>
     <string name="lbl_state">Select State</string>
     <string name="lbl_district">Select District</string>

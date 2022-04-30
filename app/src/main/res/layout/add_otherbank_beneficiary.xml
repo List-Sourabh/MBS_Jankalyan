@@ -134,17 +134,17 @@
             </mbLib.CustomEditText>
 
             <mbLib.CusFntTextView
-                android:id="@+id/lbl_MMID"
+                android:id="@+id/lbl_VPA"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:gravity="left"
-                android:text="@string/lbl_MMID"
+                android:text="@string/lbl_VPA"
                 android:textColor="#372c24" >
             </mbLib.CusFntTextView>
 
             <mbLib.CustomEditText
-                android:id="@+id/txtMMID2"
+                android:id="@+id/txtVPA"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -164,6 +164,24 @@
 
             <mbLib.CustomEditText
                 android:id="@+id/txtMobile_No2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="" >
+            </mbLib.CustomEditText>
+
+            <mbLib.CusFntTextView
+                android:id="@+id/lbl_mmid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="left"
+                android:text="@string/lbl_mmid"
+                android:textColor="#372c24" >
+            </mbLib.CusFntTextView>
+
+            <mbLib.CustomEditText
+                android:id="@+id/txt_mmid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
