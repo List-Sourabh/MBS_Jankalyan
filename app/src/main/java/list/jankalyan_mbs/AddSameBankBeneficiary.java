@@ -67,7 +67,7 @@ public class AddSameBankBeneficiary  extends Activity implements OnClickListener
 			confaccNo="",retVal = "",respcode="",retval="",respdesc="",respdesc_save_beneficiary="";
 	DialogBox dbs;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	String reTval="",validateAndGetAccountInforespdesc="",saveBeneficiariesrespdesc="";
 	private static final String MY_SESSION = "my_session";
 	private static String NAMESPACE = "";
@@ -158,7 +158,7 @@ public class AddSameBankBeneficiary  extends Activity implements OnClickListener
 			}
 		});
 		
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 
@@ -1127,7 +1127,7 @@ public class AddSameBankBeneficiary  extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

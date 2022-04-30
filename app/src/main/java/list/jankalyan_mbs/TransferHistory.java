@@ -77,7 +77,7 @@ public class TransferHistory extends Activity implements OnClickListener {
 			stringValue = "", acnt_inf = "", all_acnts = "", accNo = "";
 	int cnt = 0, flag = 0;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -141,7 +141,7 @@ public class TransferHistory extends Activity implements OnClickListener {
 		// stringValue="2#101#SB#25430#KULKARNI SHASHIKANT  RAJARAM##0020001010025430#O#9999999#15427048#Y~2#101#SB#25584#KULKARNI SHASHIKANT  RAJARAM##0020001010025584#O#NA#498.8#Y~2#101#SB#25635#KULKARNI SHASHIKANT  RAJARAM##0020001010025635#O#NA#25471.2#Y~2#101#SB#25636#KULKARNI SHASHIKANT  RAJARAM##0020001010025636#O#NA#17848.2#Y~2#101#SB#25637#KULKARNI SHASHIKANT  RAJARAM##0020001010025637#O#NA#37783.53#Y~2#1011#SB#1#KULKARNI SHASHIKANT  RAJARAM##0020010110000001#O#NA#0#Y~2#301#LO#58#KULKARNI SHASHIKANT  RAJARAM##0020003010000058#I#NA#13100.3#Y~2#301#LO#131#KULKARNI SHASHIKANT  RAJARAM##0020003010000131#I#NA#452922.87#Y~2#337#LO#8345#KULKARNI SHASHIKANT  RAJARAM##0020003370008345#I#NA#142105#Y~2#TEST2#LO#6#KULKARNI SHASHIKANT  RAJARAM##0020TEST20000006#I#NA#140000#Y~";
 
 		addAccounts(stringValue);
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 
@@ -642,7 +642,7 @@ public class TransferHistory extends Activity implements OnClickListener {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

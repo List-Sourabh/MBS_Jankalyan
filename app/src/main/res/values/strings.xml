@@ -573,4 +573,6 @@
         <attr name="zxing_viewfinder_mask" format="color" />
     </declare-styleable>
 
+
+    <string name="Time_out">300</string>
 </resources>

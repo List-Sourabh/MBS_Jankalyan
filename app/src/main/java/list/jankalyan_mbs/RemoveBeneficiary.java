@@ -69,7 +69,7 @@ public class RemoveBeneficiary extends Activity implements OnClickListener
 	private static String METHOD_NAME1 = "";
 	private static String METHOD_NAME2 = "";
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	 
     int cnt = 0, flag = 0;
     String custId = "", accNo = "", accNm = "", mobNo = "", nickNm = "", mailId = "";
@@ -232,7 +232,7 @@ public class RemoveBeneficiary extends Activity implements OnClickListener
 	    	}
 	    );
 	    
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 	
@@ -828,7 +828,7 @@ public class RemoveBeneficiary extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

@@ -49,7 +49,7 @@ public class ValidateSecQueActivity extends CustomWindow implements
 	ImageView img_heading;
 	ValidateSecQueActivity valSecAct;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	String custId = null, mpin = null, retVal = null, retMess = null,
 			que_one = null, ans_one = null, qOne = null;
 	int cnt,flag=0;
@@ -102,7 +102,7 @@ public class ValidateSecQueActivity extends CustomWindow implements
 			CallWebServiceFetchSecuQue c = new CallWebServiceFetchSecuQue();
 			c.execute();
 		}
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 
@@ -758,7 +758,7 @@ public class ValidateSecQueActivity extends CustomWindow implements
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

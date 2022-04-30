@@ -1,8 +1,7 @@
 package mbLib;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -20,7 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import list.jankalyan_mbs.ErrorDialogClass;
 import list.jankalyan_mbs.R;
-import list.jankalyan_mbs.SessionTimeout;
+import list.jankalyan_mbs.SessionOut;
 
 
 public class MyThread extends Thread {
@@ -41,7 +40,7 @@ PrivateKey var1 = null;
 	public MyThread(int sec, Activity act1,PrivateKey var1,String var3) {
 		this.sec = sec;
 		act = act1;
-	this.var1=var1;
+		this.var1=var1;
 		this.var3=var3;
 		
 	}
@@ -196,9 +195,12 @@ PrivateKey var1 = null;
 		Log.e("fromAct","fromAct11111"+fromAct);
 		Log.e("fromAct","fromAct11111"+fromAct);
 		
-		Fragment fragment = new SessionTimeout();
-		FragmentManager fragmentManager = act.getFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commitAllowingStateLoss();
+//		Fragment fragment = new SessionTimeout();
+//		FragmentManager fragmentManager = act.getFragmentManager();
+//		fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commitAllowingStateLoss();
+		Intent intent = new Intent(act, SessionOut.class);
+		act.startActivity(intent);
+		act.finish();
 	}
 	
 	public void showAlert(final String str) {

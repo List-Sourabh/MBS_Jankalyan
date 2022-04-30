@@ -72,7 +72,7 @@ public class RemoveBiller extends Activity implements  OnItemClickListener,OnCli
 	private static String METHOD_delete_biller="deletePayee";
 	String consumercd="",billercd="",billername="",accname="",DOB="",mobno="",billerAccId="";
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	DatabaseManagement dbms;
 	ListView listbill;
 	//HomeFragment homeFrag;
@@ -143,7 +143,7 @@ public class RemoveBiller extends Activity implements  OnItemClickListener,OnCli
 	  //     showAlert(act.getString(R.string.alert_000));
 	  // }
         
-	   	t1 = new MyThread(timeOutInSecs,this,var1,var3);
+	   	t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 			t1.start();
 	}
 	
@@ -672,7 +672,7 @@ public class RemoveBiller extends Activity implements  OnItemClickListener,OnCli
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

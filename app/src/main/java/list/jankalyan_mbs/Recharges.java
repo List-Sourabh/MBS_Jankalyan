@@ -69,7 +69,7 @@ public class Recharges extends Activity implements OnClickListener
 	String[] prgmNameList, prgmNameListTemp;
 	int chekacttype=0, flag=0,check=0;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	protected String accStr;
 	Recharges recharge;
 	Bundle b1rech=new Bundle();
@@ -130,7 +130,7 @@ public class Recharges extends Activity implements OnClickListener
         //if(chkConnectivity()==0)
         	new CallWebServiceFetchPayee().execute();
         	
-        	t1 = new MyThread(timeOutInSecs,this,var1,var3);
+        	t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
     		t1.start();
 	}
 
@@ -622,7 +622,7 @@ public class Recharges extends Activity implements OnClickListener
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

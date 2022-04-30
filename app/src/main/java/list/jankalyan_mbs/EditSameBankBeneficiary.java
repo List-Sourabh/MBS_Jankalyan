@@ -67,7 +67,7 @@ public class EditSameBankBeneficiary extends Activity implements
 	ImageView img_heading;
 	Editor e;
 	private MyThread t1;
-	int timeOutInSecs=300;
+	 
 	private String benInfo = "";
 	private static String NAMESPACE = "";
 	private static String URL = "";
@@ -233,7 +233,7 @@ public class EditSameBankBeneficiary extends Activity implements
 					public void onNothingSelected(AdapterView<?> arg0) {
 					}
 				});// end spi_sel_beneficiery
-		t1 = new MyThread(timeOutInSecs,this,var1,var3);
+		t1 = new MyThread( Integer.parseInt(getString(R.string.Time_out)),this,var1,var3);
 		t1.start();
 	}
 
@@ -1304,7 +1304,7 @@ public class EditSameBankBeneficiary extends Activity implements
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
-		t1.sec = timeOutInSecs;
+		t1.sec =  Integer.parseInt(getString(R.string.Time_out));
 		Log.e("sec11= ","sec11=="+t1.sec);
 		return super.onTouchEvent(event);
 	}

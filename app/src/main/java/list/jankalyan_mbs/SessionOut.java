@@ -100,7 +100,7 @@ public class SessionOut extends Activity implements OnClickListener {
 		
 		Log.e("SAM","ONCLICK1 ");
 		Log.e("SAM2","ONCLICK if 2 ");
-		Intent in = new Intent(this, LoginActivity.class);
+		Intent in = new Intent(this, SplashPage.class);
 		in.putExtra("var1", var1);
 		in.putExtra("var3", var3);
 		startActivity(in);
@@ -179,7 +179,7 @@ public class SessionOut extends Activity implements OnClickListener {
 			protected void onPostExecute(Void paramVoid) // "BANKNAMES"
 			{
 				var3 = var5;// xml_data[0];
-	Log.e("strvar","----"+var3);
+				Log.e("strvar","----"+var3);
 				try {
 					continueBtn.setEnabled(true);
 					
