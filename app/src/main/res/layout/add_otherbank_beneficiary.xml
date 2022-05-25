@@ -139,12 +139,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:gravity="left"
+                android:visibility="gone"
                 android:text="@string/lbl_VPA"
                 android:textColor="#372c24" >
             </mbLib.CusFntTextView>
 
             <mbLib.CustomEditText
                 android:id="@+id/txtVPA"
+                android:visibility="gone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -177,7 +179,8 @@
                 android:layout_marginTop="10dip"
                 android:gravity="left"
                 android:text="@string/lbl_mmid"
-                android:textColor="#372c24" >
+                android:textColor="#372c24"
+                android:visibility="gone">
             </mbLib.CusFntTextView>
 
             <mbLib.CustomEditText
@@ -185,7 +188,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="" >
+                android:text=""
+                android:visibility="gone">
             </mbLib.CustomEditText>
 
             <mbLib.CusFntTextView

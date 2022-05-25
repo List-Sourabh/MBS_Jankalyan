@@ -50,10 +50,9 @@ import mbLib.MyThread;
 
 public class AddOtherBankBeneficiary extends Activity implements OnClickListener {
 	AddOtherBankBeneficiary act = this;
-	AddOtherBankBeneficiary addOtherBankBenf;
 	EditText txtIFSC_Code, txtVPA, txtMobile_No, txtAccNo, txtName, txtBank,
 			txtBranch, txtEmail, txtNick_Name,txtAccNoconf,txt_mmid;
-	Button btn_submit, fetchIFSC;
+	Button btn_submit;
 	LinearLayout add_benf_layout, get_ifsc_layout;
 	TextView txt_heading;
 	ProgressBar p_wait;
@@ -63,25 +62,19 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 	Spinner spi_bank, spi_state, spi_district, spi_city, spi_branch;
 	ImageButton btn_home, spnr_btn1, spnr_btn2, spnr_btn3, spnr_btn4,btn_back,
 			spnr_btn5, btn_fetchBnkBrn;
-	// DialogBox dbs;
 
-
-	String account_No = "", name = "", mobile_no = "", nick_name = "",
-			email = "", same_bank = "", ifsc_code = "", insrtUpdtDlt = "";
-	String stringValue, str2 = "", mobPin = "", tmpXMLString = "", retVal = "",
-			userpin = "";
+	String  same_bank = "", insrtUpdtDlt = "";
 	String custId = "", accNo = "", accNm = "", mobNo = "", nickNm = "",
 			mailId = "";
-	String ifsCD = "", bnCD = "", brCD = "", mmId = "", strIfsc = "",vpa="";
-	String acnt_inf, all_acnts, str = "", retMess = "", cust_name = "",
-			checkedValue = "";
-	int cnt = 0, flag = 0, checkCnt = 0;
+	String ifsCD = "", mmId = "", strIfsc = "",vpa="";
+	String retMess = "", checkedValue = "";
+	int  flag = 0, checkCnt = 0;
 	Bundle bdn;
 	public String encrptdMpin;
-	String when_fetch = "",respcode="",retvalweb="",respdescget_bnkbrn="",respdescsave_beneficiary="";
+	String respcode="",retvalweb="",respdescget_bnkbrn="",respdescsave_beneficiary="";
 	String respdescGetStates="",respdescGetDistricts="",respdescGetCities="",respdescGetBranches="",respdescGetIFSC="";
 	private String userId;
-	ImageView img_heading,btn_home1;
+	ImageView img_heading;
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -98,14 +91,15 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 		img_heading = (ImageView) findViewById(R.id.img_heading);
 		img_heading.setBackgroundResource(R.mipmap.benefeciary2);
 		// SharedPreferences sp = act.getSharedPreferences(MY_SESSION,
-		 var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
-	       var3 = (String) getIntent().getSerializableExtra("var3");
+		var1 = (PrivateKey) getIntent().getSerializableExtra("var1");
+		var3 = (String) getIntent().getSerializableExtra("var3");
 		Cursor c1 = dbms.selectFromTable("SHAREDPREFERENCE", "", null);// ("select * from ",
 																		// null);
-		if (c1 != null) {
-			while (c1.moveToNext()) {
+		if (c1 != null)
+		{
+			while (c1.moveToNext())
+			{
 				custId = c1.getString(2);
-				Log.e("retValStr", "......" + custId);
 			}
 		}
 
@@ -1202,10 +1196,8 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 				saveFlag = "ERR";
 				retMess = getString(R.string.alert_151);
 				showAlert(retMess);
-			} else // if(isAccComplete || isMMIDComplete)//Either One is true so
-					// valid
+			} else
 			{
-				
 				if (ifsc_len != 0 && ifsc_len != 11) {
 					saveFlag = "ERR";
 					retMess = getString(R.string.alert_166);
@@ -1739,7 +1731,7 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 	            jsonObj.put("MAILID", mailId);
 	            jsonObj.put("TRANSFERTYPE", same_bank);
 	            jsonObj.put("IFSCCD", ifsCD);
-	            jsonObj.put("MMID", mmId);
+	            //jsonObj.put("MMID", mmId);
 				jsonObj.put("VPA", vpa);
 	            jsonObj.put("IINSERTUPDTDLT", insrtUpdtDlt);
 	            jsonObj.put("BENSRNO", "00");

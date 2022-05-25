@@ -189,7 +189,7 @@ public class QrcodeSendActivity extends Activity implements OnClickListener
 //		mCodeScanner = new GpCodeScanner(this, scannerView);
 		
 		spi_debit_account = (Spinner) findViewById(R.id.sameBnkTranspi_debit_account);
-txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
+		txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		
 		btn_submit = (Button) findViewById(R.id.sameBnkTranbtn_submit);
 		//txtAccNo = (EditText) findViewById(R.id.sameBnkTrantxtAccNo);
@@ -208,50 +208,41 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 //		CodeScannerView scannerView = findViewById(R.id.scanner_view);
 //		mCodeScanner = new CodeScanner(this, scannerView);
 		if(flg==0)
-		{	
-		
-	spi_debit_account
-			.setOnItemSelectedListener(new OnItemSelectedListener() {
-
+		{
+			spi_debit_account.setOnItemSelectedListener(new OnItemSelectedListener()
+			{
 				@Override
-				public void onItemSelected(AdapterView<?> arg0, View arg1,
-						int arg2, long arg3) {
-
-		
+				public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2, long arg3)
+				{
 					str=spi_debit_account.getSelectedItem().toString();
-					Log.e("arg2= ","arg2="+arg2);
-					Log.e("arg2= ","arg2="+arg2);
-					Log.e("arg2= ","arg2="+arg2);
 					if (arg2 == 0)
 					{
 						txtBalance.setText("");
 					}
-						
-					else if (arg2 != 0) {
-					Log.e("str= ","str="+str);
-					Log.e("str= ","str="+str);
-					Log.e("str= ","str="+str);
-                    if(str.equalsIgnoreCase("Select Debit Account"))
+					else if (arg2 != 0)
 					{
-                           txtBalance.setText("");
-					}else
-					{
-				if (spi_debit_account.getCount() > 0) {
-					
-						Accounts selectedDrAccount = acArray[spi_debit_account.getSelectedItemPosition()-1];
-						String balStr = selectedDrAccount.getBalace();
-						String drOrCr = "";
-						float amt = Float.parseFloat(balStr);
-						if (amt > 0)
-							drOrCr = " Cr";
-						else if (amt < 0)
-							drOrCr = " Dr";
-						if (balStr.indexOf(".") == -1)
-							balStr = balStr + ".00";
-						balStr = balStr + drOrCr;
-						txtBalance.setText(balStr);
-					}
-					}
+						if(str.equalsIgnoreCase("Select Debit Account"))
+						{
+							   txtBalance.setText("");
+						}
+						else
+						{
+							if (spi_debit_account.getCount() > 0)
+							{
+								Accounts selectedDrAccount = acArray[spi_debit_account.getSelectedItemPosition()-1];
+								String balStr = selectedDrAccount.getBalace();
+								String drOrCr = "";
+								float amt = Float.parseFloat(balStr);
+								if (amt > 0)
+									drOrCr = " Cr";
+								else if (amt < 0)
+									drOrCr = " Dr";
+								if (balStr.indexOf(".") == -1)
+									balStr = balStr + ".00";
+								balStr = balStr + drOrCr;
+								txtBalance.setText(balStr);
+							}
+						}
 					}
 				}// end onItemSelected
 
@@ -277,8 +268,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 	}
 
 	public void addAccounts(String str) {
-		//System.out.println("SameBankTransfer IN addAccounts()" + str);
-
 		try {
 			ArrayList<String> arrList = new ArrayList<String>();
 			String allstr[] = str.split("~");
@@ -289,13 +278,8 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			acArray = new Accounts[noOfAccounts];
 			int j=0;
 			for (int i = 0; i < noOfAccounts; i++) {
-				// System.out.println(i + "----STR1-----------" + str1[i]);
-				// str2 = str1[i];
-				//System.out.println(i + "----STR1-----------" + allstr[i]);
 				str2 = allstr[i];
 				String tempStr=str2;
-				//System.out.println(i + "str2-----------" + str2);
-				
 				str2 = str2.replaceAll("#", "-");
 				String accType = str2.split("-")[2];
 				String oprcd=str2.split("-")[7];
@@ -312,14 +296,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 					arrListTemp.add(str2);
 				}
 			}
-			/*
-			 * ArrayAdapter<String> arrAdpt = new ArrayAdapter<String>(this,
-			 * R.layout.spinner_item, arrList);
-			 * arrAdpt.setDropDownViewResource
-			 * (android.R.layout.simple_spinner_dropdown_item);
-			 * spi_debit_account.setAdapter(arrAdpt);
-			 * Log.i("OtherBankTranIMPS ", "Exiting from adding accounts");
-			 */
 			if(arrList.size()==0)
 			{
 				noAccounts=true;
@@ -328,37 +304,24 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			}
 			String[] debAccArr = new String[arrList.size()];
 			debAccArr = arrList.toArray(debAccArr);
-			/*CustomeSpinnerAdapter debAccs = new CustomeSpinnerAdapter(act,
-					R.layout.spinner_layout, debAccArr);*/
+
 			ArrayAdapter<String> debAccs = new ArrayAdapter<String>(act,R.layout.spinner_item, debAccArr);
 			debAccs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spi_debit_account.setAdapter(debAccs);
-
-	//Me..		acnt_inf = spi_debit_account.getItemAtPosition(
-	//				spi_debit_account.getSelectedItemPosition()).toString();
-			//Log.i("SameBankTransfer MAYURI....", acnt_inf);
 		} catch (Exception e) {
 			System.out.println("" + e);
 			e.printStackTrace();
-
 		}
-
 	}// end addAccount
 
 	public int chkConnectivity() {// chkConnectivity
-		//System.out.println("============= inside chkConnectivity ================== ");
-		// pb_wait.setVisibility(ProgressBar.VISIBLE);
 		flag = 0;
 		ConnectivityManager cm = (ConnectivityManager) act
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		//System.out.println("============= inside chkConnectivity 1 ================== ");
 		NetworkInfo ni = cm.getActiveNetworkInfo();
-		//System.out.println("============= inside chkConnectivity  2 ================== ");
 		try {
-			//System.out.println("============= inside chkConnectivity 3 ================== ");
 			State state = ni.getState();
 			boolean state1 = ni.isAvailable();
-			//System.out.println("state1 ---------" + state1);
 			if (state1) {
 				switch (state) 
 				{
@@ -392,29 +355,19 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			} else {
 				flag = 1;
 				retMess = getString(R.string.alert_000);
-				// setAlert();
-
 				showAlert(retMess);
-
 			}
 		} catch (NullPointerException ne) {
-
-			Log.i("mayuri", "NullPointerException Exception" + ne);
 			flag = 1;
 			retMess = getString(R.string.alert_000);
-			// setAlert();
-
 			showAlert(retMess);
 
 		} catch (Exception e) {
 			Log.i("mayuri", "Exception" + e);
 			flag = 1;
 			retMess = getString(R.string.alert_000);
-			// setAlert();
-
 			showAlert(retMess);
 		}
-		//System.out.println("=========== Exit from chkConnectivity ================");
 		return flag;
 	}
 
@@ -423,17 +376,11 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		String retval = "";
 		LoadProgressBar loadProBarObj = new LoadProgressBar(act);
 		JSONObject obj=new JSONObject();
-		
-		
 		protected void onPreExecute() 
 		{
 			loadProBarObj.show();
 			String charges=txt_charges.getText().toString().split(" ")[1];
-			
-			Log.e("QRSEND","debitAccno==="+debitAccno.substring(0, 16));
-		
 			try {
-				
 				obj.put("BENFSRNO", "");
 				obj.put("CRACCNO", accNo);
 				obj.put("DRACCNO", debitAccno.substring(0, 16));
@@ -460,8 +407,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
 		}
 
 		protected Void doInBackground(Void... arg0) 
@@ -496,18 +441,13 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 
 		protected void onPostExecute(Void paramVoid) 
 		{
-		
-			//System.out.println("xml_data.len :" + xml_data.length);
-			
-		
 			loadProBarObj.dismiss();
 			JSONObject jsonObj;
 			try
 			{
 				String str=CryptoClass.Function6(var5,var2);
 				jsonObj = new JSONObject(str.trim());
-		
-			
+
 				if (jsonObj.has("RESPCODE"))
 				{
 					respcode = jsonObj.getString("RESPCODE");
@@ -542,116 +482,102 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			{
 				showAlert(saveTransferTranrespdesc);
 			}
-			else{
-			// retval = "SUCCESS";
-			
-			if (reTval.indexOf("SUCCESS") > -1) 
+			else
 			{
-				post_successsaveTransferTran(reTval);
-	
-			}
-			else if(reTval.indexOf("DUPLICATE") > -1)
-			{
-				
-				retMess = getString(R.string.alert_119)+tranId+"\n"+ getString(R.string.alert_120);
-				showAlert(retMess);
-				/*Intent in1=new Intent(act,FundTransferMenuActivity.class);
-				startActivity(in1);
-				act.finish();*/
-			}
-			else if(reTval.indexOf("FAILED#") > -1)
-			{
-				retMess = getString(R.string.alert_032);
-				showAlert(retMess);//setAlert();
+				if (reTval.indexOf("SUCCESS") > -1)
+				{
+					post_successsaveTransferTran(reTval);
 
-	        }
-            else if (reTval.indexOf("WRONGTRANPIN") > -1) 
-			{
-				String msg[] = reTval.split("~");
-				String first=msg[1];
-				String second=msg[2];
-				Log.e("first", "-------"+first);
-				Log.e("second", "-------"+second);
-
-				int count=Integer.parseInt(second);
-				count= 5-count;
-				//loadProBarObj.dismiss();
-				retMess = getString(R.string.alert_125_1)+" "+count+" "+getString(R.string.alert_125_2);
-				showAlert(retMess);
-			}
-			else if (reTval.indexOf("BLOCKEDFORDAY") > -1) 
-			{
-				//loadProBarObj.dismiss();
-				retMess = getString(R.string.login_alert_005);
-				showAlert(retMess);
-			}
-			else if(reTval.indexOf("FAILED") > -1)
-			{
-				if(reTval.split("~")[1]!="null" || reTval.split("~")[1]!="")
-				{
-					errorCode=reTval.split("~")[1];
 				}
-				else
+				else if(reTval.indexOf("DUPLICATE") > -1)
 				{
-					errorCode="NA";
-				}
-				
-				if(errorCode.equalsIgnoreCase("999"))
-				{
-					retMess = getString(R.string.alert_179);
+					retMess = getString(R.string.alert_119)+tranId+"\n"+ getString(R.string.alert_120);
 					showAlert(retMess);
 				}
-				else if(errorCode.equalsIgnoreCase("001"))
+				else if(reTval.indexOf("FAILED#") > -1)
 				{
-					    retMess = getString(R.string.alert_180);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("002"))
-				{
-					    retMess = getString(R.string.alert_181);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("003"))
-				{
-					    retMess = getString(R.string.alert_182);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("004"))
-				{
-					retMess = getString(R.string.alert_179);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("005"))
-				{
-					    retMess = getString(R.string.alert_183);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("006"))
-				{
-					    retMess = getString(R.string.alert_184);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("007"))
-				{
-					retMess = getString(R.string.alert_179);
-						showAlert(retMess);
-				}
-				else if(errorCode.equalsIgnoreCase("008"))
-				{
-					    retMess = getString(R.string.alert_176);
-						showAlert(retMess);
-				}
-				else
-				{
-					retMess = getString(R.string.trnsfr_alert_001);
+					retMess = getString(R.string.alert_032);
 					showAlert(retMess);//setAlert();
-					/*Intent in1=new Intent(act,FundTransferMenuActivity.class);
-					startActivity(in1);
-					act.finish();*/
 				}
-			}// end else
+				else if (reTval.indexOf("WRONGTRANPIN") > -1)
+				{
+					String msg[] = reTval.split("~");
+					String first=msg[1];
+					String second=msg[2];
+
+					int count=Integer.parseInt(second);
+					count= 5-count;
+					retMess = getString(R.string.alert_125_1)+" "+count+" "+getString(R.string.alert_125_2);
+					showAlert(retMess);
+				}
+				else if (reTval.indexOf("BLOCKEDFORDAY") > -1)
+				{
+					retMess = getString(R.string.login_alert_005);
+					showAlert(retMess);
+				}
+				else if(reTval.indexOf("FAILED") > -1)
+				{
+					if(reTval.split("~")[1]!="null" || reTval.split("~")[1]!="")
+					{
+						errorCode=reTval.split("~")[1];
+					}
+					else
+					{
+						errorCode="NA";
+					}
+
+					if(errorCode.equalsIgnoreCase("999"))
+					{
+						retMess = getString(R.string.alert_179);
+						showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("001"))
+					{
+							retMess = getString(R.string.alert_180);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("002"))
+					{
+							retMess = getString(R.string.alert_181);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("003"))
+					{
+							retMess = getString(R.string.alert_182);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("004"))
+					{
+						retMess = getString(R.string.alert_179);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("005"))
+					{
+							retMess = getString(R.string.alert_183);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("006"))
+					{
+							retMess = getString(R.string.alert_184);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("007"))
+					{
+						retMess = getString(R.string.alert_179);
+							showAlert(retMess);
+					}
+					else if(errorCode.equalsIgnoreCase("008"))
+					{
+							retMess = getString(R.string.alert_176);
+							showAlert(retMess);
+					}
+					else
+					{
+						retMess = getString(R.string.trnsfr_alert_001);
+						showAlert(retMess);//setAlert();
+					}
+				}// end else
 			}
-			
 		}// end onPostExecute
 	}// end callWbService2
 	
@@ -661,9 +587,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		saveTransferTranrespdesc="";
 		retMess = getString(R.string.alert_FundTransfersuccess)+" "+getString(R.string.alert_reqId)+" "+tranId;
 		showAlert(retMess);
-		/*Intent in1=new Intent(this,DashboardActivity.class);
-		startActivity(in1);
-		act.finish();*/
 	}
 	
 	@Override
@@ -690,24 +613,16 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		} 
 		else if (v.getId() == R.id.sameBnkTranbtn_submit) 
 		{
-			//strFromAccNo=arrListTemp.get(spi_debit_account.getSelectedItemPosition());
 			strFromAccNo = spi_debit_account.getSelectedItem().toString();
-			//act.selectedItem=spi_debit_account.getSelectedItemPosition();
 			strAmount = txtAmt.getText().toString().trim();
 			strRemark = txtRemk.getText().toString().trim();
 			String debitAcc = strFromAccNo.substring(0, 16);
-			Log.e("dbtacc", "-----"+debitAcc);
 			String balString=txtBalance.getText().toString().trim();
-			//acArray[spi_debit_account.getSelectedItemPosition()-1].getBalace();
 			if(balString.length()>0)
 			{
 				balString=balString.substring(0,balString.length()-2);
-				Log.e("balance=","balString=="+balString);
-				Log.e("balance=","balString=="+balString);
 				balance=Double.parseDouble(balString);
 				balance=Math.abs(balance);
-				Log.e("balance=","balance=="+balance);
-				Log.e("balance=","balance=="+balance);
 			}
 			
 			if(debitAcc.indexOf("Select")> -1){
@@ -721,12 +636,10 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			{
 				showAlert(getString(R.string.alert_plzEnterValidAmo));
 			}
-			
 			else if(Double.parseDouble(strAmount)==0)
 			{
 				showAlert(getString(R.string.alert_plzAmoutGrtZero));
 			}
-			
 			else if (Double.parseDouble(strAmount) > balance) {
 				showAlert(getString(R.string.alert_InsufficentBalance));
 			}
@@ -738,12 +651,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			{
 				ScanInputDialogBox inputBox = new ScanInputDialogBox(act);
 				inputBox.show();
-				/*act.QRAMT=strAmount;
-				act.QRCUSTID=custId;
-				act.QRDBTACCNO=strFromAccNo;
-				act.QRREMARK=strRemark;
-				new IntentIntegrator(act).initiateScan();*/
-				
 			}
 		}
 		else if (v.getId() == R.id.btn_confirm)
@@ -814,13 +721,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 
 	public void saveData() {
 		try {
-			//System.out.println("--------------- 44 ------------");
-			//this.flag = chkConnectivity();
-			/*if (this.flag == 0) 
-			{
-				new CallWebService2().execute();
-			}*/
-			
 			JSONObject obj=new JSONObject();
 			try {
 				String charges=txt_charges.getText().toString().split(" ")[1];
@@ -844,9 +744,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				e.printStackTrace();
 			}
 			
-			//Log.e("SAMEBANK","obj.toString()=="+obj.toString());
 			Bundle bundle=new Bundle();
-			//Fragment fragment = new TransferOTP(act);
 			bundle.putString("CUSTID", custId);
 			bundle.putString("FROMACT", "QRSEND");
 			bundle.putString("JSONOBJ", obj.toString());
@@ -856,9 +754,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			   in.putExtras(bundle);
 			act.startActivity(in);
 			act.finish();
-			/*fragment.setArguments(bundle);
-			FragmentManager fragmentManager = this.getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();*/
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception in saveTransferTran is:" + e);
@@ -903,28 +798,12 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				  	retMess=getString(R.string.alert_enterTranMpin); 
 				  	showAlert(retMess);//setAlert();
 				  	this.show(); 
-				  } 
-				  /*else if(str.length()!=6)
-				  {
-					retMess=getString(R.string.alert_tranmpin);
-					showAlert(retMess);//setAlert();
-				  	this.show(); 
-				  } */
+				  }
 				  else 
 				  {
-				  	//if(encrptdTranMpin.equals(tranPin)) 
-				  	{ 
-				  		//saveData(); 
-				  		 callValidateTranpinService validateTran=new callValidateTranpinService();
-							validateTran.execute();
-				  		this.hide(); 
-				 	} 
-				  	/*else 
-				  	{
-				  		retMess=getString(R.string.alert_118); 
-				  		showAlert(retMess);//setAlert();
-				  		this.show(); 
-				  	} */
+				  	callValidateTranpinService validateTran=new callValidateTranpinService();
+				  	validateTran.execute();
+				  	this.hide();
 				  }
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -938,15 +817,10 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 	{
 		String retval = "";
 		LoadProgressBar loadProBarObj = new LoadProgressBar(act);
-		
-		
-		
 		JSONObject obj = new JSONObject();
 		protected void onPreExecute() 
 		{
 			loadProBarObj.show();
-			
-		
 			try 
 			{
 				String location=MBSUtils.getLocation(act);
@@ -959,15 +833,12 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				obj.put("OSVERSION", Build.VERSION.RELEASE);
 				obj.put("LATITUDE", location.split("~")[0]);
 				obj.put("LONGITUDE", location.split("~")[1]);
-				obj.put("METHODCODE","73"); 
-				
-				
+				obj.put("METHODCODE","73");
 			} 
 			catch (JSONException e) 
 			{
 				e.printStackTrace();
 			}
-		
 		}
 
 		protected Void doInBackground(Void... arg0) 
@@ -1004,10 +875,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		{
 			String str=CryptoClass.Function6(var5,var2);
 			String decryptedAccounts = str.trim();
-			
 			loadProBarObj.dismiss();
-			
-			
 				if (decryptedAccounts.indexOf("SUCCESS") > -1) 
 				{
 					saveData();
@@ -1017,7 +885,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 					retMess = getString(R.string.alert_032);
 					showAlert(retMess);// setAlert();
 				} 
-                           	else if (decryptedAccounts.indexOf("BLOCKEDFORDAY") > -1) 
+				else if (decryptedAccounts.indexOf("BLOCKEDFORDAY") > -1)
 				{
 					retMess = getString(R.string.login_alert_005);
 					showAlert(retMess);// setAlert();
@@ -1107,13 +975,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 					reMark=strRemark;
 					IntentIntegrator integrator = new IntentIntegrator(QrcodeSendActivity.this);
 					integrator.initiateScan();
-//					frame_qr.setVisibility(View.VISIBLE);
-//					mCodeScanner.startPreview();
-
-					//showAlert("This Facility is Coming Soon......!");
-
-
-
 					break;
 				case R.id.btnGalary:
 					custId=custId;
@@ -1124,7 +985,6 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 					Intent photoPic = new Intent(Intent.ACTION_PICK);
 			        photoPic.setType("image/*");
 			        startActivityForResult(photoPic, act.SELECT_PHOTO);
-					/*new IntentIntegrator(act).initiateScan();*/
 					break;
 				default:
 					break;
@@ -1165,7 +1025,7 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 						{
 							this.dismiss();
 						}
-					else if(this.textMessage.equalsIgnoreCase(act.getString(R.string.alert_wrongtranpin)))
+						else if(this.textMessage.equalsIgnoreCase(act.getString(R.string.alert_wrongtranpin)))
 						{
 							InputDialogBox inputBox = new InputDialogBox(act);
 							inputBox.show();
@@ -1226,32 +1086,26 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 	
 	class CallWebServiceGetSrvcCharg extends AsyncTask<Void, Void, Void> 
 	{
-		String retval = "";
 		LoadProgressBar loadProBarObj;//
 		JSONObject obj=new JSONObject();
 		
-		String benAcNo;
-		protected void onPreExecute() 
+		protected void onPreExecute()
 		{
 			loadProBarObj = new LoadProgressBar(act);
-			Log.e("QRCodeSend","debitAccno=="+debitAccno);
-			
 			try {
-				
 				obj.put("CUSTID", custId);
 				obj.put("TRANTYPE", "QR");
+				obj.put("PAYMODE", "UPI");
 				obj.put("DRACCNO", debitAccno.substring(0, 16));
 				obj.put("AMOUNT", amt);
-				obj.put("CRACCNO", accNo);
+				obj.put("VPA", accNo);
 				obj.put("IMEINO", MBSUtils.getImeiNumber(act));
 				obj.put("SIMNO", MBSUtils.getSimNumber(act));
-				obj.put("METHODCODE","28"); 
+				obj.put("METHODCODE","97");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
 			loadProBarObj.show();
 		}
 
@@ -1293,88 +1147,87 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 
 		protected void onPostExecute(Void paramVoid) 
 		{
-			
-		      
-				loadProBarObj.dismiss();
-				 JSONObject jsonObj;
-		   			try
-		   			{
-		   				String str=CryptoClass.Function6(var5,var2);
-						Log.e("onPostExecuteqrsend---","str=="+str);
-						jsonObj = new JSONObject(str.trim());
-		   			
-		   				if (jsonObj.has("RESPCODE"))
-		   				{
-		   					respcode = jsonObj.getString("RESPCODE");
-		   				}
-		   				else
-		   				{
-		   					respcode="-1";
-		   				}
-		   				if (jsonObj.has("RETVAL"))
-		   				{
-		   					reTval = jsonObj.getString("RETVAL");
-		   				}
-		   				else
-		   				{
-		   					reTval = "";
-		   				}
-		   				if (jsonObj.has("RESPDESC"))
-		   				{
-		   					getTransferChargesrespdesc= jsonObj.getString("RESPDESC");
-		   				}
-		   				else
-		   				{	
-		   					getTransferChargesrespdesc= "";
-		   				}
-		   			} catch (JSONException e) 
-		   			{
-		   				// TODO Auto-generated catch block
-		   				e.printStackTrace();
-		   			}
-		   			
-		   			if(getTransferChargesrespdesc.length()>0)
-		   			{
-		   				showAlert(getTransferChargesrespdesc);
-		   			}
-		   			else{
-				if (reTval.indexOf("SUCCESS") > -1) 
+			loadProBarObj.dismiss();
+			JSONObject jsonObj;
+			try
+			{
+				String str=CryptoClass.Function6(var5,var2);
+				Log.e("onPostExecuteqrsend---","str=="+str);
+				jsonObj = new JSONObject(str.trim());
+
+				if (jsonObj.has("RESPCODE"))
 				{
-					post_successGetSrvcCharg(reTval);
-					
-				} 	
-				else 
+					respcode = jsonObj.getString("RESPCODE");
+				}
+				else
 				{
-					if (reTval.indexOf("LIMIT_EXCEEDS") > -1) 
-					{
-						retMess = getString(R.string.alert_031);
-						//loadProBarObj.dismiss();
-						showAlert(retMess);//setAlert();
-					} 
-					else if (reTval.indexOf("LOWBALANCE") > -1) {
-						retMess = getString(R.string.alert_176);
+					respcode="-1";
+				}
+				if (jsonObj.has("RETVAL"))
+				{
+					reTval = jsonObj.getString("RETVAL");
+				}
+				else
+				{
+					reTval = "";
+				}
+				if (jsonObj.has("RESPDESC"))
+				{
+					getTransferChargesrespdesc= jsonObj.getString("RESPDESC");
+				}
+				else
+				{
+					getTransferChargesrespdesc= "";
+				}
+				}
+			catch (JSONException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			if(getTransferChargesrespdesc.length()>0)
+			{
+				showAlert(getTransferChargesrespdesc);
+			}
+			else{
+			if (reTval.indexOf("SUCCESS") > -1)
+			{
+				post_successGetSrvcCharg(reTval);
+
+			}
+			else
+			{
+				if (reTval.indexOf("LIMIT_EXCEEDS") > -1)
+				{
+					retMess = getString(R.string.alert_031);
+					//loadProBarObj.dismiss();
+					showAlert(retMess);//setAlert();
+				}
+				else if (reTval.indexOf("LOWBALANCE") > -1) {
+					retMess = getString(R.string.alert_176);
+					loadProBarObj.dismiss();
+					showAlert(retMess);
+				}
+				 else if (reTval.indexOf("SingleLimitExceeded") > -1) {
+						retMess = getString(R.string.alert_signledaylmt);
 						loadProBarObj.dismiss();
 						showAlert(retMess);
-					}                                    
-					 else if (reTval.indexOf("SingleLimitExceeded") > -1) {
-							retMess = getString(R.string.alert_signledaylmt);
-							loadProBarObj.dismiss();
-							showAlert(retMess);
-						}
-					
-					 else if (reTval.indexOf("TotalLimitExceeded") > -1) {
-							retMess = getString(R.string.alert_194);
-							loadProBarObj.dismiss();
-							showAlert(retMess);
-						}
-					else
-					{
-						retMess = getString(R.string.alert_032);
-						//loadProBarObj.dismiss();
-						showAlert(retMess);//setAlert();
 					}
+
+				 else if (reTval.indexOf("TotalLimitExceeded") > -1) {
+						retMess = getString(R.string.alert_194);
+						loadProBarObj.dismiss();
+						showAlert(retMess);
+					}
+				else
+				{
+					retMess = getString(R.string.alert_032);
+					//loadProBarObj.dismiss();
+					showAlert(retMess);//setAlert();
+				}
 				}// end else
-		   			}
+			}
 		}// end onPostExecute
 	}// end CallWebServiceGetSrvcCharg
 
@@ -1383,13 +1236,11 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 		respcode="";
 		getTransferChargesrespdesc="";
 
-		//loadProBarObj.dismiss();
 		same_bnk_layout.setVisibility(same_bnk_layout.INVISIBLE);
 		confirm_layout.setVisibility(confirm_layout.VISIBLE);
 
 		String retStr=reTval.split("~")[1];
-         String tranType=reTval.split("~")[2];
-		Log.e("PostExecute==","tranType==="+tranType);
+		String tranType=reTval.split("~")[2];
 		String[] val=retStr.split("#");
 		txt_heading.setText("Confirmation");
 		txt_remark.setText(reMark.trim());
@@ -1409,27 +1260,14 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 	{
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 		super.onActivityResult(requestCode, resultCode, data);
-		Log.e("DEMOHOME","11====="+requestCode);
-		Log.e("DEMOHOME","22====="+resultCode);
-		Log.e("DEMOHOME","33====="+data);
+		Log.e("DEMOHOME", "requestCode===" + requestCode);
 		if(requestCode == 100) {
 			if (data == null || data.equals(null)) {
 				Toast.makeText(QrcodeSendActivity.this, "Image Not Selected", Toast.LENGTH_SHORT).show();
-			/*Fragment fragment = new QrcodeSendActivity();
-			act.setTitle(getString(R.string.lbl_qr_send));
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-			act.frgIndex=55;*/
 			} else {
-
-
 				InputStream imageStream = null;
 				try {
-
 					Uri selectedImage = data.getData();
-					//getting the image
-					Log.e("QRSEND", "data.getData()111111=====" + selectedImage);
-
 					imageStream = act.getContentResolver().openInputStream(selectedImage);
 				} catch (FileNotFoundException e) {
 					Toast.makeText(act, "File not found", Toast.LENGTH_SHORT).show();
@@ -1454,37 +1292,16 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 				// ChecksumException
 				try {
 					Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
-
-					//Log.e("DEMOHOME","barcode=111="+barcode);
 					decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-					// Log.e("DEMOHOME","barcode=222="+barcode);
 					decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-					Log.e("DEMOHOME", "decodeHints=333=" + decodeHints);
 					Result result = reader.decode(bitmap, decodeHints);
-					Log.e("DEMOHOME", "result=444=" + result);
 					//*I have created a global string variable by the name of barcode to easily manipulate data across the application*//
 					barcode = result.getText().toString().trim();
-					Log.e("DEMOHOME", "barcode=555=" + barcode);
-
+					Toast.makeText(act,barcode,Toast.LENGTH_LONG).show();
 					if (barcode != null) {
-
 						if (validateAccNo(barcode)) {
-							Log.e("DEMOHOME5555", "barcode==++" + barcode);
-
-							//DEMOHOME5555: barcode==++00200138000000027
-							Log.e("debitAccno", "debitAccno==++" + debitAccno);
-
-							//debitAccno==++0020013800000002 (Savings)
-
-
-							//accNo="00200042010036521";
 							accNo = barcode.substring(0, barcode.length() - 1);
-							Log.e("accNo===============", "accNo==++" + accNo);
-							// accNo==++0020013800000002
 							debitAccno = strFromAccNo.substring(0, 16);
-							Log.e("SAM==========", "debitAccno==" + debitAccno);
-
-							Log.e("SAM==========", "debitAccno==" + debitAccno + "==" + accNo);
 							if (accNo.equals(debitAccno)) {
 								showAlert(getString(R.string.alert_canNotSame));
 							} else {
@@ -1543,9 +1360,9 @@ txtBalance = (EditText) findViewById(R.id.sameBnkTrantxtBal);
 			try {
 				if(contents != null)
 				{
-
 					debitAccno = debitAccno.substring(0,16);
-				accNo = contents.substring(0, contents.length() - 1);
+					accNo = contents.substring(0, contents.length() - 1);
+					accNo=accNo.substring(accNo.indexOf("=")+1,accNo.indexOf("&"));
 					Log.e("TAG", "onActivityResult: QR ACCOUNT--------------------------->"+accNo);
 					Log.e("TAG", "onActivityResult: Original Acount--------------------------->"+debitAccno);
 

@@ -1146,7 +1146,6 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             }
             catch (JSONException e)
             {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }// end onPostExecute
@@ -1155,10 +1154,10 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
     public void post_GetSrvcCharg(String retval)
     {
         respcode="";	respdesc_GetSrvcCharg= "";
-        retStr = retval.split("~")[1];
-
+        retStr = retval.split("~")[1];//SUCCESS~2.36##2205046321#0#0#0#SUCCESS
+        Log.e("IMPS=",retval);
         String retStr1 = "";
-        retStr1 =retval.split("~")[2];
+        //retStr1 =retval.split("~")[2];
         if (retStr1.equalsIgnoreCase("nextDay"))
         {
             proceedTransaction();
@@ -1167,14 +1166,12 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
         {
             other_bnk_layout.setVisibility(other_bnk_layout.INVISIBLE);
             confirm_layout.setVisibility(confirm_layout.VISIBLE);
-            Log.e("CHRGS=",retStr);
             String[] val=retStr.split("#");
             txt_heading.setText("Confirmation");
             txt_remark.setText(strRemark);
             txt_trantype.setText(transaction);
             txt_from.setText(strFromAccNo);
             txt_to.setText(strToAccNo);
-            //txt_
             txt_amount.setText("INR "+strAmount);
             txt_charges.setText("INR "+val[0]);
             onlyCharge=val[0];
@@ -1182,42 +1179,40 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             tranId=val[2];
             servChrg=val[3];
             cess=val[4];
-            //Log.e("OTHERBNKTRAN","servChrg==="+servChrg+"==cess=="+cess);
             if(chrgCrAccNo.length()==0 || chrgCrAccNo.equalsIgnoreCase("null"))
                 chrgCrAccNo="";
-
             if(servChrg.equalsIgnoreCase("null"))
                 servChrg="0";
-
             if(cess.equalsIgnoreCase("null"))
                 cess="0";
-            //txt_charges.setText("INR "+(Float.parseFloat(val[0])+Float.parseFloat(servChrg)+Float.parseFloat(cess)));
-            txt_charges.setText("0");
+
+            txt_charges.setText(val[0]);
         }
     }
 
-    public void proceedTransaction() {
+    public void proceedTransaction()
+    {
         DialogBox dbs = new DialogBox(act);
         dbs.get_adb().setMessage(getString(R.string.alert_150));
         dbs.get_adb().setPositiveButton("OK",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        Intent in=new Intent(act,DashboardActivity.class);
-                        in.putExtra("var1", var1);
-                        in.putExtra("var3", var3);
-                        startActivity(in);
-                        //arg0.cancel();
-                    }
-                });
-
+        new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface arg0, int arg1)
+            {
+                Intent in=new Intent(act,DashboardActivity.class);
+                in.putExtra("var1", var1);
+                in.putExtra("var3", var3);
+                startActivity(in);
+            }
+        });
         dbs.get_adb().show();
     }
 
     @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
             case R.id.btn_back:
                 Intent intet=new Intent(OtherBankTranIMPS.this,FundTransferMenuActivity.class);
                 intet.putExtra("var1", var1);
@@ -1227,8 +1222,8 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
                 break;
 
             case R.id.btn_home:
-
                 break;
+
             case R.id.spinner_btn:
                 spi_debit_account.performClick();
                 break;
@@ -1236,6 +1231,7 @@ public class OtherBankTranIMPS extends Activity implements View.OnClickListener 
             case R.id.spinner_btn2:
                 spi_sel_beneficiery.performClick();
                 break;
+
             case R.id.spinner_btn3:
                 spi_payment_option.performClick();
                 break;
