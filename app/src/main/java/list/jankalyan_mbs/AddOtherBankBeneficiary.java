@@ -1228,7 +1228,15 @@ public class AddOtherBankBeneficiary extends Activity implements OnClickListener
 					retMess = getString(R.string.alert_025);
 					showAlert(retMess);
 					txtVPA.requestFocus();
-				} else if (mobNo.length() != 0 //&& //mobNo.length() != 10
+				}else if (mobNo.length() == 0) {
+					Log.e("Onclick ", "====mob_num  " + mobNo);
+					saveFlag = "ERR";
+					retMess = getString(R.string.alert_validmob);
+					showAlert(retMess);
+					txtMobile_No.requestFocus();
+					// }
+				}
+				 else if (mobNo.length() != 0 //&& //mobNo.length() != 10
 						&& (!MBSUtils.validateMobNo(mobNo))) {
 					Log.e("Onclick ", "====mob_num  " + mobNo);
 					saveFlag = "ERR";
