@@ -277,6 +277,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 		alert.show();
 
 	}
+
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) 
 	{
 		int pos = horizontalListview.getSelectedItemPosition();
@@ -288,7 +289,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 				Log.e("Patsanstha Case -2", "........SavingAccounts");
 				Intent in1=new Intent(this,SavingAccounts.class);
 				in1.putExtra("var1", var1);
-				   in1.putExtra("var3", var3);
+				in1.putExtra("var3", var3);
 				startActivity(in1);
 				finish();
 				break;

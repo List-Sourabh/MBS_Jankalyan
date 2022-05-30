@@ -574,4 +574,8 @@
 
 
     <string name="Time_out">300</string>
+
+    <!--Added by Shubham-->
+    <string name="vir_ac_no">Virtual Account Number</string>
+    <string name="vir_upa_ID">Virtual UPA ID</string>
 </resources>

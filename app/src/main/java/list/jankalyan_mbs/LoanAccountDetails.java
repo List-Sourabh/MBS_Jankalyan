@@ -44,7 +44,7 @@ public class LoanAccountDetails extends Activity implements OnClickListener {
 			txtlbl_interest;
 	EditText txt_current_bal, txt_utilisable_amt, txt_instlmnt_frq,
 			txt_instlmnt_amt, txt_pnd_instlmnts, txt_pnd_interest,
-			txt_instlmnt_interest, txt_pend_pinstlmntamt;
+			txt_instlmnt_interest, txt_pend_pinstlmntamt,vir_upa_ID,vir_ac_no;
 	ImageView img_heading;
 	ImageButton btn_home, btn_back;
 	String retMess = "",  custid = "", accountNo = "", accStr = "",retvalweb="",
@@ -91,6 +91,9 @@ public class LoanAccountDetails extends Activity implements OnClickListener {
 		layout_text1 = (LinearLayout) findViewById(R.id.layout_text1);
 		layout_text2 = (LinearLayout) findViewById(R.id.layout_text2);
 		txt_pend_pinstlmntamt = (EditText) findViewById(R.id.txt_pndinstlmnt_amt);
+
+		vir_ac_no = (EditText) findViewById(R.id.txt_vir_ac_no);
+		vir_upa_ID = (EditText) findViewById(R.id.txt_vir_upa_ID);
 
 		Bundle bObj = getIntent().getExtras();
 		if (bObj != null) {
@@ -341,6 +344,9 @@ public class LoanAccountDetails extends Activity implements OnClickListener {
 			txt_pnd_interest.setText(retValues[8]);
 			txt_pend_pinstlmntamt.setText(retValues[9]);
 			txt_instlmnt_interest.setText(retValues[10]);
+
+			vir_upa_ID.setText(retValues[11]);
+			vir_ac_no.setText(retValues[12]);
 
 		}
 	}
