@@ -61,38 +61,34 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 	TextView txt_register,txt_forgot_pass;
 	EditText txt_mpin1,txt_mpin2,txt_mpin3,txt_mpin4,txt_mpin5,txt_mpin6;
 	int cnt = 0, flag = 0;
-	private static String NAMESPACE = "";
-	private static String URL = "";
-	private static String SOAP_ACTION = "";
-	private static String METHOD_NAME = "";
-	private static String METHOD_NAME1 = "";
+
 	String respdesc="",respcode="",retvalweb="";
 	String retVal = "", encrptdMpin="",userId="";
 	DialogBox dbs;
 	CustomDialogClass cdc;
 	
-	int netFlg, gpsFlg,expdt;
-	int timeout = 5;
-	String pref = "G";
+	int  gpsFlg,expdt;
+
+
 	String version="";
 
 	private static final String MY_SESSION = "my_session";
 	Editor e;
 	public LocationManager locManager;
 	public BatteryManager batteryManager;
-	ImageView imageViewLogo;
+
 	DatabaseManagement dbms;
-	TextView tv_bankname;
+
 	Cursor curSelectBankname;
 	public String custid,customerId="";
 	public String mpin;
-	public String tranMpin,custId="",custnm="",usernm="",lastLogin="";
-	private String mobNo;
+	public String tranMpin,custId="",lastLogin="";
+	
 	boolean custIdFlg=false,isWsCallSuccess=false;;
 	String splitstr[];
 	public String decryptedAccounts,strexpdate;
 	PrivateKey var1 = null;
-	String var5 = "", var3 = "",osVersion;
+	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
 	boolean isBelowTen=true;
 	public void onCreate(Bundle savedInstanceState) 
@@ -733,8 +729,6 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 		protected void onPreExecute() 
 		{ 
 			loadProBarObj.show();
-			//ValidationData=MBSUtils.getValidationData(logAct);
-
 			try
 			{
 				jsonObj.put("CUSTID", custId);
@@ -743,17 +737,12 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 				jsonObj.put("MOBNO", strMobNo);
 				jsonObj.put("IMEINO", MBSUtils.getImeiNumber(LoginActivity.this));
 				jsonObj.put("SIMNO", MBSUtils.getSimNumber(LoginActivity.this));
-				jsonObj.put("METHODCODE","26");  
-				
-
-				METHOD_NAME1 = "mbsInterCall";
+				jsonObj.put("METHODCODE","26");
 			}
 			catch(Exception e)
 			{
 				e.printStackTrace();
 			}
-			
-			
 		};
 
 		@Override
@@ -795,68 +784,60 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 			loadProBarObj.dismiss();
 			if (isWSCalled) 
 			{
-				
-					
-					
-					
-					
 				JSONObject jsonObj;
 	            try
 	            {
 	            	String str=CryptoClass.Function6(var5,var2);
 	            	jsonObj = new JSONObject(str.trim());
 	            	
-	            		if (jsonObj.has("RESPCODE"))
+	            	if (jsonObj.has("RESPCODE"))
+					{
+						respcode = jsonObj.getString("RESPCODE");
+					}
+					else
+					{
+						respcode="-1";
+					}
+					if (jsonObj.has("RETVAL"))
+					{
+						retvalotp = jsonObj.getString("RETVAL");
+					}
+					else
+					{
+						retvalotp = "";
+					}
+					if (jsonObj.has("RESPDESC"))
+					{
+						respdescresend = jsonObj.getString("RESPDESC");
+					}
+					else
+					{
+						respdescresend = "";
+					}
+					if(respdescresend.length()>0)
+					{
+						showAlert(respdescresend);
+					}
+					else
+					{
+						if(retvalotp.split("~")[0].indexOf("SUCCESS")>-1)
 						{
-							respcode = jsonObj.getString("RESPCODE");
+							post_successresend(retvalotp);
 						}
 						else
 						{
-							respcode="-1";
+							retMess = LoginActivity.this.getString(R.string.alert_094);
+							showAlert(retMess);
 						}
-						if (jsonObj.has("RETVAL"))
-						{
-							retvalotp = jsonObj.getString("RETVAL");
-						}
-						else
-						{
-							retvalotp = "";
-						}
-						if (jsonObj.has("RESPDESC"))
-						{
-							respdescresend = jsonObj.getString("RESPDESC");
-						}
-						else
-						{	
-							respdescresend = "";
-						}
-	            	
-	            
-				if(respdescresend.length()>0)
+					}
+	            }
+	            catch (JSONException e)
 				{
-					showAlert(respdescresend);
-				}
-				else{
-				
-				if(retvalotp.split("~")[0].indexOf("SUCCESS")>-1)
-				{
-	            	post_successresend(retvalotp);
-				} 
-				else 
-				{
-					retMess = LoginActivity.this.getString(R.string.alert_094);
-					showAlert(retMess);
-				}}
-				
-	            	
-				} 
-	            catch (JSONException e) 
-				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-			} else {
+			}
+			else
+			{
 				retMess = LoginActivity.this.getString(R.string.alert_000);
 				showAlert(retMess);
 			}
@@ -864,74 +845,70 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 	}// CallWebService_resend_otp
 	
 	 public void post_successresend(String retvalstr)
-	    {
-	    	respdescresend="";
-	    	respcode="";
+	 {
+	 	respdescresend="";
+	 	respcode="";
 		String returnstr = retvalstr.split("~")[1];
 		String val[] = returnstr.split("!!");
 		
-		 strRefId=val[2];
+		strRefId=val[2];
 		String fromact="LOGIN";
 		
 		InputDialogBoxotp inputBox = new InputDialogBoxotp(LoginActivity.this);
 		inputBox.show();
-		
-		
-		
 	}
 	 
-	 public class InputDialogBoxotp extends Dialog implements OnClickListener {
-			Activity activity;
-			Button submit,resennd;
-			TextView txt_ref_id; 
-			 EditText txt_otp;
-			String textMessage,fromact,retstr;
-			boolean flg;
+	 public class InputDialogBoxotp extends Dialog implements OnClickListener
+	 {
+	 	Activity activity;
+	 	Button submit,resennd;
+	 	TextView txt_ref_id;
+	 	EditText txt_otp;
+	 	String textMessage,fromact,retstr;
+	 	boolean flg;
 
-			public InputDialogBoxotp(Activity activity) {
+	 	public InputDialogBoxotp(Activity activity) {
 				super(activity);
 			}// end InputDialogBox
 
-			protected void onCreate(Bundle bdn)
+		protected void onCreate(Bundle bdn)
+		{
+			super.onCreate(bdn);
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			setContentView(R.layout.otplogin);
+			submit = (Button)findViewById(R.id.btn_otp_submit);
+			resennd = (Button)findViewById(R.id.btn_otp_resend);
+			txt_ref_id=(TextView)findViewById(R.id.txt_ref_id);
+			txt_otp=(EditText)findViewById(R.id.txt_otp);
+			txt_ref_id.setText(txt_ref_id.getText().toString() + " :" + strRefId);
+			submit.setOnClickListener(this);
+			resennd.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View v)
+		{
+			try
 			{
-				super.onCreate(bdn);
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
-				setContentView(R.layout.otplogin);
-				submit = (Button)findViewById(R.id.btn_otp_submit);
-				resennd = (Button)findViewById(R.id.btn_otp_resend);
-				txt_ref_id=(TextView)findViewById(R.id.txt_ref_id);
-				txt_otp=(EditText)findViewById(R.id.txt_otp);
-				txt_ref_id.setText(txt_ref_id.getText().toString() + " :" + strRefId);
-				submit.setOnClickListener(this);
-				resennd.setOnClickListener(this);
-			}
-
-			@Override
-			public void onClick(View v) {
-				try {
-
-					switch (v.getId()) 
-					{
-						case R.id.btn_otp_submit:
-							strOTP=txt_otp.getText().toString();
-							flag = chkConnectivity();
-							if (strOTP.length() == 0) {
-								retMess = LoginActivity.this.getString(R.string.alert_076);
-								showAlert(retMess);
-								this.show();
-							}/* else if (strOTP.length() != 6) {
-								retMess = LoginActivity.this.getString(R.string.alert_075);
-								showAlert(retMess);// setAlert();
-								this.show();
-							} */else {
-								if (flag == 0)
-								{
-									new CallWebServiceValidateOTP().execute();
-								}
-								
+				switch (v.getId())
+				{
+					case R.id.btn_otp_submit:
+						strOTP=txt_otp.getText().toString();
+						flag = chkConnectivity();
+						if (strOTP.length() == 0)
+						{
+							retMess = LoginActivity.this.getString(R.string.alert_076);
+							showAlert(retMess);
+							this.show();
+						}
+						else
+						{
+							if (flag == 0)
+							{
+								new CallWebServiceValidateOTP().execute();
 							}
-							
-						  break;	
+						}
+						break;
 						  
 						case R.id.btn_otp_resend:
 							flag = chkConnectivity();
@@ -940,14 +917,10 @@ public class LoginActivity extends CustomWindow implements OnClickListener,Locat
 								new CallGenerateOTPWebService().execute();
 								this.dismiss();
 							}
-							
-							
 							break;
 						default:
 						  break;
 					}
-					//dismiss();
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out

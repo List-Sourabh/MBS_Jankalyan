@@ -38,25 +38,18 @@ import mbLib.MyThread;
 
 public class LoanAccountDetails extends Activity implements OnClickListener {
 	LinearLayout layout_lable, layout_text1, layout_text2;
-	TextView txt_heading, cust_nm, rate_of_interest, sanction_limit,
+	TextView txt_heading,  rate_of_interest, sanction_limit,
 			drawing_power, accNo, txt_cust_name, txtlbl_instlmnt_frq,
 			txtlbl_instlmnt_amt, txtlbl_pnd_instlmnts, txtlbl_principal,
 			txtlbl_interest;
 	EditText txt_current_bal, txt_utilisable_amt, txt_instlmnt_frq,
 			txt_instlmnt_amt, txt_pnd_instlmnts, txt_pnd_interest,
 			txt_instlmnt_interest, txt_pend_pinstlmntamt;
-	Button btnChangeMpin;
 	ImageView img_heading;
-	public Bundle getBundle = null;
-	Cursor curSelectBankname;
 	ImageButton btn_home, btn_back;
-	String retMess = "", retVal = "", custid = "", accountNo = "", accStr = "",retvalweb="",
-			accountinfo = "", retval = "", respcode = "", respdesc = "";
-	private static String NAMESPACE = "";
-	private static String URL = "";
-	private static String SOAP_ACTION = "";
-	private static String METHOD_NAME = "";
-	private static final String MY_SESSION = "my_session";
+	String retMess = "",  custid = "", accountNo = "", accStr = "",retvalweb="",
+			accountinfo = "",  respcode = "", respdesc = "";
+
 	DatabaseManagement dbms;
 	int flag = 0;
 	private MyThread t1;
@@ -149,7 +142,6 @@ public class LoanAccountDetails extends Activity implements OnClickListener {
 		if (c1 != null) {
 			while (c1.moveToNext()) {
 				custid = c1.getString(2);
-				Log.e("custId", "......" + custid);
 			}
 		}
 

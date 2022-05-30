@@ -64,13 +64,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 	Accounts acArray[];
 	DialogBox dbs;
 	int flag=0;
-	 
-	private static String NAMESPACE = "";
-	private static String URL = "";
-	private static String SOAP_ACTION = "";
-	private static String METHOD_NAME = "";
-	private static String METHOD_NAME1 = "";
-	private static final String MY_SESSION = "my_session";
+
 	PrivateKey var1 = null;
 	String var5 = "", var3 = "";
 	SecretKeySpec var2 = null;
@@ -212,15 +206,6 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		/*try
-		{
-			t1.stop();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}*/
 		if(v.getId() == R.id.rechargeImg)
 		{
 			Toast.makeText(DashboardActivity.this, "Currently In-Active", Toast.LENGTH_SHORT).show();
@@ -247,7 +232,7 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 		{
 			Intent in=new Intent(this,MiniStmtActivity.class);
 			in.putExtra("var1", var1);
-			   in.putExtra("var3", var3);
+			in.putExtra("var3", var3);
 			startActivity(in);
 			this.finish();
 		}
@@ -256,30 +241,8 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 			select_accnt.performClick();
 		}
 		else if(v.getId()==R.id.btn_back)
-		{showlogoutAlertbtn(getString(R.string.lbl_exit));
-
-			/*dbs = new DialogBox(this);
-			dbs.get_adb().setMessage(getString(R.string.lbl_exit));
-			dbs.get_adb().setPositiveButton("Yes",
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface arg0, int arg1) {
-							flag = chkConnectivity();
-							if (flag == 0) 
-							{
-								CallWebService c = new CallWebService();
-								c.execute();
-							}
-						}
-					});
-			dbs.get_adb().setNegativeButton("No",
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface arg0, int arg1) {
-							arg0.cancel();
-						}
-					});
-			dbs.get_adb().show();*/
+		{
+			showlogoutAlertbtn(getString(R.string.lbl_exit));
 		}
 	}
 	public void showlogoutAlertbtn(final String str)
@@ -300,13 +263,9 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 						if (flag == 0) {
 							CallWebService c = new CallWebService();
 							c.execute();
-
 						}
-
 						break;
-
 					case R.id.btn_cancel:
-
 						this.dismiss();
 						break;
 					default:
@@ -314,7 +273,6 @@ public class DashboardActivity extends Activity implements AdapterView.OnItemCli
 				}
 				dismiss();
 			}
-
 		};
 		alert.show();
 
